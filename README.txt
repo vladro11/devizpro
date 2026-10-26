@@ -28,3 +28,6 @@ Funcții noi în v5:
 Datele devizelor și catalogului sunt păstrate local în browserul dispozitivului. Faceți backup periodic din Setări. Nu puneți informații de client sau chei secrete în depozitul GitHub public.
 
 PDF: dacă imprimarea include data, adresa URL sau titlul browserului în antet/subsol, dezactivați opțiunea “Headers and footers / Anteturi și subsoluri” în fereastra de imprimare a browserului. Aceasta este o setare a browserului, nu un element din documentul DevizPRO.
+
+
+Versiunea v6: avansul primit este contabilizat imediat ca încasare; soldul rămas se adaugă la venit numai când devizul este acceptat. Exportul evidenței include avansul și soldul.
