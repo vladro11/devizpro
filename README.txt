@@ -1,33 +1,29 @@
-DevizPRO v5 — pentru iPad
+DevizPRO v9 — Devize de construcții pentru iPad
 
-Publicare:
-1. În GitHub, deschide depozitul devizpro.
-2. Add file > Upload files.
-3. Încarcă fișierele din acest folder în rădăcina depozitului, suprascriind versiunile existente.
-4. Commit changes. GitHub Pages rămâne pe main / (root).
-5. Reîncarcă pagina. Dacă aplicația este instalată pe ecranul principal și afișează versiunea veche, închide-o complet și redeschide-o.
+CE INCLUDE v9
+- Avans încasat separat și sold rămas; avansul nu se dublează la acceptarea devizului.
+- Panou principal cu venit încasat, avansuri și devize refuzate.
+- Evidență generală pentru TOATE devizele, inclusiv cele repartizate în grupuri.
+- Grupuri principale: maximum 50 devize în total, inclusiv subgrupe.
+- Maximum 5 subgrupe pentru fiecare grup principal; maximum 10 devize în fiecare subgrupă.
+- Contoare financiare pentru fiecare grup și subgrupă.
+- Mutarea devizelor între grupuri/subgrupe.
+- Sortare pentru grupuri și evidența devizelor după dată, numărul lucrărilor, valoarea devizului, venit și pierderi, în ordine crescătoare sau descrescătoare.
+- Backup și restaurare care includ și grupurile/subgrupele.
+- Exportul evidenței, catalog bilingv RO/RU, previzualizare și imprimare A4.
 
-Funcții noi în v5:
-- Panou principal cu rezumat și devize recente.
-- Asistent ChatGPT plutitor (deschide ChatGPT separat; nu este integrare AI directă).
-- Previzualizare A4 compactă, comutare vertical/orizontal în timp real.
-- Tabel de deviz bilingv implicit (RO/RU); se poate alege și o singură limbă din Setări.
-- Opțiuni de semnătură: fără semnături, ambele, doar semnătura PNG proprie, sau semnătura PNG proprie plus loc pentru client.
-- Termenul devizului și termenul reducerii se activează separat.
-- Avans opțional și rest de plată.
-- Formate de dată și oră opțională.
-- Căutare fără diacritice românești.
-- Sugestie de preț din media prețurilor introduse în trecut pentru aceeași lucrare (în acest browser/dispozitiv).
-- Evidență pe carduri colorate după status și indicator de reducere.
-- Lucrările selectate au câmpuri mai compacte și contor galben pentru lucrările adăugate de mai multe ori.
-- Tabel A4 alb-negru, cu antete îngroșate, număr de ordine automat și coloane compacte; denumirea lucrării primește spațiul rămas.
-- Data implicită este în format european DD.MM.YYYY.
-- Ora este dezactivată implicit; bifează „Include ora” lângă dată. Dacă lași ora goală, se folosește ora curentă la previzualizare/export; poți introduce manual ora.
-- Termenul de valabilitate al devizului este dezactivat implicit.
+INSTALARE / PUBLICARE ÎN GITHUB PAGES
+1. Descarcă și dezarhivează arhiva.
+2. Deschide folderul DevizPRO_iPad_v9.
+3. Încarcă FIȘIERELE din interiorul folderului în rădăcina depozitului GitHub (nu încărca folderul ca subfolder), suprascriind fișierele aplicației existente.
+4. Fă Commit changes. GitHub Pages trebuie să publice din main / (root).
+5. Pe iPad, închide complet aplicația/site-ul și redeschide-l. Service worker-ul v9 folosește un cache nou pentru a evita reutilizarea fișierelor vechi.
 
-Datele devizelor și catalogului sunt păstrate local în browserul dispozitivului. Faceți backup periodic din Setări. Nu puneți informații de client sau chei secrete în depozitul GitHub public.
+DATE ȘI BACKUP
+Datele aplicației sunt păstrate local în browserul/dispozitivul folosit. Înainte de actualizare, deschide Setări și exportă un backup JSON. La restaurarea unui backup vechi care nu conține grupuri, devizele se restaurează fără grupări. Backupurile v9 includ și grupurile/subgrupele. Datele locale nu se transferă automat între dispozitive sau browsere.
 
-PDF: dacă imprimarea include data, adresa URL sau titlul browserului în antet/subsol, dezactivați opțiunea “Headers and footers / Anteturi și subsoluri” în fereastra de imprimare a browserului. Aceasta este o setare a browserului, nu un element din documentul DevizPRO.
+IMPORTANT
+Sintaxa JavaScript a fișierului principal a fost verificată. Testarea completă a tuturor fluxurilor în browser real și pe iPad nu a fost efectuată; după instalare, verifică adăugarea devizului, avansul, schimbarea statusului, gruparea, sortarea și exportul.
 
-
-Versiunea v6: avansul primit este contabilizat imediat ca încasare; soldul rămas se adaugă la venit numai când devizul este acceptat. Exportul evidenței include avansul și soldul.
+PDF
+Dacă imprimarea adaugă URL-ul sau data în antet/subsol, dezactivează Headers and footers / Anteturi și subsoluri în dialogul de imprimare al browserului.
