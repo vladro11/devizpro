@@ -1,12 +1,26 @@
-DevizPRO pentru iPad — versiunea 2
+DevizPRO v4 — pentru iPad
 
-Fișiere: index.html (aplicația și catalogul încorporat), manifest.webmanifest și service-worker.js (instalare/offline), icon-192.png și icon-512.png.
+Publicare:
+1. În GitHub, deschide depozitul devizpro.
+2. Add file > Upload files.
+3. Încarcă fișierele din acest folder în rădăcina depozitului, suprascriind versiunile existente.
+4. Commit changes. GitHub Pages rămâne pe main / (root).
+5. Reîncarcă pagina. Dacă aplicația este instalată pe ecranul principal și afișează versiunea veche, închide-o complet și redeschide-o.
 
-Publicare GitHub Pages: încărcați TOATE fișierele și directoarele din acest pachet în rădăcina depozitului public, apoi Settings → Pages → Deploy from a branch → main → /(root) → Save. Așteptați publicarea, deschideți URL-ul GitHub Pages în Safari și folosiți Share → Add to Home Screen.
+Funcții noi în v4:
+- Panou principal cu rezumat și devize recente.
+- Asistent ChatGPT plutitor (deschide ChatGPT separat; nu este integrare AI directă).
+- Previzualizare A4 compactă, comutare vertical/orizontal în timp real.
+- Tabel de deviz bilingv implicit (RO/RU); se poate alege și o singură limbă din Setări.
+- Opțiuni de semnătură: fără semnături, ambele, doar semnătura PNG proprie, sau semnătura PNG proprie plus loc pentru client.
+- Termenul devizului și termenul reducerii se activează separat.
+- Avans opțional și rest de plată.
+- Formate de dată și oră opțională.
+- Căutare fără diacritice românești.
+- Sugestie de preț din media prețurilor introduse în trecut pentru aceeași lucrare (în acest browser/dispozitiv).
+- Evidență pe carduri colorate după status și indicator de reducere.
+- Lucrările selectate au câmpuri mai compacte.
 
-Datele devizelor, setările și catalogul editat se salvează local în browserul dispozitivului. Descărcați periodic backup din Setări. GitHub repo-ul public conține codul aplicației, nu puneți acolo backupuri sau date ale clienților.
+Datele devizelor și catalogului sunt păstrate local în browserul dispozitivului. Faceți backup periodic din Setări. Nu puneți informații de client sau chei secrete în depozitul GitHub public.
 
-ChatGPT în această versiune este o scurtătură către site-ul ChatGPT; nu există integrare AI directă și nu poate edita automat datele. Pentru AI direct ar fi necesară integrare API separată, de regulă cu cost.
-
-
-Versiunea 3: previzualizare A4 mai mare pe iPad, butoane directe pentru orientare verticala/orizontala si acces vizibil la MODIFICARE TOTALA din Catalog lucrari.
+PDF: dacă imprimarea include data, adresa URL sau titlul browserului în antet/subsol, dezactivați opțiunea “Headers and footers / Anteturi și subsoluri” în fereastra de imprimare a browserului. Aceasta este o setare a browserului, nu un element din documentul DevizPRO.
