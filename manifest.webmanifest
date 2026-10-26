@@ -1,0 +1,11 @@
+{
+  "name": "DevizPRO — Devize construcții",
+  "short_name": "DevizPRO",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f3f6f9",
+  "theme_color": "#167347",
+  "description": "Devize de construcții offline, catalog RO/RU și evidență."
+}
