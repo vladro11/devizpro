@@ -1,27 +1,9 @@
-DEVIZPRO V23
-Aplicație web/PWA adaptivă pentru telefon, tabletă și PC. Numele afișat în aplicație și la instalare este simplu: DevizPRO.
+DevizPRO — aplicație web offline
 
-CE S-A SCHIMBAT
-- Pornită din versiunea V21 MULTIPLATFORM pentru a păstra structura și funcțiile existente.
-- Eliminat butonul plutitor și fereastra pop-up ChatGPT; eliminat și cardul Asistent ChatGPT din Setări.
-- Adăugată în Setări o bară de căutare lată, fixată sus, care filtrează cardurile de setări.
-- Iconurile de navigare sunt minimaliste, monocrome și centrate.
-- Actualizat numele aplicației/manifestului la DevizPRO și cache-ul PWA la V23.
+Deschide index.html într-un browser modern. Pentru instalarea ca PWA, publică întregul folder pe HTTPS și deschide adresa în browserul dispozitivului.
 
-FIȘIERE
-- index.html — aplicația.
-- manifest.webmanifest — numele și setările instalării.
-- service-worker.js — cache offline după prima încărcare pe HTTPS/localhost.
-- icon-192.png și icon-512.png — iconurile aplicației.
+Datele sunt păstrate local în browserul/dispozitivul curent. Exportă periodic un backup din Setări și păstrează o copie externă înainte de actualizări. Pentru transfer între dispozitive, folosește funcțiile de backup și restaurare.
 
-INSTALARE
-1. Extrage arhiva completă.
-2. Deschide index.html pentru o verificare simplă; unele funcții PWA/offline cer HTTPS sau localhost.
-3. Pentru instalare și cache offline, publică toate fișierele împreună pe HTTPS.
-4. Pe iPhone/iPad folosește Safari, pe Android Chrome, iar pe Windows un browser modern.
-5. După actualizarea unei instalări existente, închide complet aplicația și redeschide-o. Cache-ul nou se numește devizpro-v23-cache1.
+Export Excel / Numbers descarcă un fișier .xls compatibil. Export PDF / Imprimare deschide dialogul de imprimare al browserului; de acolo poți salva ca PDF sau imprima. Partajarea trimite rezumatul devizului ca text prin aplicația aleasă; pentru atașarea PDF-ului, exportă PDF-ul și atașează-l manual în aplicația de mesagerie/e-mail.
 
-DATE ȘI BACKUP
-- Înainte de înlocuire, exportă un backup complet din aplicația veche și păstrează-l separat.
-- Datele sunt păstrate local în browser; instalarea pe alt dispozitiv nu le sincronizează automat.
-- Nu șterge datele site-ului și nu dezinstala versiunea veche până nu verifici backupul.
+Notă: pentru partajare, aplicațiile de destinație trebuie instalate sau accesibile pe dispozitiv. Testează înainte de folosirea pe lucrări reale.
