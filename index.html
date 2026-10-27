@@ -140,7 +140,7 @@ nav{scrollbar-width:thin;-webkit-overflow-scrolling:touch;overscroll-behavior-x:
 <section id="catalog" class="page"><div class="between"><div><h2 data-ro="Catalog lucrări" data-ru="Каталог работ">Catalog lucrări</h2><div class="muted" data-ro="Pentru editarea prețurilor din catalog, activează „MODIFICARE TOTALĂ” aici. Apoi apasă „Editează” la lucrare." data-ru="Каталог импортирован из приложенного файла Numbers. Можно редактировать, добавлять и отключать работы.">Pentru editarea prețurilor din catalog, activează „MODIFICARE TOTALĂ” aici. Apoi apasă „Editează” la lucrare.</div></div><div class="row"><button class="secondary" onclick="toggleAdminMode(!window.__dpAdminMode)">⚙ MODIFICARE TOTALĂ: <span id="catalogAdminStatus">oprită</span></button><button onclick="openWorkForm()" data-ro="＋ Lucrare nouă" data-ru="＋ Новая работа">＋ Lucrare nouă</button></div></div><div class="card"><div class="between" style="margin-bottom:12px;align-items:flex-start"><div><strong data-ro="Preț automat pentru lucrări noi" data-ru="Автоматическая цена новых работ">Preț automat pentru lucrări noi</strong><div class="muted" data-ro="Implicit: media minim–maxim; când există istoric, prețul introdus manual cel mai des are prioritate." data-ru="По умолчанию: среднее между минимумом и максимумом; при наличии истории приоритет у цены, чаще всего введённой вручную.">Implicit: media minim–maxim. Prețul introdus manual și folosit cel mai des are prioritate.</div></div><button id="frequentPriceBtn" class="secondary small" onclick="resetFrequentPrices()" data-ro="↺ Folosește prețurile des folosite" data-ru="↺ Использовать часто используемые цены">↺ Folosește prețurile des folosite</button></div><div class="price-tools" style="margin-bottom:14px"><button class="minprice" onclick="setPriceMode('min')" data-ro="Resetare prețuri minime" data-ru="Сброс к минимальным ценам">Resetare prețuri minime</button><button class="avgprice" onclick="setPriceMode('avg')" data-ro="Resetare prețuri medii" data-ru="Сброс к средним ценам">Resetare prețuri medii</button><button class="maxprice" onclick="setPriceMode('max')" data-ro="Resetare prețuri maxime" data-ru="Сброс к максимальным ценам">Resetare prețuri maxime</button><span id="priceModeLabel" class="muted"></span></div><div class="fields four"><div class="field"><label data-ro="Caută" data-ru="Поиск">Caută</label><input id="catalogSearch" oninput="renderCatalog()" placeholder="cod, română, rusă…"></div><div class="field"><label data-ro="Categorie" data-ru="Категория">Categorie</label><select id="catalogCategory" onchange="renderCatalog()"></select></div><div class="field"><label data-ro="Afișare" data-ru="Показать">Afișare</label><select id="catalogActiveFilter" onchange="renderCatalog()"><option value="active" data-ro="Active" data-ru="Активные">Active</option><option value="all" data-ro="Toate" data-ru="Все">Toate</option><option value="inactive" data-ro="Dezactivate" data-ru="Отключённые">Dezactivate</option></select></div><div class="field"><label data-ro="Sortare lucrări" data-ru="Сортировка работ">Sortare lucrări</label><select id="catalogSort" onchange="renderCatalog()"><option value="popular" data-ro="Cele mai des folosite" data-ru="Чаще используемые" selected>Cele mai des folosite</option><option value="order" data-ro="Număr de ordine" data-ru="По порядковому номеру">Număr de ordine</option><option value="category" data-ro="După categorii" data-ru="По категориям">După categorii</option><option value="name" data-ro="După nume" data-ru="По названию">După nume</option></select></div></div><div id="catalogList" class="cataloglist" style="margin-top:14px"></div></div></section>
 <section id="categories" class="page"><div class="between"><div><h2 data-ro="Categorii de lucrări" data-ru="Категории работ">Categorii de lucrări</h2><div class="muted" data-ro="Fiecare lucrare are o singură categorie. Mutarea ei o scoate din categoria anterioară." data-ru="У каждой работы одна категория. При переносе она удаляется из предыдущей.">Fiecare lucrare are o singură categorie. Mutarea ei o scoate din categoria anterioară.</div></div><button onclick="addCategory()" data-ro="＋ Categorie" data-ru="＋ Категория">＋ Categorie</button></div><div class="card"><div class="fields"><div class="field"><label data-ro="Caută categorie" data-ru="Поиск категории">Caută categorie</label><input id="categorySearch" oninput="renderCategories()"></div></div><div id="categoryList" style="margin-top:14px"></div></div></section>
 <section id="groups" class="page"><div class="between"><div><h2 data-ro="Grupe de devize" data-ru="Группы смет">Grupe de devize</h2><div class="muted" data-ro="Grupează devizele pe obiecte. Mutarea din grupă nu șterge devizul; ștergerea definitivă se face numai din Evidență." data-ru="Группируйте сметы по объектам. Удаление из группы не удаляет смету; окончательное удаление доступно только в разделе «Учёт».">Grupează devizele pe obiecte. Mutarea din grupă nu șterge devizul; ștergerea definitivă se face numai din Evidență.</div></div></div><div class="card"><h2 data-ro="Grupe de devize" data-ru="Группы смет">Grupe de devize</h2><div id="groupTotals" class="metricgrid" style="margin:12px 0"></div><div class="muted" data-ro="Organizează obiectele: maximum 50 de devize într-un grup principal sau 5 subgrupe cu maximum 10 devize fiecare. Totalurile includ avansurile, soldurile acceptate și devizele refuzate." data-ru="Организуйте объекты: максимум 50 смет в основной группе или 5 подгрупп, до 10 смет в каждой. Итоги учитывают авансы, полученные остатки и отклонённые сметы.">Organizează obiectele: maximum 50 de devize într-un grup principal sau 5 subgrupe cu maximum 10 devize fiecare. Totalurile includ avansurile, soldurile acceptate și devizele refuzate.</div><div class="row" style="margin:10px 0"><input id="newGroupName" data-ro-placeholder="Numele grupului, ex. Casa familiei" data-ru-placeholder="Название группы, например Дом семьи" placeholder="Numele grupului, ex. Casa familiei" style="flex:1"><button onclick="createQuoteGroup()" data-ro="＋ Grup principal" data-ru="＋ Основная группа">＋ Grup principal</button></div><div class="field" style="max-width:360px;margin-bottom:12px"><label data-ro="Sortează grupele după" data-ru="Сортировать группы по">Sortează grupele după</label><select id="groupSort" onchange="renderQuoteGroups()"><option value="manual" data-ro="Ordine manuală (săgeți)" data-ru="Ручной порядок (стрелки)" selected>Ordine manuală (săgeți)</option><option value="date-desc" data-ro="Data: cele mai noi" data-ru="Дата: сначала новые">Data: cele mai noi</option><option value="date-asc" data-ro="Data: cele mai vechi" data-ru="Дата: сначала старые">Data: cele mai vechi</option><option value="income-desc" data-ro="Venit: mare → mic" data-ru="Доход: от большего к меньшему">Venit: mare → mic</option><option value="income-asc" data-ro="Venit: mic → mare" data-ru="Доход: от меньшего к большему">Venit: mic → mare</option><option value="count-desc" data-ro="Număr devize: mare → mic" data-ru="Количество смет: от большего к меньшему">Număr devize: mare → mic</option><option value="count-asc" data-ro="Număr devize: mic → mare" data-ru="Количество смет: от меньшего к большему">Număr devize: mic → mare</option><option value="losses-desc" data-ro="Pierderi: mari → mici" data-ru="Потери: от больших к меньшим">Pierderi: mari → mici</option><option value="losses-asc" data-ro="Pierderi: mici → mari" data-ru="Потери: от меньших к большим">Pierderi: mici → mari</option></select></div><div id="quoteGroups"></div></div></section>
-<section id="ledger" class="page"><div class="between"><div><h2 data-ro="Evidența devizelor" data-ru="Учёт смет">Evidența devizelor</h2><div class="muted" data-ro="Devizele noi pornesc în așteptare. Venitul acceptat este calculat separat de ofertele pierdute." data-ru="Новые сметы имеют статус ожидания. Принятые суммы учитываются отдельно от отклонённых.">Devizele noi pornesc în așteptare. Venitul acceptat este calculat separat de ofertele pierdute.</div></div><button class="secondary" onclick="exportLedger()" data-ro="Export evidență" data-ru="Экспорт учёта">Export evidență</button></div><div class="metricgrid" style="margin:15px 0"><div class="metric"><div class="label" data-ro="Total toate devizele" data-ru="Сумма всех смет">Total toate devizele</div><div class="num" id="ledgerAll">0</div><div class="muted" data-ro="Oferte create" data-ru="Созданные предложения">Oferte create</div></div><div class="metric green"><div class="label" data-ro="↑ Venit încasat" data-ru="↑ Полученный доход">↑ Venit încasat</div><div class="num" id="ledgerAccepted">0</div><div class="muted" id="ledgerAcceptedCount">Avansuri + solduri acceptate</div></div><div class="metric"><div class="label" data-ro="Avansuri încasate" data-ru="Полученные авансы">Avansuri încasate</div><div class="num" id="ledgerAdvances">0</div><div class="muted" data-ro="Înregistrate imediat" data-ru="Учитываются сразу">Înregistrate imediat</div></div><div class="metric red"><div class="label" data-ro="↓ Pierderi / refuzate" data-ru="↓ Потери / отклонённые">↓ Pierderi / refuzate</div><div class="num" id="ledgerRejected">−0</div><div class="muted" id="ledgerRejectedCount">0 refuzate</div></div></div><div class="card"><div class="fields three"><div class="field"><label data-ro="Perioadă" data-ru="Период">Perioadă</label><select id="ledgerPeriod" onchange="renderLedger()"><option value="all">Tot timpul / Всё время</option><option value="day">Astăzi / Сегодня</option><option value="week">Săptămâna aceasta / Эта неделя</option><option value="month">Luna aceasta / Этот месяц</option><option value="quarter">Trimestrul acesta / Этот квартал</option><option value="half">Semestrul acesta / Полугодие</option></select></div><div class="field"><label data-ro="Status" data-ru="Статус">Status</label><select id="ledgerStatus" onchange="renderLedger()"><option value="all">Toate / Все</option><option value="pending">În așteptare / Ожидает</option><option value="accepted">Acceptate / Принятые</option><option value="rejected">Refuzate / Отклонённые</option></select></div><div class="field"><label data-ro="Caută client / deviz" data-ru="Поиск клиента / сметы">Caută client / deviz</label><input id="ledgerSearch" oninput="renderLedger()"></div><div class="field"><label data-ro="Sortează devizele după" data-ru="Сортировать сметы по">Sortează devizele după</label><select id="ledgerSort" onchange="renderLedger()"><option value="date-desc">Data: cele mai noi → vechi</option><option value="date-asc">Data: cele mai vechi → noi</option><option value="work-desc">Număr lucrări: mare → mic</option><option value="work-asc">Număr lucrări: mic → mare</option><option value="size-desc">Valoare deviz: mare → mic</option><option value="size-asc">Valoare deviz: mic → mare</option><option value="income-desc">Venit: mare → mic</option><option value="income-asc">Venit: mic → mare</option><option value="loss-desc">Pierdere: mare → mic</option><option value="loss-asc">Pierdere: mic → mare</option></select></div></div><div id="ledgerList" style="margin-top:14px"></div></div><div class="card"><h2 data-ro="Evidența reducerilor" data-ru="Учёт скидок">Evidența reducerilor</h2><div class="muted" data-ro="Reducerile expirate sunt detectate automat la deschiderea aplicației și la actualizarea evidenței. Devizele acceptate rămân în categoria acceptate." data-ru="Просроченные скидки определяются автоматически при открытии приложения и обновлении учёта. Принятые сметы остаются в категории принятых.">Reducerile expirate sunt detectate automat la deschiderea aplicației și la actualizarea evidenței. Devizele acceptate rămân în categoria acceptate.</div><div id="discountLedger" style="margin-top:12px"></div></div></section>
+<section id="ledger" class="page"><div class="between"><div><h2 data-ro="Evidența devizelor" data-ru="Учёт смет">Evidența devizelor</h2><div class="muted" data-ro="Devizele noi pornesc în așteptare. Venitul acceptat este calculat separat de ofertele pierdute." data-ru="Новые сметы имеют статус ожидания. Принятые суммы учитываются отдельно от отклонённых.">Devizele noi pornesc în așteptare. Venitul acceptat este calculat separat de ofertele pierdute.</div></div><button class="secondary" onclick="exportLedger()" data-ro="Export evidență" data-ru="Экспорт учёта">Export evidență</button></div><div class="metricgrid" style="margin:15px 0"><div class="metric"><div class="label" data-ro="Total toate devizele" data-ru="Сумма всех смет">Total toate devizele</div><div class="num" id="ledgerAll">0</div><div class="muted" data-ro="Oferte create" data-ru="Созданные предложения">Oferte create</div></div><div class="metric green"><div class="label" data-ro="↑ Venit încasat" data-ru="↑ Полученный доход">↑ Venit încasat</div><div class="num" id="ledgerAccepted">0</div><div class="muted" id="ledgerAcceptedCount">Avansuri + solduri acceptate</div></div><div class="metric"><div class="label" data-ro="Avansuri încasate" data-ru="Полученные авансы">Avansuri încasate</div><div class="num" id="ledgerAdvances">0</div><div class="muted" data-ro="Înregistrate imediat" data-ru="Учитываются сразу">Înregistrate imediat</div></div><div class="metric red"><div class="label" data-ro="↓ Pierderi / refuzate" data-ru="↓ Потери / отклонённые">↓ Pierderi / refuzate</div><div class="num" id="ledgerRejected">−0</div><div class="muted" id="ledgerRejectedCount">0 refuzate</div></div></div><div class="card"><div class="fields three"><div class="field"><label data-ro="Perioadă" data-ru="Период">Perioadă</label><select id="ledgerPeriod" onchange="renderLedger()"><option value="all">Tot timpul / Всё время</option><option value="day">Astăzi / Сегодня</option><option value="week">Săptămâna aceasta / Эта неделя</option><option value="month">Luna aceasta / Этот месяц</option><option value="quarter">Trimestrul acesta / Этот квартал</option><option value="half">Semestrul acesta / Полугодие</option></select></div><div class="field"><label data-ro="Status" data-ru="Статус">Status</label><select id="ledgerStatus" onchange="renderLedger()"><option value="all">Toate / Все</option><option value="pending">În așteptare / Ожидает</option><option value="accepted">Acceptate / Принятые</option><option value="rejected">Refuzate / Отклонённые</option></select></div><div class="field"><label data-ro="Caută client / deviz" data-ru="Поиск клиента / сметы">Caută client / deviz</label><input id="ledgerSearch" oninput="renderLedger()"></div><div class="field"><label data-ro="Sortează devizele după" data-ru="Сортировать сметы по">Sortează devizele după</label><select id="ledgerSort" onchange="renderLedger()"><option value="date-desc">Data: cele mai noi → vechi</option><option value="date-asc">Data: cele mai vechi → noi</option><option value="name-asc">Nume deviz: A → Z / Название сметы: А → Я</option><option value="name-desc">Nume deviz: Z → A / Название сметы: Я → А</option><option value="client-asc">Nume client: A → Z / Имя клиента: А → Я</option><option value="work-desc">Număr lucrări: mare → mic</option><option value="work-asc">Număr lucrări: mic → mare</option><option value="size-desc">Valoare deviz: mare → mic</option><option value="size-asc">Valoare deviz: mic → mare</option><option value="income-desc">Venit: mare → mic</option><option value="income-asc">Venit: mic → mare</option><option value="loss-desc">Pierdere: mare → mic</option><option value="loss-asc">Pierdere: mic → mare</option></select></div></div><div id="ledgerList" style="margin-top:14px"></div></div><div class="card"><h2 data-ro="Evidența reducerilor" data-ru="Учёт скидок">Evidența reducerilor</h2><div class="muted" data-ro="Reducerile expirate sunt detectate automat la deschiderea aplicației și la actualizarea evidenței. Devizele acceptate rămân în categoria acceptate." data-ru="Просроченные скидки определяются автоматически при открытии приложения и обновлении учёта. Принятые сметы остаются в категории принятых.">Reducerile expirate sunt detectate automat la deschiderea aplicației și la actualizarea evidenței. Devizele acceptate rămân în categoria acceptate.</div><div id="discountLedger" style="margin-top:12px"></div></div></section>
 <section id="settings" class="page"><h2 data-ro="Setări aplicație" data-ru="Настройки приложения">Setări aplicație</h2><div id="settingsSearchSticky"><input id="settingsSearchInput" type="search" placeholder="Caută în setări… / Поиск в настройках…" aria-label="Caută în setări" oninput="dpFilterSettings(this.value)"></div><div class="grid"><div><div class="card"><h2 data-ro="Datele tale / firma" data-ru="Ваши данные / компания">Datele tale / firma</h2><div class="fields"><div class="field"><label data-ro="Nume firmă / prestator" data-ru="Название компании / исполнитель">Nume firmă / prestator</label><input id="bizName"></div><div class="field"><label data-ro="Telefon" data-ru="Телефон">Telefon</label><input id="bizPhone"></div><div class="field"><label>Instagram</label><input id="bizInstagram" placeholder="@cont sau link"></div><div class="field"><label>TikTok</label><input id="bizTikTok" placeholder="@cont sau link"></div><div class="field"><label>Facebook / site</label><input id="bizWeb"></div><div class="field"><label data-ro="Adresă / IDNO (opțional)" data-ru="Адрес / IDNO (необязательно)">Adresă / IDNO (opțional)</label><input id="bizAddress"></div></div><div class="field" style="margin-top:11px"><label data-ro="Text condiții pe deviz (RO / RU)" data-ru="Условия сметы (RO / RU)">Text condiții pe deviz (RO / RU)</label><textarea id="terms" rows="3"></textarea></div></div>
 <div class="card"><h2 data-ro="Aspect și semnătură" data-ru="Оформление и подпись">Aspect și semnătură</h2><div class="fields"><div class="field"><label>Culoare / temă</label><select id="themePreset" onchange="applyThemePreset(this.value)"><option value="custom">Personalizată</option><option value="green">Verde profesional</option><option value="red">Roșu elegant</option><option value="blue">Albastru clasic</option><option value="dark">Verde închis</option><option value="purple">Mov</option></select><label for="accentColor">Alege orice culoare</label><input id="accentColor" type="color" value="#167347"></div><div class="field"><label data-ro="Monedă" data-ru="Валюта">Monedă</label><select id="currency"><option value="MDL">MDL / lei</option><option value="RON">RON</option><option value="EUR">EUR</option></select></div></div><div class="fields three" style="margin-top:10px"><div class="field"><label>Limba devizului / Язык сметы</label><select id="printLanguage" onchange="saveSettingsFromUI();renderPreview()"><option value="both">Română + rusă / RO + RU</option><option value="ro">Română</option><option value="ru">Rusă</option></select></div><div class="field"><label>Format dată</label><select id="dateFormat" onchange="saveSettingsFromUI();renderPreview()"><option value="long">26 octombrie 2026</option><option value="dd.mm.yyyy">26.10.2026</option><option value="dd/mm/yyyy">26/10/2026</option><option value="yyyy-mm-dd">2026-10-26</option></select></div><div class="field"><label><input id="showTime" type="checkbox" style="width:auto" onchange="saveSettingsFromUI();renderPreview()"> Include ora la export</label><div class="muted">Dezactivată implicit.</div></div></div><div class="field" style="margin-top:10px"><label>Semnături pe deviz / Подписи в смете</label><select id="signatureMode" onchange="saveSettingsFromUI();renderPreview()"><option value="none">Fără semnături / Без подписей</option><option value="both">Client + eu / Клиент + я</option><option value="me">Doar semnătura mea PNG / Только моя PNG</option><option value="me-client">Semnătura mea + loc client / Моя подпись + место клиента</option></select></div><div class="row" style="margin-top:12px"><label class="filelabel"><span data-ro="Încarcă semnătură PNG" data-ru="Загрузить подпись PNG">Încarcă semnătură PNG</span><input type="file" id="signatureFile" accept="image/png" onchange="loadSignature(event)"></label><button class="danger small" onclick="removeSignature()" data-ro="Șterge semnătura" data-ru="Удалить подпись">Șterge semnătura</button></div><div id="signaturePreview" class="muted" style="margin-top:10px"></div></div></div>
 <div><div class="card"><h2>Modificare totală</h2><p class="muted">Mod administrativ pentru editarea catalogului, categoriilor și setărilor. Intrarea în mod cere confirmare; înainte de schimbări importante recomandăm backup.</p><div class="switchrow"><div><strong id="adminModeLabel">Mod administrativ dezactivat</strong><div class="muted">Activează pentru sesiunea curentă de lucru.</div></div><label class="toggle"><input id="adminMode" type="checkbox" onchange="toggleAdminMode(this.checked)"><span>Activ</span></label></div><div class="row" style="margin-top:10px"><button class="secondary" onclick="backupData()">Backup înainte de modificări</button></div><div id="adminModeNotice" class="notice" style="margin-top:10px">Modul administrativ este dezactivat.</div></div><div class="card"><h2 data-ro="Backup și restaurare" data-ru="Резервная копия и восстановление">Backup și restaurare</h2><p class="muted" data-ro="Datele sunt salvate în memoria locală a browserului pe acest dispozitiv. Exportă backup regulat; ștergerea datelor Safari poate șterge și datele aplicației." data-ru="Данные хранятся локально в браузере на этом устройстве. Регулярно экспортируйте резервную копию; очистка данных Safari может удалить данные приложения.">Datele sunt salvate în memoria locală a browserului pe acest dispozitiv. Exportă backup regulat; ștergerea datelor Safari poate șterge și datele aplicației.</p><div class="row"><button onclick="backupData()" data-ro="Descarcă backup complet ZIP" data-ru="Скачать полный ZIP-бэкап">Descarcă backup complet ZIP</button><label class="filelabel"><span data-ro="Restaurare backup complet" data-ru="Восстановить полный бэкап">Restaurare backup complet</span><input type="file" accept=".zip,.json,application/zip,application/x-zip-compressed,application/json" onchange="restoreData(event)"></label></div><div class="fields" style="margin-top:12px"><div class="field"><label data-ro="Backup automat local" data-ru="Автоматическая локальная копия">Backup automat local</label><select id="backupInterval" onchange="saveBackupInterval(this.value)"><option value="0">Dezactivat / Выключено</option><option value="15">La 15 minute / Каждые 15 минут</option><option value="30">La 30 minute / Каждые 30 минут</option><option value="60">La 1 oră / Каждый час</option><option value="1440">La 24 ore / Каждые 24 часа</option></select><div class="muted" id="backupStatus">Backup local pe acest dispozitiv.</div></div></div><hr style="border:0;border-top:1px solid var(--line);margin:17px 0"><h3 data-ro="Transfer între dispozitive — total sau selectiv" data-ru="Перенос между устройствами — полный или выборочный">Transfer între dispozitive — total sau selectiv</h3><p class="muted" data-ro="Exportă ZIP-ul, trimite-l inclusiv prin Telegram, apoi alege acel singur fișier ZIP pe dispozitivul de destinație. DevizPRO îl deschide automat; poți combina datele sau restaura complet. La import selectiv, datele neincluse rămân intacte." data-ru="Экспортируйте ZIP, отправьте его, например, через Telegram, затем выберите один ZIP-файл на другом устройстве. DevizPRO распакует его автоматически; можно объединить данные или полностью восстановить копию. При выборочном импорте невыбранные данные сохраняются.">Exportă ZIP-ul, trimite-l inclusiv prin Telegram, apoi alege acel singur fișier ZIP pe dispozitivul de destinație. DevizPRO îl deschide automat; poți combina datele sau restaura complet. La import selectiv, datele neincluse rămân intacte.</p><div class="fields"><div class="field"><label data-ro="Ce exporți?" data-ru="Что экспортировать?">Ce exporți?</label><select id="transferMode" onchange="updateTransferOptions()"><option value="all">Tot — transfer complet</option><option value="quotes">Toate devizele</option><option value="group">Un grup / subgrup ales</option><option value="quote">Un singur deviz</option><option value="selectedQuotes">Devize selectate</option><option value="catalog">Catalog și categorii</option><option value="settings">Setări aplicație</option></select></div><div class="field" id="transferGroupWrap" style="display:none"><label data-ro="Grup / subgrup" data-ru="Группа / подгруппа">Grup / subgrup</label><select id="transferGroup"></select></div><div class="field" id="transferQuoteWrap" style="display:none"><label data-ro="Deviz" data-ru="Смета">Deviz</label><select id="transferQuote"></select></div></div><div class="field" id="transferSelectedQuotesWrap" style="display:none;margin-top:10px"><label data-ro="Bifează devizele pentru transfer" data-ru="Отметьте сметы для переноса">Bifează devizele pentru transfer</label><div class="row" style="margin:6px 0"><button type="button" class="secondary small" onclick="setSelectedTransferQuotes(true)" data-ro="Selectează toate" data-ru="Выбрать все">Selectează toate</button><button type="button" class="secondary small" onclick="setSelectedTransferQuotes(false)" data-ro="Deselectează toate" data-ru="Снять все">Deselectează toate</button></div><div id="transferQuoteChecklist" class="transfer-checklist"></div><div id="transferSelectedCount" class="muted" style="margin-top:6px"></div></div><div class="row" style="margin-top:10px"><button onclick="exportTransferPackage()" data-ro="Exportă pachet de transfer" data-ru="Экспортировать пакет переноса">Exportă pachet de transfer</button><label class="filelabel"><span data-ro="Alege ZIP/JSON primit (Telegram etc.)" data-ru="Выбрать полученный ZIP/JSON (Telegram и др.)">Alege ZIP/JSON primit (Telegram etc.)</span><input id="transferFile" type="file" accept=".zip,.json,application/zip,application/x-zip-compressed,application/json" onchange="importTransferPackage(event)"></label></div><div class="muted" style="margin-top:8px" data-ro="La conflicte cu același ID, aplicația îți cere confirmarea înainte de a înlocui date. Pentru restaurare completă se creează întâi backupul curent." data-ru="При конфликтах с одинаковым ID приложение запросит подтверждение перед заменой данных. Перед полным восстановлением сначала создаётся текущая резервная копия.">La conflicte cu același ID, aplicația îți cere confirmarea înainte de a înlocui date. Pentru restaurare completă se creează întâi backupul curent.</div><hr style="border:0;border-top:1px solid var(--line);margin:17px 0"><h3 data-ro="Gestionare date" data-ru="Управление данными">Gestionare date</h3><button class="danger" onclick="resetApp()" data-ro="Resetează toate datele aplicației" data-ru="Сбросить все данные приложения">Resetează toate datele aplicației</button></div><div class="card"><h2 data-ro="Despre aplicație" data-ru="О приложении">Despre aplicație</h2><p class="muted" data-ro="Prototip offline local pentru iPad. Nu transmite date pe internet. Pentru publicare în App Store va fi necesară o versiune împachetată ca aplicație iOS și verificarea cerințelor Apple." data-ru="Локальный офлайн-прототип для iPad. Не передаёт данные в интернет. Для публикации в App Store потребуется упаковка в приложение iOS и проверка требований Apple.">Prototip offline local pentru iPad. Nu transmite date pe internet. Pentru publicare în App Store va fi necesară o versiune împachetată ca aplicație iOS și verificarea cerințelor Apple.</p></div></div></div></section>
@@ -264,7 +264,7 @@ function renderLedger(){
  const receivedAdvance=q=>q.advanceOn===true?Math.max(0,Number(q.advanceAmount)||0):0;
  const remainingBalance=q=>Math.max(0,(Number(q.net)||0)-receivedAdvance(q));
  const ledgerSort=$('ledgerSort')?.value||'date-desc';
- const sortedFiltered=[...filtered].sort((a,b)=>{let v=0;const works=q=>(q.lines||[]).length;const income=q=>receivedAdvance(q)+(q.status==='accepted'?remainingBalance(q):0);const loss=q=>q.status==='rejected'?Math.max(0,Number(q.net)||0):0;switch(ledgerSort){case'date-asc':v=String(a.date||'').localeCompare(String(b.date||''));break;case'work-desc':v=works(b)-works(a);break;case'work-asc':v=works(a)-works(b);break;case'size-desc':v=(Number(b.net)||0)-(Number(a.net)||0);break;case'size-asc':v=(Number(a.net)||0)-(Number(b.net)||0);break;case'income-desc':v=income(b)-income(a);break;case'income-asc':v=income(a)-income(b);break;case'loss-desc':v=loss(b)-loss(a);break;case'loss-asc':v=loss(a)-loss(b);break;default:v=String(b.date||'').localeCompare(String(a.date||''));}return v||String(a.name||'').localeCompare(String(b.name||''),'ro');});
+ const sortedFiltered=[...filtered].sort((a,b)=>{let v=0;const works=q=>(q.lines||[]).length;const income=q=>receivedAdvance(q)+(q.status==='accepted'?remainingBalance(q):0);const loss=q=>q.status==='rejected'?Math.max(0,Number(q.net)||0):0;switch(ledgerSort){case'date-asc':v=String(a.date||'').localeCompare(String(b.date||''));break;case'name-asc':v=String(a.name||'').localeCompare(String(b.name||''),'ro');break;case'name-desc':v=String(b.name||'').localeCompare(String(a.name||''),'ro');break;case'client-asc':v=String(a.client||'').localeCompare(String(b.client||''),'ro');break;case'work-desc':v=works(b)-works(a);break;case'work-asc':v=works(a)-works(b);break;case'size-desc':v=(Number(b.net)||0)-(Number(a.net)||0);break;case'size-asc':v=(Number(a.net)||0)-(Number(b.net)||0);break;case'income-desc':v=income(b)-income(a);break;case'income-asc':v=income(a)-income(b);break;case'loss-desc':v=loss(b)-loss(a);break;case'loss-asc':v=loss(a)-loss(b);break;default:v=String(b.date||'').localeCompare(String(a.date||''));}return v||String(a.name||'').localeCompare(String(b.name||''),'ro');});
  const totalAdvances=filtered.reduce((n,q)=>n+receivedAdvance(q),0);
  // Cash received immediately includes every recorded advance; only the remaining balance of accepted quotes is added later.
  const acceptedBalance=filtered.filter(q=>q.status==='accepted').reduce((n,q)=>n+remainingBalance(q),0);
@@ -277,7 +277,7 @@ function renderLedger(){
  $('ledgerRejectedCount').textContent=rej.length+' '+t('refuzate','отклонено');
  $('ledgerList').innerHTML=sortedFiltered.map(q=>{
   const exp=q.discountExpired?' · '+t('EXPIRATĂ','ИСТЕКЛА'):'';
-  const hasDisc=!!(q.discountOn&&(Number(q.globalDiscount)>0||(q.lines||[]).some(l=>Number(l.rate||l.discount)>0)));const pct=Math.max(Number(q.globalDiscount)||0,...(q.lines||[]).map(l=>Number(l.rate||l.discount)||0));const discountLive=hasDisc&&(!q.discountUntil||q.discountUntil>=now||q.status==='accepted');const discountIcon=hasDisc?`<span class="${discountLive?'discount-live':'discount-expired'}">％ ${pct}% ${discountLive?'●':'●'}</span>`:`<span class="discount-none">％ fără reducere</span>`;return `<div class="quote-card ${q.status||'pending'}"><div class="between"><div><strong>${esc(q.name)}</strong><div class="muted">${esc(q.client||t('Client nespecificat','Клиент не указан'))} · ${esc(formatDate(q.date||''))}</div></div><span class="pill status-${q.status||'pending'}">${statusLabel(q.status)}</span></div><div class="quote-mini">${(q.lines||[]).slice(0,3).map(l=>`${esc(l.ro||l.name||'')} — ${esc(l.qty??1)} × ${money(l.price||0)}`).join('<br>')}${(q.lines||[]).length>3?'<br>…':''}</div><div class="between"><strong style="color:${q.status==='accepted'?'#17834b':q.status==='rejected'?'#c53c3c':'#b18300'};font-size:17px">${money(q.net)}</strong><span>${discountIcon}</span></div>${q.advanceOn&&receivedAdvance(q)>0?`<div class="muted" style="margin-top:5px">${t('Avans încasat','Аванс получен')}: <strong>${money(receivedAdvance(q))}</strong> · ${t('Rest de încasat','Остаток к получению')}: <strong>${money(remainingBalance(q))}</strong></div>`:''}<div class="row" style="margin-top:8px"><select aria-label="Grup deviz" onchange="assignQuoteGroup('${q.id}',this.value)" style="max-width:180px"><option value="">Fără grup</option>${quoteGroups.map(g=>`<option value="${g.id}" ${q.groupId===g.id?'selected':''}>${g.parentId?'↳ ':'📂 '}${esc(g.name)}</option>`).join('')}</select><select class="statusselect" onchange="updateStatus('${q.id}',this.value)"><option value="pending" ${q.status==='pending'?'selected':''}>${t('În așteptare','Ожидает')}</option><option value="accepted" ${q.status==='accepted'?'selected':''}>${t('Acceptat','Принята')}</option><option value="rejected" ${q.status==='rejected'?'selected':''}>${t('Refuzat','Отклонена')}</option></select><button class="secondary small" onclick="loadQuote('${q.id}')">${t('Deschide','Открыть')}</button><button class="secondary small" onclick="copySavedQuoteText('${q.id}')">▤ ${t('Copiază text','Копировать текст')}</button><button class="secondary small" onclick="printLedgerQuote('${q.id}')">PDF / ${t('Imprimă','Печать')}</button><button class="secondary small" onclick="exportQuoteXlsById('${q.id}')">Excel / Numbers</button><button class="danger small" onclick="deleteQuote('${q.id}')">✕</button></div></div>`;
+  const hasDisc=!!(q.discountOn&&(Number(q.globalDiscount)>0||(q.lines||[]).some(l=>Number(l.rate||l.discount)>0)));const pct=Math.max(Number(q.globalDiscount)||0,...(q.lines||[]).map(l=>Number(l.rate||l.discount)||0));const discountLive=hasDisc&&(!q.discountUntil||q.discountUntil>=now||q.status==='accepted');const discountIcon=hasDisc?`<span class="${discountLive?'discount-live':'discount-expired'}">％ ${pct}% ${discountLive?'●':'●'}</span>`:`<span class="discount-none">％ fără reducere</span>`;return `<div class="quote-card ${q.status||'pending'}"><div class="between"><div><strong>${esc(q.name)}</strong><div class="muted">${esc(q.client||t('Client nespecificat','Клиент не указан'))} · ${esc(formatDate(q.date||''))}</div></div><span class="pill status-${q.status||'pending'}">${statusLabel(q.status)}</span></div><div class="quote-mini">${(q.lines||[]).slice(0,3).map(l=>`${esc(l.ro||l.name||'')} — ${esc(l.qty??1)} × ${money(l.price||0)}`).join('<br>')}${(q.lines||[]).length>3?'<br>…':''}</div><div class="between"><strong style="color:${q.status==='accepted'?'#17834b':q.status==='rejected'?'#c53c3c':'#b18300'};font-size:17px">${money(q.net)}</strong><span>${discountIcon}</span></div>${q.advanceOn&&receivedAdvance(q)>0?`<div class="muted" style="margin-top:5px">${t('Avans încasat','Аванс получен')}: <strong>${money(receivedAdvance(q))}</strong> · ${t('Rest de încasat','Остаток к получению')}: <strong>${money(remainingBalance(q))}</strong></div>`:''}<div class="row" style="margin-top:8px"><button type="button" class="secondary small dp-icon-action" title="${t('Deschide devizul','Открыть смету')}" aria-label="${t('Deschide devizul','Открыть смету')}" onclick="loadQuote('${q.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12V5a1 1 0 0 1 1-1h7M13 4h7v7M20 4 10 14M5 13v6h14v-6"/></svg></button><select aria-label="Grup deviz" onchange="assignQuoteGroup('${q.id}',this.value)" style="max-width:150px"><option value="">Fără grup</option>${quoteGroups.map(g=>`<option value="${g.id}" ${q.groupId===g.id?'selected':''}>${g.parentId?'↳ ':'📂 '}${esc(g.name)}</option>`).join('')}</select><select class="statusselect" onchange="updateStatus('${q.id}',this.value)" style="max-width:130px"><option value="pending" ${q.status==='pending'?'selected':''}>${t('În așteptare','Ожидает')}</option><option value="accepted" ${q.status==='accepted'?'selected':''}>${t('Acceptat','Принята')}</option><option value="rejected" ${q.status==='rejected'?'selected':''}>${t('Refuzat','Отклонена')}</option></select><button type="button" class="secondary small dp-icon-action dp-copy-action" title="${t('Copiază textul complet','Копировать полный текст')}" aria-label="${t('Copiază textul complet','Копировать полный текст')}" onclick="copySavedQuoteText('${q.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button><button type="button" class="secondary small dp-icon-action dp-pdf-action" title="PDF / ${t('Imprimă','Печать')}" aria-label="PDF / ${t('Imprimă','Печать')}" onclick="printLedgerQuote('${q.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8l4 4V21H6zM14 2.5v4h4"/><text x="7.1" y="15.5" font-size="5.2" font-weight="800" fill="currentColor" stroke="none">PDF</text></svg></button><button type="button" class="secondary small dp-icon-action dp-xls-action" title="Excel / Numbers" aria-label="Excel / Numbers" onclick="exportQuoteXlsById('${q.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8l4 8m0-8-4 8M15 8h3m-3 4h3m-3 4h3"/></svg></button><button type="button" class="danger small dp-icon-action" title="${t('Șterge devizul','Удалить смету')}" aria-label="${t('Șterge devizul','Удалить смету')}" onclick="deleteQuote('${q.id}')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"/></svg></button></div></div>`;
  }).join('')||`<div class="empty">${t('Nu există devize pentru filtrul ales.','Нет смет для выбранного фильтра.')}</div>`;
  const active=quotes.filter(q=>q.discountUntil&&q.discountOn&&q.globalDiscount>0);
  const expired=active.filter(q=>q.discountUntil<now&&q.status!=='accepted');
@@ -416,11 +416,62 @@ function copyCurrentQuoteText(){
  const q={name:$('quoteName').value||$('client').value||t('Deviz fără nume','Смета без названия'),client:$('client').value,phone:$('clientPhone').value,address:$('address').value,date:$('quoteDate').value||today(),timeOn:$('quoteTimeOn').checked,time:$('quoteTime').value,validUntilOn:$('validUntilOn').checked,validUntil:$('validUntil').value,status:$('quoteStatus').value,globalDiscount:$('globalDiscount').value,advanceOn:$('advanceOn').checked,advanceAmount:$('advanceAmount').value,net:c.net,gross:c.gross,saved:c.saved,currency:settings.currency,lines:c.detail.map(x=>({...x}))};
  copyTextToClipboard(quoteTextForClient(q));
 }
-function quoteExcelXml(q){const ls=q.lines||[];const discount=ls.some(l=>Number(l.rate||l.discount)>0)||Number(q.globalDiscount)>0;const headers=['Nr.','Cod / Код','Lucrare RO / Работа RO','Lucrare RU / Работа RU','Unitate / Единица','Preț unitar / Цена за единицу','Cantitate / Количество',...(discount?['Reducere % / Скидка %','Suma reducerii / Сумма скидки']:[]),'Valoare fără reducere / Сумма без скидки','Total final / Итого'];const rows=ls.map((l,i)=>[i+1,l.code||'',l.ro||l.name||'',l.ru||'',l.unit||'',Number(l.price)||0,Number(l.qty)||0,...(discount?[Number(l.rate||l.discount)||0,Number(l.disc)||0]:[]),Number(l.base)||((Number(l.price)||0)*(Number(l.qty)||0)),Number(l.total)||0]);rows.push([],['TOTAL fără reduceri / СУММА без скидок',Number(q.gross)||0],['Economia clientului / Экономия клиента',Number(q.saved)||0],['TOTAL FINAL / ИТОГО',Number(q.net)||0]);const cell=v=>typeof v==='number'&&Number.isFinite(v)?`<Cell><Data ss:Type="Number">${v}</Data></Cell>`:`<Cell><Data ss:Type="String">${esc(v??'')}</Data></Cell>`;return `<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="Deviz"><Table><Row>${headers.map(cell).join('')}</Row>${rows.map(r=>`<Row>${r.map(cell).join('')}</Row>`).join('')}</Table></Worksheet></Workbook>`}
-function exportQuoteXlsById(id){const q=quotes.find(x=>x.id===id);if(!q){alert(t('Devizul nu a fost găsit.','Смета не найдена.'));return}const safe=(q.name||q.date||'Deviz').replace(/[^a-z0-9_-]+/gi,'-').slice(0,60);downloadBlob(quoteExcelXml(q),`Deviz-${safe||'export'}.xls`,'application/vnd.ms-excel')}
-function printLedgerQuote(id){const q=quotes.find(x=>x.id===id);if(!q){alert(t('Devizul nu a fost găsit.','Смета не найдена.'));return}const w=window.open('','_blank');if(!w){alert(t('Browserul a blocat fereastra de imprimare. Permite ferestrele pop-up pentru DevizPRO.','Браузер заблокировал окно печати. Разрешите всплывающие окна для DevizPRO.'));return}const rows=(q.lines||[]).map((l,i)=>`<tr><td>${i+1}</td><td>${esc(l.code||'')}</td><td>${esc(l.ro||l.name||'')}<br><small>${esc(l.ru||'')}</small></td><td>${esc(l.unit||'')}</td><td class="num">${money(l.price||0)}</td><td class="num">${esc(l.qty??1)}</td><td class="num">${money(l.total??((Number(l.price)||0)*(Number(l.qty)||0)))}</td></tr>`).join('');const title=esc(q.name||t('Deviz de lucrări','Смета работ'));const date=esc(formatDate(q.date||''));w.document.open();w.document.write(`<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DevizPRO</title><style>body{font:12px Arial,sans-serif;color:#17212c;margin:12mm}h1{font-size:20px;margin:0 0 5px;color:#17212c}.sub{color:#526274;margin:3px 0}hr{border:0;border-top:1px solid #aaa;margin:12px 0}.client{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:12px 0}table{width:100%;border-collapse:collapse;font-size:10px;margin-top:12px}th,td{border:1px solid #ccd3da;padding:6px;text-align:left;vertical-align:top}th{background:#edf2f6}.num{text-align:right;white-space:nowrap}.total{margin:18px 0 0 auto;text-align:right;font-size:18px;font-weight:bold}.terms{margin-top:24px;color:#526274;white-space:pre-wrap}@page{size:A4;margin:8mm}@media print{button{display:none}}</style></head><body><div style="display:flex;justify-content:space-between;gap:20px"><div><h1>${esc(settings.bizName||t('DEVIZ DE LUCRĂRI','СМЕТА РАБОТ'))}</h1><div class="sub">${esc(settings.bizAddress||'')}</div><div class="sub">${esc(settings.bizPhone||'')}</div></div><div style="text-align:right"><b>${title}</b><div>${date}</div></div></div><hr><div class="client"><div><b>${t('Client','Клиент')}:</b> ${esc(q.client||'—')}</div><div><b>${t('Telefon','Телефон')}:</b> ${esc(q.phone||'—')}</div><div style="grid-column:1/-1"><b>${t('Adresă / obiect','Адрес / объект')}:</b> ${esc(q.address||'—')}</div></div><table><thead><tr><th>Nr.</th><th>${t('Cod','Код')}</th><th>${t('Denumire lucrare / Наименование работы','Наименование работы')}</th><th>U.M.</th><th>${t('Preț','Цена')}</th><th>${t('Cant.','Кол-во')}</th><th>${t('Total','Итого')}</th></tr></thead><tbody>${rows}</tbody></table><div class="total">${t('TOTAL DE PLATĂ','ИТОГО К ОПЛАТЕ')}: ${money(q.net||0)} ${esc(q.currency||settings.currency||'MDL')}</div><div class="terms">${esc(settings.terms||'')}</div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);w.document.close()}
+function xlsxEscape(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;')}
+function xlsxColumn(n){let out='';while(n>0){const r=(n-1)%26;out=String.fromCharCode(65+r)+out;n=Math.floor((n-1)/26)}return out}
+function buildQuoteXlsx(q){
+ const currency=q.currency||settings.currency||'MDL',lines=Array.isArray(q.lines)?q.lines:[],hasDiscount=!!(q.discountOn||Number(q.globalDiscount)>0||lines.some(l=>Number(l.rate||l.discount)>0||Number(l.disc)>0));
+ const rows=[];const add=(cells,style=0)=>rows.push({cells,style});
+ add([{v:'DEVIZ DE LUCRĂRI / СМЕТА РАБОТ',t:'s'}],1);
+ add([{v:'Denumire deviz / Название сметы',t:'s'},{v:q.name||'',t:'s'},{v:'Data / Дата',t:'s'},{v:q.date||'',t:'s'}]);
+ add([{v:'Client / Клиент',t:'s'},{v:q.client||'',t:'s'},{v:'Telefon / Телефон',t:'s'},{v:q.phone||'',t:'s'}]);
+ add([{v:'Adresă obiect / Адрес объекта',t:'s'},{v:q.address||'',t:'s'},{v:'Status / Статус',t:'s'},{v:statusLabel(q.status),t:'s'}]);
+ add([{v:'Prestator / Исполнитель',t:'s'},{v:settings.bizName||'',t:'s'},{v:'Telefon prestator / Телефон исполнителя',t:'s'},{v:settings.bizPhone||'',t:'s'}]);
+ add([{v:'Adresă prestator / Адрес исполнителя',t:'s'},{v:settings.bizAddress||'',t:'s'},{v:'IDNO',t:'s'},{v:settings.bizId||'',t:'s'}]);
+ add([{v:'Email / Электронная почта',t:'s'},{v:settings.bizEmail||'',t:'s'},{v:'Monedă / Валюта',t:'s'},{v:currency,t:'s'}]);
+ add([]);
+ const headers=['Nr.','Cod / Код','Lucrare RO / Работа RO','Lucrare RU / Работа RU','Unitate / Единица','Preț unitar / Цена за единицу','Cantitate / Количество',...(hasDiscount?['Reducere % / Скидка %','Reducere sumă / Сумма скидки']:[]),'Valoare inițială / Исходная сумма','Total final / Итог'];
+ add(headers.map(v=>({v,t:'s'})),2);
+ lines.forEach((l,i)=>{const price=Number(l.price)||0,qty=Number(l.qty)||0,base=Number.isFinite(Number(l.base))?Number(l.base):price*qty,total=Number.isFinite(Number(l.total))?Number(l.total):base-(Number(l.disc)||0);const cells=[{v:i+1,t:'n'},{v:l.code||'',t:'s'},{v:l.ro||l.name||'',t:'s'},{v:l.ru||'',t:'s'},{v:l.unit||'',t:'s'},{v:price,t:'n'},{v:qty,t:'n'}];if(hasDiscount)cells.push({v:Number(l.rate||l.discount)||0,t:'n'},{v:Number(l.disc)||0,t:'n'});cells.push({v:base,t:'n'},{v:total,t:'n'});add(cells)});
+ add([]);
+ add([{v:'TOTAL fără reduceri / СУММА без скидок',t:'s'},{v:Number(q.gross)||lines.reduce((n,l)=>n+(Number(l.base)||((Number(l.price)||0)*(Number(l.qty)||0))),0),t:'n'}],3);
+ add([{v:'Reducere totală / Общая скидка',t:'s'},{v:Number(q.saved)||0,t:'n'}],3);
+ add([{v:'TOTAL DE PLATĂ / ИТОГО К ОПЛАТЕ',t:'s'},{v:Number(q.net)||0,t:'n'},{v:currency,t:'s'}],4);
+ const advance=q.advanceOn?Math.max(0,Number(q.advanceAmount)||0):0;
+ if(advance>0){add([{v:'Avans / Предоплата',t:'s'},{v:advance,t:'n'},{v:currency,t:'s'}],3);add([{v:'Rest de plată / Остаток к оплате',t:'s'},{v:Math.max(0,(Number(q.net)||0)-advance),t:'n'},{v:currency,t:'s'}],3)}
+ if(q.validUntil)add([{v:'Valabil până la / Действительно до',t:'s'},{v:q.validUntil,t:'s'}]);
+ if(q.discountUntil)add([{v:'Reducere valabilă până la / Скидка действует до',t:'s'},{v:q.discountUntil,t:'s'}]);
+ if(settings.terms)add([{v:'Condiții / Условия',t:'s'},{v:settings.terms,t:'s'}]);
+ if(settings.bizNotes)add([{v:'Note prestator / Примечания исполнителя',t:'s'},{v:settings.bizNotes,t:'s'}]);
+ const colWidths=[7,14,36,36,16,20,16,14,16,22,20];
+ const xmlRows=rows.map((r,ri)=>{const cells=(r.cells||[]).map((c,ci)=>{const ref=xlsxColumn(ci+1)+(ri+1),style=c.s??r.style??0;if(c.t==='n'&&typeof c.v==='number'&&Number.isFinite(c.v))return `<c r="${ref}" s="${style}" t="n"><v>${c.v}</v></c>`;return `<c r="${ref}" s="${style}" t="inlineStr"><is><t xml:space="preserve">${xlsxEscape(c.v)}</t></is></c>`}).join('');return `<row r="${ri+1}"${r.style===1?' ht="28" customHeight="1"':''}>${cells}</row>`}).join('');
+ const maxCols=Math.max(11,...rows.map(r=>(r.cells||[]).length)),lastRef=xlsxColumn(maxCols)+rows.length;
+ const sheet=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><dimension ref="A1:${lastRef}"/><sheetViews><sheetView workbookViewId="0"><pane ySplit="9" topLeftCell="A10" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols>${colWidths.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join('')}</cols><sheetData>${xmlRows}</sheetData><autoFilter ref="A9:${xlsxColumn(headers.length)}${9+lines.length}"/><pageMargins left="0.25" right="0.25" top="0.5" bottom="0.5" header="0.2" footer="0.2"/></worksheet>`;
+ const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="3"><font><sz val="10"/><name val="Arial"/></font><font><b/><sz val="16"/><color rgb="FFFFFFFF"/><name val="Arial"/></font><font><b/><sz val="10"/><name val="Arial"/></font></fonts><fills count="4"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF167347"/><bgColor indexed="64"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFE7F1EB"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border><left style="thin"><color rgb="FFD1D9D5"/></left><right style="thin"><color rgb="FFD1D9D5"/></right><top style="thin"><color rgb="FFD1D9D5"/></top><bottom style="thin"><color rgb="FFD1D9D5"/></bottom><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="5"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/><xf numFmtId="0" fontId="2" fillId="2" borderId="1" applyFont="1" applyFill="1" applyBorder="1"/><xf numFmtId="4" fontId="2" fillId="3" borderId="1" applyNumberFormat="1" applyFont="1" applyFill="1" applyBorder="1"/><xf numFmtId="4" fontId="1" fillId="2" borderId="1" applyNumberFormat="1" applyFont="1" applyFill="1" applyBorder="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+ const files=[
+ {name:'[Content_Types].xml',content:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'},
+ {name:'_rels/.rels',content:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},
+ {name:'xl/workbook.xml',content:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Deviz" sheetId="1" r:id="rId1"/></sheets></workbook>'},
+ {name:'xl/_rels/workbook.xml.rels',content:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'},
+ {name:'xl/worksheets/sheet1.xml',content:sheet},{name:'xl/styles.xml',content:styles}
+ ];return makeZip(files)
+}
+function exportQuoteXlsById(id){const q=quotes.find(x=>x.id===id);if(!q){alert(t('Devizul nu a fost găsit.','Смета не найдена.'));return}const safe=(q.name||q.date||'Deviz').replace(/[^a-z0-9_-]+/gi,'-').slice(0,60);const bytes=buildQuoteXlsx(q);const blob=new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=`Deviz-${safe||'export'}.xlsx`;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},3000)}
+function exportCurrentQuoteXlsx(){const c=calc();if(!lines.length){alert(t('Adaugă cel puțin o lucrare înainte de export.','Добавьте хотя бы одну работу перед экспортом.'));return}const q={name:$('quoteName').value||$('client').value||t('Deviz de lucrări','Смета работ'),client:$('client').value,phone:$('clientPhone').value,address:$('address').value,date:$('quoteDate').value||today(),status:$('quoteStatus').value,signatureMode:$('quoteSignatureMode')?.value||'none',validUntil:$('validUntil')?.value||'',advanceOn:!!$('advanceOn')?.checked,advanceAmount:Number($('advanceAmount')?.value)||0,globalDiscount:Number($('globalDiscount')?.value)||0,discountOn:!!c.on,lines:c.detail.map(x=>({...x})),gross:c.gross,net:c.net,saved:c.saved,currency:settings.currency||'MDL'};const safe=(q.name||q.date||'Deviz').replace(/[^a-z0-9_-]+/gi,'-').slice(0,60);const bytes=buildQuoteXlsx(q);const blob=new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=`Deviz-${safe||'export'}.xlsx`;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},3000)}
+function printLedgerQuote(id){const q=quotes.find(x=>x.id===id);if(!q){alert(t('Devizul nu a fost găsit.','Смета не найдена.'));return}const w=window.open('','_blank');if(!w){alert(t('Browserul a blocat fereastra de imprimare. Permite ferestrele pop-up pentru DevizPRO.','Браузер заблокировал окно печати. Разрешите всплывающие окна для DevizPRO.'));return}const rows=(q.lines||[]).map((l,i)=>`<tr><td>${i+1}</td><td>${esc(l.code||'')}</td><td>${esc(l.ro||l.name||'')}<br><small>${esc(l.ru||'')}</small></td><td>${esc(l.unit||'')}</td><td class="num">${money(l.price||0)}</td><td class="num">${esc(l.qty??1)}</td><td class="num">${money(l.total??((Number(l.price)||0)*(Number(l.qty)||0)))}</td></tr>`).join('');const title=esc(q.name||t('Deviz de lucrări','Смета работ'));const date=esc(formatDate(q.date||''));w.document.open();w.document.write(`<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DevizPRO</title><style>body{font:12px Arial,sans-serif;color:#17212c;margin:12mm}h1{font-size:20px;margin:0 0 5px;color:#17212c}.sub{color:#526274;margin:3px 0}hr{border:0;border-top:1px solid #aaa;margin:12px 0}.client{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:12px 0}table{width:100%;border-collapse:collapse;font-size:10px;margin-top:12px}th,td{border:1px solid #ccd3da;padding:6px;text-align:left;vertical-align:top}th{background:#edf2f6}.num{text-align:right;white-space:nowrap}.total{margin:18px 0 0 auto;text-align:right;font-size:18px;font-weight:bold}.terms{margin-top:24px;color:#526274;white-space:pre-wrap}@page{size:A4;margin:8mm}@media print{button{display:none}}</style></head><body><div style="display:flex;justify-content:space-between;gap:20px"><div><h1>${esc(settings.bizName||t('DEVIZ DE LUCRĂRI','СМЕТА РАБОТ'))}</h1><div class="sub">${esc(settings.bizAddress||'')}</div><div class="sub">${esc(settings.bizPhone||'')}</div></div><div style="text-align:right"><b>${title}</b><div>${date}</div></div></div><hr><div class="client"><div><b>${t('Client','Клиент')}:</b> ${esc(q.client||'—')}</div><div><b>${t('Telefon','Телефон')}:</b> ${esc(q.phone||'—')}</div><div style="grid-column:1/-1"><b>${t('Adresă / obiect','Адрес / объект')}:</b> ${esc(q.address||'—')}</div></div><table><thead><tr><th>Nr.</th><th>${t('Cod','Код')}</th><th>${t('Denumire lucrare / Наименование работы','Наименование работы')}</th><th>U.M.</th><th>${t('Preț','Цена')}</th><th>${t('Cant.','Кол-во')}</th><th>${t('Total','Итого')}</th></tr></thead><tbody>${rows}</tbody></table><div class="total">${t('TOTAL DE PLATĂ','ИТОГО К ОПЛАТЕ')}: ${money(q.net||0)} ${esc(q.currency||settings.currency||'MDL')}</div><div class="terms">${esc(settings.terms||'')}</div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script>
+<style id="devizpro-v27-compact-actions">
+.dp-icon-action{width:32px!important;min-width:32px!important;height:32px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:2px!important;flex:0 0 32px!important;border-radius:8px!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important}
+.dp-icon-action svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.dp-pdf-action{width:32px!important;min-width:32px!important;flex-basis:32px!important}
+.dp-pdf-action svg{width:18px;height:18px}
+.dp-xls-action svg{stroke:#167347;stroke-width:2}
+.dp-copy-action svg{stroke-width:2}
+.quote-card .row:has(.dp-icon-action){display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.quote-card .row:has(.dp-icon-action) select{min-height:32px!important;height:32px!important;font-size:12px!important;padding:4px 22px 4px 7px!important}
+@media(max-width:650px){.quote-card .row:has(.dp-icon-action){gap:4px}.dp-icon-action{width:30px!important;min-width:30px!important;height:30px!important;flex-basis:30px!important}.dp-pdf-action{width:30px!important;min-width:30px!important;flex-basis:30px!important}}
+</style>
+</body></html>`);w.document.close()}
 function downloadBlob(data,name,type){const b=new Blob([data],{type}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},2500)}
-function exportXls(){const c=calc(),discount=c.on&&c.detail.some(x=>x.rate>0);const headers=['Cod / Код','Lucrare RO / Работа RO','Lucrare RU / Работа RU','Unitate / Единица','Preț unitar / Цена за единицу','Cantitate / Количество',...(discount?['Reducere % / Скидка %','Suma reducerii / Сумма скидки']:[]),'Valoare fără reducere / Сумма без скидки','Total final / Итого'];const rows=c.detail.map(l=>[l.code,l.ro,l.ru,l.unit,l.price,l.qty,...(discount?[l.rate,l.disc]:[]),l.base,l.total]);rows.push([], ['TOTAL fără reduceri / СУММА без скидок',c.gross],...(discount?[[ 'Economia clientului / Экономия клиента',c.saved]]:[]),['TOTAL FINAL / ИТОГО',c.net]);const xmlCell=v=>{if(typeof v==='number')return `<Cell><Data ss:Type="Number">${v}</Data></Cell>`;return `<Cell><Data ss:Type="String">${esc(v)}</Data></Cell>`};const xml=`<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="Deviz"><Table><Row>${headers.map(xmlCell).join('')}</Row>${rows.map(r=>`<Row>${r.map(xmlCell).join('')}</Row>`).join('')}</Table></Worksheet></Workbook>`;downloadBlob(xml,`Deviz-${$('quoteDate').value||today()}.xls`,'application/vnd.ms-excel')}
+function exportXls(){return exportCurrentQuoteXlsx()}
 function exportLedger(){const rows=[['ID','Nume','Client','Data','Status','Total fără reduceri','Reducerile','Total final','Avans încasat','Rest de încasat','Valabil până la','Reducere până la'],...quotes.map(q=>{const advance=q.advanceOn===true?Math.max(0,Number(q.advanceAmount)||0):0;return [q.id,q.name,q.client,q.date,statusLabel(q.status),q.gross,q.saved,q.net,advance,Math.max(0,(Number(q.net)||0)-advance),q.validUntil,q.discountUntil]})];const xmlCell=v=>typeof v==='number'?`<Cell><Data ss:Type="Number">${v}</Data></Cell>`:`<Cell><Data ss:Type="String">${esc(v)}</Data></Cell>`;const xml=`<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="Evidenta"><Table>${rows.map(r=>`<Row>${r.map(xmlCell).join('')}</Row>`).join('')}</Table></Worksheet></Workbook>`;downloadBlob(xml,'Evidenta-devize.xls','application/vnd.ms-excel')}
 function printQuote(){const oldPrintLanguage=settings.printLanguage;settings.printLanguage='both';renderPreview();window.print();settings.printLanguage=oldPrintLanguage;renderPreview()}
 init();
@@ -470,6 +521,1351 @@ if('serviceWorker' in navigator && (location.protocol==='https:' || location.hos
 const oldShowPage=window.showPage;
  if(typeof oldShowPage==='function')window.showPage=function(p,...args){if(p==='settings'){$dp('dpGlobalSearchFab')?.classList.add('dp-hidden-settings');}else{$dp('dpGlobalSearchFab')?.classList.remove('dp-hidden-settings');}return oldShowPage(p,...args);};
  const st=document.createElement('style');st.textContent='.dp-hidden-settings{display:none!important}';document.head.appendChild(st);
+})();
+</script>
+
+<style id="devizpro-v28-optimizations">
+/* V28: conservative additions layered over V27, preserving existing quote model and storage keys */
+#ledgerList .quote-card{cursor:pointer;padding:10px 12px;margin:7px 0;transition:padding .12s}
+#ledgerList .quote-card:not(.dp-expanded) .quote-mini,#ledgerList .quote-card:not(.dp-expanded) .row{display:none!important}
+#ledgerList .quote-card:not(.dp-expanded) .between:nth-of-type(2){margin-top:5px}
+#ledgerList .quote-card.dp-expanded{cursor:default;padding:14px}
+#ledgerList .quote-card .dp-compact-hint{font-size:11px;color:var(--muted);margin-top:3px}
+.dp-float-calc{position:fixed;z-index:10050;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));width:min(360px,calc(100vw - 24px));max-height:min(78vh,700px);overflow:auto;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 48px #0003;display:none}
+.dp-float-calc.open{display:block}.dp-float-calc header{position:sticky;top:0;background:var(--card);display:flex;justify-content:space-between;align-items:center;padding:11px 13px;border-bottom:1px solid var(--line);cursor:move;touch-action:none}.dp-float-calc .dp-calc-body{padding:12px}.dp-calc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.dp-calc-grid button{min-height:42px;font-size:16px}.dp-calc-display{width:100%;font-size:24px!important;text-align:right!important;font-variant-numeric:tabular-nums}.dp-mini-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.dp-payment-list{display:grid;gap:8px}.dp-payment-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card)}.dp-payment-card .meta{color:var(--muted);font-size:12px}.dp-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dp-checkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dp-modal{width:min(600px,calc(100vw - 24px));max-height:85vh;overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);padding:16px}.dp-modal::backdrop{background:#10182088}.dp-muted{color:var(--muted);font-size:12px}.dp-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.dp-form-grid .field{min-width:0}.dp-full{grid-column:1/-1}
+@media(max-width:600px){.dp-form-grid,.dp-two,.dp-checkgrid{grid-template-columns:1fr}.dp-float-calc{right:8px;bottom:calc(8px + env(safe-area-inset-bottom));width:calc(100vw - 16px)}}
+@media print{.dp-no-print{display:none!important}}
+</style>
+<script id="devizpro-v28-qr-library">
+(function(){
+const __dpQrModules={};
+__dpQrModules["./QRMode"]=function(require,module,exports){
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+};
+__dpQrModules["./QRErrorCorrectLevel"]=function(require,module,exports){
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+};
+__dpQrModules["./QRMaskPattern"]=function(require,module,exports){
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+};
+__dpQrModules["./QRMath"]=function(require,module,exports){
+var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+};
+__dpQrModules["./QRPolynomial"]=function(require,module,exports){
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+};
+__dpQrModules["./QRBitBuffer"]=function(require,module,exports){
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+};
+__dpQrModules["./QRRSBlock"]=function(require,module,exports){
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+};
+__dpQrModules["./QRUtil"]=function(require,module,exports){
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+module.exports = QRUtil;
+
+};
+__dpQrModules["./QR8bitByte"]=function(require,module,exports){
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+};
+__dpQrModules["./index"]=function(require,module,exports){
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+};
+function __dpQrRequire(k){if(!__dpQrModules[k])throw new Error('QR module '+k+' missing');if(__dpQrModules[k].exports)return __dpQrModules[k].exports;const m={exports:{}};__dpQrModules[k](__dpQrRequire,m,m.exports);__dpQrModules[k].exports=m.exports;return m.exports;}
+window.__dpMakeQrSvg=function(text){const QRCode=__dpQrRequire('./index');const qr=new QRCode(0, __dpQrRequire('./QRErrorCorrectLevel').M);qr.addData(String(text));qr.make();const n=qr.getModuleCount(),pad=4,scale=4,size=(n+pad*2)*scale;let rects='';for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(qr.isDark(y,x))rects+=`<rect x="${(x+pad)*scale}" y="${(y+pad)*scale}" width="${scale}" height="${scale}"/>`;return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="QR code"><rect width="100%" height="100%" fill="white"/><g fill="black">${rects}</g></svg>`;};
+})();
+</script>
+<script id="devizpro-v28-enhancements">
+(function(){
+'use strict';
+const $v=id=>document.getElementById(id);
+const read=(k,d=[])=>{try{const x=JSON.parse(localStorage.getItem(k));return x==null?d:x}catch{return d}};
+let dpPayments=read('dp_payments',[]),dpRefunds=read('dp_refunds',[]),dpPaymentEvents=read('dp_payment_events',[]),dpWorkReports=read('dp_work_reports',[]),dpCalcSaved=read('dp_calc_saved',[]);
+const writeExtra=()=>{localStorage.setItem('dp_payments',JSON.stringify(dpPayments));localStorage.setItem('dp_refunds',JSON.stringify(dpRefunds));localStorage.setItem('dp_payment_events',JSON.stringify(dpPaymentEvents));localStorage.setItem('dp_work_reports',JSON.stringify(dpWorkReports));localStorage.setItem('dp_calc_saved',JSON.stringify(dpCalcSaved));};
+const fmt=n=>(Number(n)||0).toLocaleString('ro-RO',{minimumFractionDigits:2,maximumFractionDigits:2});
+const escV=s=>typeof esc==='function'?esc(String(s??'')):String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tr=(ro,ru)=>typeof t==='function'?t(ro,ru):ro;
+const getQuote=id=>(typeof quotes!=='undefined'?quotes:[]).find(q=>q.id===id);
+const qrFieldsDefault=['receiptNo','date','provider','client','amount','method','quote','paid','balance'];
+const receiptDefaults=()=>({format:'compact',signature:false,qr:false,remember:true,fields:qrFieldsDefault,qrFields:['receiptNo','date','amount','quote']});
+function ensureReceiptSettings(){if(!settings.receiptDefaults||typeof settings.receiptDefaults!=='object')settings.receiptDefaults=receiptDefaults();settings.receiptDefaults={...receiptDefaults(),...settings.receiptDefaults};if(!Array.isArray(settings.receiptDefaults.fields))settings.receiptDefaults.fields=qrFieldsDefault.slice();if(!Array.isArray(settings.receiptDefaults.qrFields))settings.receiptDefaults.qrFields=['receiptNo','date','amount','quote'];}
+function injectUI(){
+ const backupBtn=[...document.querySelectorAll('button[onclick="backupData()"]')][0];if(backupBtn&&!$v('dpBackupJsonBtn')){const jb=document.createElement('button');jb.id='dpBackupJsonBtn';jb.className='secondary';jb.type='button';jb.textContent=tr('Export backup JSON','Экспорт JSON-копии');jb.style.marginLeft='8px';jb.onclick=()=>{const state=window.dpState?window.dpState():{};downloadBlob(new Blob([JSON.stringify({kind:'full',exportedAt:new Date().toISOString(),data:state},null,2)],{type:'application/json;charset=utf-8'}),'DevizPRO-backup-complet.json','application/json')};backupBtn.parentElement?.appendChild(jb)}
+ const nav=$v('nav');if(nav&&!nav.querySelector('[data-page="payments"]')){const b=document.createElement('button');b.dataset.page='payments';b.dataset.tipRo='Plăți și bonuri';b.dataset.tipRu='Платежи и квитанции';b.setAttribute('aria-label',tr('Plăți și bonuri','Платежи и квитанции'));b.title=tr('Plăți și bonuri','Платежи и квитанции');b.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>';nav.insertBefore(b,nav.querySelector('[data-page="settings"]'));b.onclick=()=>showPage('payments');}if(nav&&!nav.querySelector('[data-page="workreports"]')){const b=document.createElement('button');b.dataset.page='workreports';b.dataset.tipRo='Lucrări executate';b.dataset.tipRu='Выполненные работы';b.setAttribute('aria-label',tr('Lucrări executate','Выполненные работы'));b.title=tr('Lucrări executate','Выполненные работы');b.innerHTML='<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 8h8M8 12h8M8 16h5"/></svg></span>';nav.insertBefore(b,nav.querySelector('[data-page="settings"]'));b.onclick=()=>showPage('workreports');}
+ const settingsPage=$v('settings');if(settingsPage&&!$v('dpReceiptSettings')){const c=document.createElement('div');c.className='card';c.id='dpReceiptSettings';c.innerHTML=`<h2>${tr('Setări bonuri de plată','Настройки квитанций')}</h2><p class="muted">${tr('Acestea sunt valorile implicite. La fiecare bon le poți schimba separat. Câmpurile fără date nu apar în document.','Это настройки по умолчанию. Для каждой квитанции их можно изменить отдельно. Пустые поля в документе не отображаются.')}</p><div class="dp-form-grid"><div class="field"><label>${tr('Format implicit','Формат по умолчанию')}</label><select id="dpDefaultReceiptFormat"><option value="compact">${tr('Compact','Компактный')}</option><option value="a4">A4</option></select></div><div class="field"><label>${tr('Semnătură implicită','Подпись по умолчанию')}</label><select id="dpDefaultReceiptSignature"><option value="no">${tr('Fără semnătură','Без подписи')}</option><option value="yes">${tr('Cu semnătură','С подписью')}</option></select></div></div><div class="field" style="margin-top:10px"><label>${tr('Câmpuri afișate implicit pe bon','Поля квитанции по умолчанию')}</label><div id="dpDefaultReceiptFields" class="dp-checkgrid"></div></div><div class="field" style="margin-top:10px"><label>${tr('Câmpuri incluse în QR','Поля в QR-коде')}</label><div id="dpDefaultQrFields" class="dp-checkgrid"></div></div><div class="row" style="margin-top:10px"><button class="primary" id="dpSaveReceiptDefaults">${tr('Salvează setările bonurilor','Сохранить настройки квитанций')}</button></div>`;settingsPage.appendChild(c);}
+ if(!$v('payments')){const sec=document.createElement('section');sec.id='payments';sec.className='page';sec.innerHTML=`<div class="between"><div><h2>${tr('Plăți și bonuri','Платежи и квитанции')}</h2><div class="muted">${tr('Evidență separată a încasărilor, rambursărilor și bonurilor. Nu înlocuiește bonul fiscal.','Отдельный учёт платежей, возвратов и квитанций. Не заменяет фискальный чек.')}</div></div><div class="row"><button class="secondary" id="dpExportPayments">${tr('Export CSV','Экспорт CSV')}</button><button class="secondary" id="dpExportPaymentsXlsx">${tr('Export XLSX','Экспорт XLSX')}</button><button class="secondary" id="dpPrintPaymentsReport">${tr('Raport PDF / imprimă','Отчёт PDF / печать')}</button></div></div><div class="metricgrid" style="margin:14px 0"><div class="metric"><div class="label">${tr('Încasări brute','Валовые поступления')}</div><div class="num" id="dpGross">0</div></div><div class="metric red"><div class="label">${tr('Rambursări','Возвраты')}</div><div class="num" id="dpRefundTotal">0</div></div><div class="metric green"><div class="label">${tr('Încasări nete','Чистые поступления')}</div><div class="num" id="dpNet">0</div></div><div class="metric"><div class="label">${tr('Plăți înregistrate','Записанные платежи')}</div><div class="num" id="dpCount">0</div></div></div><div class="card"><h2>${tr('Înregistrează o plată','Добавить платёж')}</h2><form id="dpPaymentForm"><div class="dp-form-grid"><div class="field"><label>${tr('Deviz / proiect','Смета / проект')}</label><select id="dpPaymentQuote" required></select></div><div class="field"><label>${tr('Data plății','Дата платежа')}</label><input id="dpPaymentDate" type="date" required></div><div class="field"><label>${tr('Suma','Сумма')}</label><input id="dpPaymentAmount" type="number" min="0.01" step="0.01" required></div><div class="field"><label>${tr('Monedă','Валюта')}</label><select id="dpPaymentCurrency"><option>MDL</option><option>EUR</option><option>RON</option><option>USD</option><option>Altă</option></select></div><div class="field"><label>${tr('Curs în MDL (1 unitate)','Курс к MDL (за 1 единицу)')}</label><input id="dpPaymentRate" type="number" min="0.0001" step="0.0001" value="1"></div><div class="field"><label>${tr('Metodă de plată','Способ оплаты')}</label><select id="dpPaymentMethod"><option value="cash">${tr('Numerar','Наличные')}</option><option value="transfer">${tr('Transfer bancar','Банковский перевод')}</option><option value="card">${tr('Card / terminal','Карта / терминал')}</option><option value="other">${tr('Altă metodă','Другой способ')}</option></select></div><div class="field"><label>${tr('Repartizarea plății','Распределение платежа')}</label><select id="dpPaymentAllocation"><option value="advance">${tr('Avans general pe proiect','Общий аванс по проекту')}</option><option value="order">${tr('În ordinea lucrărilor din deviz','По порядку работ в смете')}</option><option value="proportional">${tr('Proporțional valorii lucrărilor','Пропорционально стоимости работ')}</option><option value="manual">${tr('Manual / nealocată','Вручную / без распределения')}</option></select></div><div class="field dp-full"><label>${tr('Observație (opțional)','Примечание (необязательно)')}</label><input id="dpPaymentNote" maxlength="500"></div><div class="field dp-full"><label><input id="dpPaymentReceiptNow" type="checkbox" checked> ${tr('După salvare, deschide opțiunile pentru emiterea bonului','После сохранения открыть параметры квитанции')}</label></div></div><div class="row"><button class="primary" type="submit">${tr('Înregistrează plata','Записать платёж')}</button></div></form></div><div class="card"><div class="between"><h2>${tr('Istoric plăți','История платежей')}</h2><input id="dpPaymentSearch" placeholder="${tr('Caută client / deviz / număr','Поиск клиента / сметы / номера')}" style="max-width:280px"></div><div class="dp-form-grid" style="margin:10px 0"><div class="field"><label>${tr('Perioadă','Период')}</label><select id="dpPaymentPeriod"><option value="all">${tr('Tot timpul','Всё время')}</option><option value="day">${tr('Astăzi','Сегодня')}</option><option value="week">${tr('Săptămâna aceasta','Эта неделя')}</option><option value="month">${tr('Luna aceasta','Этот месяц')}</option><option value="year">${tr('Anul acesta','Этот год')}</option></select></div><div class="field"><label>${tr('Metodă','Способ')}</label><select id="dpPaymentMethodFilter"><option value="all">${tr('Toate','Все')}</option><option value="cash">${tr('Numerar','Наличные')}</option><option value="transfer">${tr('Transfer bancar','Банковский перевод')}</option><option value="card">${tr('Card / terminal','Карта / терминал')}</option><option value="other">${tr('Altă metodă','Другой способ')}</option></select></div><div class="field"><label>${tr('Monedă','Валюта')}</label><select id="dpPaymentCurrencyFilter"><option value="all">${tr('Toate','Все')}</option><option>MDL</option><option>EUR</option><option>RON</option><option>USD</option><option>Altă</option></select></div></div><div id="dpPaymentsList" class="dp-payment-list"></div></div><div class="card"><h2>${tr('Istoric corectări','История исправлений')}</h2><div id="dpPaymentEvents" class="dp-payment-list"></div></div></section>`;const main=document.querySelector('main');if(main)main.insertBefore(sec,$v('settings'));}
+ if(!$v('workreports')){const sec=document.createElement('section');sec.id='workreports';sec.className='page';sec.innerHTML=`<div class="between"><div><h2>${tr('Executarea lucrărilor / procese-verbale','Выполнение работ / акты')}</h2><div class="muted">${tr('Evidență separată de plăți. Avansul nu marchează lucrările ca executate.','Отдельно от платежей. Аванс не отмечает работы как выполненные.')}</div></div></div><div class="card"><form id="dpWorkReportForm"><div class="dp-form-grid"><div class="field"><label>${tr('Deviz / proiect','Смета / проект')}</label><select id="dpWorkQuote" required></select></div><div class="field"><label>${tr('Data procesului-verbal','Дата акта')}</label><input id="dpWorkDate" type="date" required></div><div class="field"><label>${tr('Prestator / executor','Исполнитель')}</label><input id="dpWorkProvider" placeholder="${tr('Nume prestator','Имя исполнителя')}"></div><div class="field"><label>${tr('Client','Клиент')}</label><input id="dpWorkClient"></div></div><div class="row" style="margin:10px 0"><button class="secondary" type="button" id="dpSelectAllWorks">${tr('Preselectează toate lucrările','Выбрать все работы')}</button><button class="secondary" type="button" id="dpClearWorks">${tr('Deselectează toate','Снять выбор')}</button></div><div id="dpWorkLines"></div><div class="field" style="margin-top:10px"><label>${tr('Observații','Примечания')}</label><textarea id="dpWorkNotes" rows="2"></textarea></div><div class="row"><button class="primary" type="submit">${tr('Salvează procesul-verbal','Сохранить акт')}</button></div></form></div><div class="card"><h2>${tr('Procese-verbale salvate','Сохранённые акты')}</h2><div id="dpWorkReportsList" class="dp-payment-list"></div></div></section>`;const main=document.querySelector('main');if(main)main.insertBefore(sec,$v('settings'));}
+ // Floating calculator and launcher
+ if(!$v('dpCalcToggle')){const b=document.createElement('button');b.id='dpCalcToggle';b.className='dp-no-print';b.type='button';b.title=tr('Calculator flotant','Плавающий калькулятор');b.setAttribute('aria-label',b.title);b.textContent='⌗';b.style.cssText='position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:10040;width:48px;height:48px;border-radius:50%;font-size:25px;box-shadow:0 5px 20px #0002';document.body.appendChild(b);const panel=document.createElement('div');panel.id='dpFloatCalc';panel.className='dp-float-calc dp-no-print';panel.innerHTML=`<header id="dpCalcDrag"><strong>${tr('Calculator DevizPRO','Калькулятор DevizPRO')}</strong><button type="button" class="secondary small" id="dpCalcClose" aria-label="Close">×</button></header><div class="dp-calc-body"><div class="field"><label>${tr('Mod','Режим')}</label><select id="dpCalcMode"><option value="standard">${tr('Standard','Обычный')}</option><option value="area">${tr('Suprafață (L × l)','Площадь (Д × Ш)')}</option><option value="volume">${tr('Volum (L × l × h)','Объём (Д × Ш × В)')}</option><option value="materials">${tr('Materiale + rezervă','Материалы + запас')}</option></select></div><div id="dpCalcDims" class="dp-form-grid" style="display:none"><div class="field"><label>${tr('Lungime','Длина')}</label><input id="dpCalcL" type="number" step="any" value="1"></div><div class="field"><label>${tr('Lățime','Ширина')}</label><input id="dpCalcW" type="number" step="any" value="1"></div><div class="field" id="dpCalcHeightField"><label>${tr('Înălțime','Высота')}</label><input id="dpCalcH" type="number" step="any" value="1"></div><div class="field"><label>${tr('Cantitate / rezervă %','Количество / запас %')}</label><input id="dpCalcReserve" type="number" step="any" value="10"></div></div><input id="dpCalcDisplay" class="dp-calc-display" value="0" readonly aria-label="Calculator result"><div id="dpCalcButtons" class="dp-calc-grid" style="margin-top:8px">${['7','8','9','÷','4','5','6','×','1','2','3','−','0','.','⌫','+','C','(',')','='].map(k=>`<button type="button" class="secondary" data-calc-key="${k}">${k}</button>`).join('')}</div><div class="dp-mini-actions"><button type="button" class="secondary small" id="dpCalcCopy">${tr('Copiază rezultatul','Копировать результат')}</button><button type="button" class="secondary small" id="dpCalcCompute">${tr('Calculează','Рассчитать')}</button></div><div class="dp-form-grid" style="margin-top:8px"><div class="field"><label>${tr('Nume calcul salvat','Название расчёта')}</label><input id="dpCalcName" placeholder="${tr('ex. Baie apartament','например, Ванная')}"></div><div class="field" style="align-self:end"><button type="button" class="secondary" id="dpCalcSave">${tr('Salvează calculul','Сохранить расчёт')}</button></div></div><div id="dpCalcSavedList" class="dp-muted" style="margin-top:8px"></div></div>`;document.body.appendChild(panel);b.onclick=()=>toggleCalc();$v('dpCalcClose').onclick=()=>toggleCalc(false);}
+ // receipt options modal
+ if(!$v('dpReceiptDialog')){const d=document.createElement('dialog');d.id='dpReceiptDialog';d.className='dp-modal';d.innerHTML=`<form method="dialog" id="dpReceiptOptionsForm"><div class="between"><h2>${tr('Opțiuni bon','Параметры квитанции')}</h2><button type="button" class="secondary small" id="dpReceiptClose">×</button></div><input type="hidden" id="dpReceiptPaymentId"><div class="dp-form-grid"><div class="field"><label>${tr('Format','Формат')}</label><select id="dpReceiptFormat"><option value="compact">${tr('Compact','Компактный')}</option><option value="a4">A4</option></select></div><div class="field"><label>${tr('Semnătura','Подпись')}</label><select id="dpReceiptSignature"><option value="no">${tr('Fără semnătură','Без подписи')}</option><option value="yes">${tr('Cu semnătură','С подписью')}</option></select></div><div class="field"><label><input type="checkbox" id="dpReceiptQr"> ${tr('Include QR','Добавить QR')}</label></div><div class="field"><label><input type="checkbox" id="dpReceiptRemember" checked> ${tr('Salvează ca setări implicite','Сохранить как настройки по умолчанию')}</label></div></div><div class="field"><label>${tr('Câmpuri pe bon','Поля квитанции')}</label><div id="dpReceiptFields" class="dp-checkgrid"></div></div><div class="field"><label>${tr('Câmpuri QR','Поля QR')}</label><div id="dpReceiptQrFields" class="dp-checkgrid"></div></div><div class="row"><button type="button" class="primary" id="dpPrintReceipt">${tr('Generează bonul','Создать квитанцию')}</button></div></form>`;document.body.appendChild(d);$v('dpReceiptClose').onclick=()=>d.close();}
+}
+const fieldLabels={receiptNo:['Număr bon','Номер квитанции'],date:['Data','Дата'],provider:['Prestator','Исполнитель'],client:['Client','Клиент'],amount:['Suma achitată','Оплаченная сумма'],amountWords:['Suma în litere','Сумма прописью'],method:['Metoda de plată','Способ оплаты'],quote:['Deviz / proiect','Смета / проект'],paid:['Total achitat până acum','Всего оплачено'],balance:['Sold rămas','Остаток'],works:['Lucrări acoperite de plată','Работы, покрытые оплатой'],note:['Observații','Примечания']};
+function renderCheckFields(target,selected,keys){const el=$v(target);if(!el)return;el.innerHTML=keys.map(k=>`<label><input type="checkbox" data-dp-field="${k}" ${selected.includes(k)?'checked':''}> ${tr(...fieldLabels[k])}</label>`).join('');}
+function renderReceiptSettings(){ensureReceiptSettings();const d=settings.receiptDefaults;$v('dpDefaultReceiptFormat').value=d.format;$v('dpDefaultReceiptSignature').value=d.signature?'yes':'no';renderCheckFields('dpDefaultReceiptFields',d.fields,Object.keys(fieldLabels));renderCheckFields('dpDefaultQrFields',d.qrFields,Object.keys(fieldLabels));}
+function saveReceiptDefaultsFromUI(){ensureReceiptSettings();const d=settings.receiptDefaults;d.format=$v('dpDefaultReceiptFormat').value;d.signature=$v('dpDefaultReceiptSignature').value==='yes';d.fields=[...$v('dpDefaultReceiptFields').querySelectorAll('input:checked')].map(x=>x.dataset.dpField);d.qrFields=[...$v('dpDefaultQrFields').querySelectorAll('input:checked')].map(x=>x.dataset.dpField);persist();alert(tr('Setările implicite ale bonurilor au fost salvate.','Настройки квитанций сохранены.'));}
+function fillQuoteSelect(id){const el=$v(id);if(!el)return;const old=el.value;const qs=typeof quotes!=='undefined'?quotes:[];el.innerHTML=`<option value="">${tr('Alege devizul','Выберите смету')}</option>`+qs.map(q=>`<option value="${escV(q.id)}">${escV(q.name||q.client||q.id)} · ${fmt(q.net)} ${escV(q.currency||settings.currency||'MDL')}</option>`).join('');if(qs.some(q=>q.id===old))el.value=old;}
+function paymentTotals(){const gross=dpPayments.reduce((s,p)=>s+(Number(p.amount)||0)*(Number(p.rate)||1),0);const refunds=dpRefunds.reduce((s,r)=>s+(Number(r.amountMDL)||0),0);return {gross,refunds,net:gross-refunds};}
+function getPaymentBalance(payment){return Math.max(0,Number(payment.amount)||0)-dpRefunds.filter(r=>r.paymentId===payment.id).reduce((s,r)=>s+(Number(r.amount)||0),0);}
+function methodLabel(m){return ({cash:tr('Numerar','Наличные'),transfer:tr('Transfer bancar','Банковский перевод'),card:tr('Card / terminal','Карта / терминал'),other:tr('Altă metodă','Другой способ')})[m]||m;}
+function filteredPayments(){const query=norm($v('dpPaymentSearch')?.value||''),method=$v('dpPaymentMethodFilter')?.value||'all',currency=$v('dpPaymentCurrencyFilter')?.value||'all',period=$v('dpPaymentPeriod')?.value||'all',now=new Date();return dpPayments.filter(p=>{const q=getQuote(p.quoteId)||p.quoteSnapshot||{};if(method!=='all'&&p.method!==method)return false;if(currency!=='all'&&p.currency!==currency)return false;const d=new Date((p.date||'')+'T12:00:00');if(period==='day'&&p.date!==new Date().toISOString().slice(0,10))return false;if(period==='week'){const start=new Date();start.setHours(0,0,0,0);start.setDate(start.getDate()-((start.getDay()+6)%7));if(!(d>=start))return false}if(period==='month'&&(d.getFullYear()!==now.getFullYear()||d.getMonth()!==now.getMonth()))return false;if(period==='year'&&d.getFullYear()!==now.getFullYear())return false;return norm([p.id,p.receiptNo,q.name,q.client,p.note].join(' ')).includes(query)})}
+function renderPayments(){if(!$v('payments'))return;fillQuoteSelect('dpPaymentQuote');const sums=paymentTotals();$v('dpGross').textContent=fmt(sums.gross)+' MDL';$v('dpRefundTotal').textContent='− '+fmt(sums.refunds)+' MDL';$v('dpNet').textContent=fmt(sums.net)+' MDL';$v('dpCount').textContent=dpPayments.length;$v('dpPaymentsList').innerHTML=filteredPayments().slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(p=>{const q=getQuote(p.quoteId),refund=dpRefunds.filter(r=>r.paymentId===p.id).reduce((s,r)=>s+Number(r.amount||0),0);return `<div class="dp-payment-card"><div class="between"><strong>${escV(p.receiptNo)} · ${fmt(p.amount)} ${escV(p.currency)}</strong><strong>${escV(p.date)}</strong></div><div class="meta">${escV(q?.name||p.quoteId)} · ${escV(q?.client||'')} · ${methodLabel(p.method)}</div><div class="meta">${tr('Echivalent salvat','Сохранённый эквивалент')}: ${fmt(p.amount*(Number(p.rate)||1))} MDL · ${tr('Rambursat','Возвращено')}: ${fmt(refund)} ${escV(p.currency)}${p.note?' · '+escV(p.note):''}</div>${dpRefunds.filter(r=>r.paymentId===p.id).map(r=>`<div class="meta">${escV(r.id)} · ${escV(r.date)} · ${fmt(r.amount)} ${escV(r.currency)} <button class="secondary small" onclick="dpPrintRefund('${escV(r.id)}')">${tr('Document rambursare','Документ возврата')}</button></div>`).join('')}<div class="row" style="margin-top:8px"><button class="secondary small" onclick="dpOpenReceipt('${escV(p.id)}')">${tr('Bon / imprimă','Квитанция / печать')}</button><button class="secondary small" onclick="dpPrintReceiptCopy('${escV(p.id)}')">${tr('Duplicat bon','Дубликат')}</button><button class="secondary small" onclick="dpRefundPayment('${escV(p.id)}')">${tr('Rambursare','Возврат')}</button><button class="secondary small" onclick="dpCorrectPayment('${escV(p.id)}')">${tr('Corectare','Исправление')}</button></div></div>`}).join('')||`<div class="empty">${tr('Nu există plăți înregistrate.','Платежей пока нет.')}</div>`;$v('dpPaymentEvents').innerHTML=dpPaymentEvents.slice().reverse().map(e=>`<div class="dp-payment-card"><strong>${escV(e.type)} · ${escV(e.date)}</strong><div class="meta">${escV(e.paymentId)} · ${escV(e.reason||'')}</div><div>${escV(e.details||'')}</div></div>`).join('')||`<div class="dp-muted">${tr('Nu există corectări.','Исправлений нет.')}</div>`;}
+function savePayment(e){e.preventDefault();const quoteId=$v('dpPaymentQuote').value;if(!getQuote(quoteId)){alert(tr('Alege un deviz existent.','Выберите существующую смету.'));return}const amount=Number($v('dpPaymentAmount').value),currency=$v('dpPaymentCurrency').value,rate=Number($v('dpPaymentRate').value)||1;if(!(amount>0&&rate>0)){alert(tr('Suma și cursul trebuie să fie mai mari decât zero.','Сумма и курс должны быть больше нуля.'));return}const id='PAY-'+Date.now(),date=$v('dpPaymentDate').value||new Date().toISOString().slice(0,10);const year=date.slice(0,4),n=dpPayments.filter(p=>String(p.date||'').startsWith(year)).length+1;const quote=getQuote(quoteId), mode=$v('dpPaymentAllocation').value, amountMDL=amount*rate, workLines=(quote?.lines||[]), lineSum=workLines.reduce((s,l)=>s+Math.max(0,Number(l.total??((Number(l.price)||0)*(Number(l.qty)||0)))||0),0);let remaining=amountMDL;const allocations=[];if(mode==='order'){workLines.forEach((l,i)=>{const value=Math.max(0,Number(l.total??((Number(l.price)||0)*(Number(l.qty)||0)))||0),alloc=Math.min(remaining,value);if(alloc>0)allocations.push({lineIndex:i,name:l.ro||l.name||l.ru||'',amountMDL:alloc});remaining-=alloc});}else if(mode==='proportional'&&lineSum>0){workLines.forEach((l,i)=>{const value=Math.max(0,Number(l.total??((Number(l.price)||0)*(Number(l.qty)||0)))||0),alloc=Math.min(value,amountMDL*value/lineSum);if(alloc>0){allocations.push({lineIndex:i,name:l.ro||l.name||l.ru||'',amountMDL:alloc});remaining-=alloc}})}const p={id,receiptNo:`BON-${year}-${String(n).padStart(4,'0')}`,quoteId,date,amount,currency,rate,amountMDL,method:$v('dpPaymentMethod').value,allocation:mode,allocations,unallocatedAdvanceMDL:Math.max(0,remaining),quoteSnapshot:quote?{id:quote.id,name:quote.name,client:quote.client,phone:quote.phone,address:quote.address,net:quote.net,currency:quote.currency,lines:quote.lines}:null,note:$v('dpPaymentNote').value.trim(),createdAt:new Date().toISOString(),refunds:[]};dpPayments.push(p);writeExtra();if(typeof saveLocalSnapshot==='function')saveLocalSnapshot('payment-added');$v('dpPaymentAmount').value='';$v('dpPaymentNote').value='';renderPayments();if($v('dpPaymentReceiptNow').checked)openReceiptOptions(id);}
+function openReceiptOptions(id){ensureReceiptSettings();const p=dpPayments.find(x=>x.id===id);if(!p)return;const d=settings.receiptDefaults;$v('dpReceiptPaymentId').value=id;$v('dpReceiptFormat').value=d.format;$v('dpReceiptSignature').value=d.signature?'yes':'no';$v('dpReceiptQr').checked=!!d.qr;$v('dpReceiptRemember').checked=!!d.remember;renderCheckFields('dpReceiptFields',d.fields,Object.keys(fieldLabels));renderCheckFields('dpReceiptQrFields',d.qrFields,Object.keys(fieldLabels));$v('dpReceiptDialog').showModal();}
+function wordsRO(n){const units=['zero','unu','doi','trei','patru','cinci','șase','șapte','opt','nouă','zece','unsprezece','doisprezece','treisprezece','paisprezece','cincisprezece','șaisprezece','șaptesprezece','optsprezece','nouăsprezece'];const tens=['','','douăzeci','treizeci','patruzeci','cincizeci','șaizeci','șaptezeci','optzeci','nouăzeci'];function under(x){if(x<20)return units[x]||'';if(x<100)return tens[Math.floor(x/10)]+(x%10?' și '+units[x%10]:'');if(x<1000)return (x===100?'o sută':units[Math.floor(x/100)]+' sute')+(x%100?' '+under(x%100):'');return String(x)}const whole=Math.floor(Math.abs(n));return under(whole)+' '+(Math.abs(n)%1?Math.round(Math.abs(n)*100).toString().padStart(2,'0')+'/100':'') ;}
+function receiptData(p){const q=p.quoteSnapshot||getQuote(p.quoteId)||{},related=dpPayments.filter(x=>x.quoteId===p.quoteId),paid=related.reduce((s,x)=>s+Number(x.amountMDL||x.amount*(Number(x.rate)||1)),0)-dpRefunds.filter(r=>related.some(x=>x.id===r.paymentId)).reduce((s,r)=>s+Number(r.amountMDL||0),0),balance=Math.max(0,(Number(q.net)||0)-paid);return {receiptNo:p.receiptNo,date:p.date,provider:settings.bizName||'',client:q.client||'',amount:`${fmt(p.amount)} ${p.currency}`,amountWords:`${wordsRO(p.amount)} ${p.currency}`,method:methodLabel(p.method),quote:q.name||p.quoteId,paid:`${fmt(paid)} MDL`,balance:`${fmt(balance)} MDL`,works:(p.allocations||[]).map(a=>`${a.name}: ${fmt(a.amountMDL)} MDL`).join('; ')||((q.lines||[]).map(l=>l.ro||l.name||l.ru).filter(Boolean).join('; ')),note:p.note||''};}
+function printReceipt(p,opts,isCopy=false){const q=getQuote(p.quoteId)||{},data=receiptData(p),keys=opts.fields||[],payload=(opts.qrFields||[]).map(k=>`${fieldLabels[k]?.[0]||k}: ${data[k]||''}`).filter(x=>x.split(': ').slice(1).join(': ').trim()).join('\n');let qrSvg='';if(opts.qr&&payload){try{qrSvg=window.__dpMakeQrSvg(payload.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\x20-\x7E]/g,' '))}catch(err){console.error('QR generation failed',err)}}const rows=keys.filter(k=>data[k]!==undefined&&String(data[k]).trim()!=='').map(k=>`<div class="fieldrow"><b>${escV(fieldLabels[k]?.[0]||k)}:</b> ${escV(data[k])}</div>`).join('');const sig=opts.signature?`<div class="sign">${tr('Semnătura prestatorului','Подпись исполнителя')}: ____________________<br>${tr('Semnătura clientului','Подпись клиента')}: ____________________</div>`:'';const compact=opts.format==='compact';const w=window.open('','_blank');if(!w){alert(tr('Permite ferestrele pop-up pentru a tipări bonul.','Разрешите всплывающие окна для печати квитанции.'));return}w.document.open();w.document.write(`<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escV(p.receiptNo)}</title><style>body{font:12px Arial,sans-serif;color:#17212c;margin:${compact?'5mm':'12mm'};max-width:${compact?'90mm':'none'};margin-left:auto;margin-right:auto}h1{font-size:17px;margin:0 0 5px}.sub{color:#526274;font-size:11px}.fieldrow{margin:5px 0;overflow-wrap:anywhere}.total{font-size:19px;font-weight:bold;margin:12px 0}.sign{margin-top:22px;line-height:2}.qr{width:90px;height:90px;margin:10px auto}.copy{font-size:10px;color:#666;text-align:center}@page{size:${compact?'80mm auto':'A4'};margin:${compact?'4mm':'10mm'}}@media print{button{display:none}}</style></head><body><h1>${escV(settings.bizName||tr('BON DE PLATĂ','КВИТАНЦИЯ ОБ ОПЛАТЕ'))}</h1>${settings.bizPhone?`<div class="sub">${escV(settings.bizPhone)}</div>`:''}${settings.bizAddress?`<div class="sub">${escV(settings.bizAddress)}</div>`:''}<hr>${rows}<div class="total">${tr('Achitat','Оплачено')}: ${escV(data.amount)}</div>${sig}${qrSvg?`<div class="qr">${qrSvg}</div>`:''}${isCopy?`<div style="font-weight:bold;text-align:center;margin:12px 0">DUPLICAT / КОПИЯ</div>`:''}<div class="copy">${tr('Document informativ de evidență a plății; nu este bon fiscal.','Информационный документ учёта платежа; не является фискальным чеком.')}</div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);w.document.close();}
+function generateReceipt(){const id=$v('dpReceiptPaymentId').value,p=dpPayments.find(x=>x.id===id);if(!p)return;const opts={format:$v('dpReceiptFormat').value,signature:$v('dpReceiptSignature').value==='yes',qr:$v('dpReceiptQr').checked,fields:[...$v('dpReceiptFields').querySelectorAll('input:checked')].map(x=>x.dataset.dpField),qrFields:[...$v('dpReceiptQrFields').querySelectorAll('input:checked')].map(x=>x.dataset.dpField)};if($v('dpReceiptRemember').checked){ensureReceiptSettings();settings.receiptDefaults={...settings.receiptDefaults,format:opts.format,signature:opts.signature,qr:opts.qr,fields:opts.fields,qrFields:opts.qrFields,remember:true};persist()}$v('dpReceiptDialog').close();printReceipt(p,opts);}
+function printReceiptCopy(id){const p=dpPayments.find(x=>x.id===id);if(!p)return;ensureReceiptSettings();const d=settings.receiptDefaults;printReceipt(p,{format:d.format,signature:d.signature,qr:d.qr,fields:d.fields,qrFields:d.qrFields},true)}
+function printRefund(id){const r=dpRefunds.find(x=>x.id===id),p=r&&dpPayments.find(x=>x.id===r.paymentId);if(!r||!p)return;const w=window.open('','_blank');if(!w){alert(tr('Permite ferestrele pop-up.','Разрешите всплывающие окна.'));return}w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>REFUND</title><style>body{font:12px Arial;margin:12mm;color:#17212c}@page{size:A4;margin:10mm}</style></head><body><h1>${tr('DOCUMENT DE RAMBURSARE','ДОКУМЕНТ ВОЗВРАТА')}</h1><p>${tr('Număr plată originală','Номер исходного платежа')}: ${escV(p.receiptNo)}<br>${tr('Data rambursării','Дата возврата')}: ${escV(r.date)}<br>${tr('Suma rambursată','Возвращённая сумма')}: ${fmt(r.amount)} ${escV(r.currency)}<br>${tr('Motiv','Причина')}: ${escV(r.reason||'')}</p><p>${tr('Prestator','Исполнитель')}: ${escV(settings.bizName||'')}<br>${tr('Client','Клиент')}: ${escV((p.quoteSnapshot||getQuote(p.quoteId)||{}).client||'')}</p><div style="margin-top:35px">${tr('Semnătura prestatorului','Подпись исполнителя')}: ____________________</div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);w.document.close()}
+function refundPayment(id){const p=dpPayments.find(x=>x.id===id);if(!p)return;const left=getPaymentBalance(p);if(left<=0){alert(tr('Această plată a fost rambursată integral.','Этот платёж полностью возвращён.'));return}const amount=Number(prompt(tr(`Suma rambursării (maximum ${left} ${p.currency})` ,`Сумма возврата (максимум ${left} ${p.currency})`),'0'));if(!(amount>0&&amount<=left)){if(amount!==0)alert(tr('Suma nu este validă sau depășește plata rămasă.','Сумма недействительна или превышает остаток платежа.'));return}const reason=prompt(tr('Motivul rambursării:','Причина возврата:'))||'';const r={id:'REF-'+Date.now(),paymentId:id,date:new Date().toISOString().slice(0,10),amount,currency:p.currency,amountMDL:amount*(Number(p.rate)||1),reason};dpRefunds.push(r);dpPaymentEvents.push({type:'Rambursare',paymentId:id,date:r.date,reason,details:`${fmt(amount)} ${p.currency}`});writeExtra();if(typeof saveLocalSnapshot==='function')saveLocalSnapshot('refund-added');renderPayments();}
+function correctPayment(id){const p=dpPayments.find(x=>x.id===id);if(!p)return;const reason=prompt(tr('Descrie motivul corectării (înregistrarea originală se păstrează):','Укажите причину исправления (исходная запись сохраняется):'));if(!reason)return;const details=prompt(tr('Detalii / valoare corectată (doar notă de audit):','Подробности / исправленная сумма (только запись аудита):'))||'';dpPaymentEvents.push({type:'Corectare (audit)',paymentId:id,date:new Date().toISOString().slice(0,10),reason,details,original:{amount:p.amount,currency:p.currency,method:p.method}});writeExtra();if(typeof saveLocalSnapshot==='function')saveLocalSnapshot('payment-correction');renderPayments();alert(tr('Corectarea a fost adăugată în istoric. Plata originală nu a fost modificată.','Исправление добавлено в историю. Исходный платёж не изменён.'));}
+function exportPayments(){const rows=[['Număr','Dată','Deviz','Client','Sumă','Valută','Curs MDL','Echivalent MDL','Metodă','Observație'],...dpPayments.map(p=>{const q=getQuote(p.quoteId)||{};return [p.receiptNo,p.date,q.name||p.quoteId,q.client||'',p.amount,p.currency,p.rate,p.amount*(Number(p.rate)||1),methodLabel(p.method),p.note||'']})];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');downloadBlob(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'DevizPRO-plati.csv','text/csv');}
+function exportPaymentsXlsx(){const items=filteredPayments(),cols=['Număr bon','Dată','Deviz','Client','Sumă','Valută','Curs MDL','Echivalent MDL','Rambursat','Net MDL','Metodă','Alocare','Avans general MDL','Observație'];const rows=[cols,...items.map(p=>{const q=getQuote(p.quoteId)||p.quoteSnapshot||{},refunds=dpRefunds.filter(r=>r.paymentId===p.id).reduce((s,r)=>s+Number(r.amountMDL||0),0);return [p.receiptNo,p.date,q.name||p.quoteId,q.client||'',Number(p.amount)||0,p.currency,Number(p.rate)||1,Number(p.amountMDL)||0,refunds,(Number(p.amountMDL)||0)-refunds,methodLabel(p.method),p.allocation,Number(p.unallocatedAdvanceMDL)||0,p.note||'']})];const col=n=>{let z='';while(n){let r=(n-1)%26;z=String.fromCharCode(65+r)+z;n=Math.floor((n-1)/26)}return z};const cell=(v,r,c)=>typeof v==='number'?`<c r="${col(c)}${r}" t="n"><v>${v}</v></c>`:`<c r="${col(c)}${r}" t="inlineStr"><is><t xml:space="preserve">${String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}</t></is></c>`;const sheet=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><autoFilter ref="A1:${col(cols.length)}${rows.length}"/><sheetData>${rows.map((r,i)=>`<row r="${i+1}">${r.map((v,j)=>cell(v,i+1,j+1)).join('')}</row>`).join('')}</sheetData></worksheet>`;const files=[{name:'[Content_Types].xml',content:'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>'},{name:'_rels/.rels',content:'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'},{name:'xl/workbook.xml',content:'<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Plăți" sheetId="1" r:id="rId1"/></sheets></workbook>'},{name:'xl/_rels/workbook.xml.rels',content:'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>'},{name:'xl/worksheets/sheet1.xml',content:sheet}];downloadBlob(makeZip(files),'DevizPRO-raport-plati.xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')}
+function printPaymentsReport(){const items=filteredPayments(),w=window.open('','_blank');if(!w){alert(tr('Permite ferestrele pop-up.','Разрешите всплывающие окна.'));return}const rows=items.map(p=>{const q=getQuote(p.quoteId)||p.quoteSnapshot||{},rf=dpRefunds.filter(r=>r.paymentId===p.id).reduce((s,r)=>s+Number(r.amountMDL||0),0);return `<tr><td>${escV(p.receiptNo)}</td><td>${escV(p.date)}</td><td>${escV(q.name||p.quoteId)}<br>${escV(q.client||'')}</td><td>${fmt(p.amount)} ${escV(p.currency)}</td><td>${fmt(p.amountMDL)} MDL</td><td>${fmt(rf)} MDL</td><td>${methodLabel(p.method)}</td></tr>`}).join('');w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Raport plăți</title><style>body{font:11px Arial;margin:10mm;color:#17212c}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:5px;text-align:left}th{background:#eee}@page{size:A4 landscape;margin:8mm}</style></head><body><h1>${tr('Raport plăți și rambursări','Отчёт платежей и возвратов')}</h1><p>${tr('Generat la','Создано')}: ${new Date().toLocaleString()} · ${items.length} ${tr('plăți','платежей')}</p><table><thead><tr><th>${tr('Bon','Квитанция')}</th><th>${tr('Data','Дата')}</th><th>${tr('Deviz / client','Смета / клиент')}</th><th>${tr('Suma originală','Исходная сумма')}</th><th>MDL</th><th>${tr('Rambursat','Возвращено')}</th><th>${tr('Metodă','Способ')}</th></tr></thead><tbody>${rows}</tbody></table><script>window.onload=()=>setTimeout(()=>window.print(),250)<\\/script></body></html>`);w.document.close()}
+function renderWorkLines(){const q=getQuote($v('dpWorkQuote')?.value);if(!q){$v('dpWorkLines').innerHTML=`<div class="empty">${tr('Alege devizul pentru a vedea lucrările.','Выберите смету, чтобы увидеть работы.')}</div>`;return}const old=new Map([...$v('dpWorkLines').querySelectorAll('[data-work-index]')].map(x=>[x.dataset.workIndex,{checked:x.querySelector('.dp-work-done')?.checked,qty:x.querySelector('.dp-work-qty')?.value,pct:x.querySelector('.dp-work-pct')?.value}]));$v('dpWorkLines').innerHTML=(q.lines||[]).map((l,i)=>{const prev=old.get(String(i));return `<div class="dp-payment-card" data-work-index="${i}"><label><input class="dp-work-done" type="checkbox" ${prev?.checked?'checked':''}> <strong>${escV(l.ro||l.name||l.ru||('Lucrare '+(i+1)))}</strong></label><div class="dp-form-grid" style="margin-top:7px"><div class="field"><label>${tr('Cantitate executată','Выполненное количество')} (${escV(l.unit||'')})</label><input class="dp-work-qty" type="number" min="0" step="any" max="${Number(l.qty)||1}" value="${escV(prev?.qty??0)}"></div><div class="field"><label>${tr('Procent executat','Процент выполнения')} %</label><input class="dp-work-pct" type="number" min="0" max="100" step="any" value="${escV(prev?.pct??0)}"></div></div><div class="dp-muted">${tr('Cantitate deviz','Количество по смете')}: ${escV(l.qty??1)} · ${fmt(l.total??Number(l.price)*Number(l.qty))}</div></div>`}).join('');}
+function saveWorkReport(e){e.preventDefault();const q=getQuote($v('dpWorkQuote').value);if(!q)return;const items=[...$v('dpWorkLines').querySelectorAll('[data-work-index]')].map(el=>{const i=Number(el.dataset.workIndex),l=q.lines[i],qty=Number(el.querySelector('.dp-work-qty').value)||0,pct=Number(el.querySelector('.dp-work-pct').value)||0,expected=Number(l.qty)||0,calc=expected?qty/expected*100:0;return {index:i,name:l.ro||l.name||l.ru,unit:l.unit,plannedQty:expected,doneQty:qty,percent:pct,quantityPercent:calc,conflict:Math.abs(pct-calc)>2,selected:el.querySelector('.dp-work-done').checked,price:Number(l.price)||0}}).filter(x=>x.selected);if(!items.length){alert(tr('Selectează cel puțin o lucrare.','Выберите хотя бы одну работу.'));return}const y=($v('dpWorkDate').value||new Date().toISOString().slice(0,10)).slice(0,4),seq=dpWorkReports.filter(r=>String(r.date).startsWith(y)).length+1;const r={id:'PV-'+Date.now(),number:`PV-${y}-${String(seq).padStart(4,'0')}`,quoteId:q.id,date:$v('dpWorkDate').value,provider:$v('dpWorkProvider').value,client:$v('dpWorkClient').value||q.client,notes:$v('dpWorkNotes').value,items,createdAt:new Date().toISOString()};dpWorkReports.push(r);writeExtra();if(typeof saveLocalSnapshot==='function')saveLocalSnapshot('work-report-added');renderWorkReports();alert(items.some(x=>x.conflict)?tr('Procesul-verbal a fost salvat; verifică procentele care nu corespund cantităților.','Акт сохранён; проверьте проценты, не совпадающие с количеством.'):tr('Procesul-verbal a fost salvat.','Акт сохранён.'));}
+function renderWorkReports(){if(!$v('dpWorkReportsList'))return;$v('dpWorkReportsList').innerHTML=dpWorkReports.slice().reverse().map(r=>{const q=getQuote(r.quoteId)||{};return `<div class="dp-payment-card"><div class="between"><strong>${escV(r.number)} · ${escV(q.name||r.quoteId)}</strong><span>${escV(r.date)}</span></div><div class="meta">${escV(r.client||'')} · ${r.items.length} ${tr('lucrări selectate','работ выбрано')}</div><div>${r.items.map(x=>`${escV(x.name)}: ${escV(x.doneQty)} ${escV(x.unit)} (${escV(x.percent)}%)${x.conflict?' ⚠':''}`).join('<br>')}</div><div class="row" style="margin-top:8px"><button class="secondary small" onclick="dpPrintWorkReport('${escV(r.id)}')">${tr('Deschide / imprimă','Открыть / печать')}</button></div></div>`}).join('')||`<div class="empty">${tr('Nu există procese-verbale salvate.','Актов пока нет.')}</div>`;}
+function printWorkReport(id){const r=dpWorkReports.find(x=>x.id===id);if(!r)return;const q=getQuote(r.quoteId)||{},w=window.open('','_blank');if(!w){alert(tr('Permite ferestrele pop-up.','Разрешите всплывающие окна.'));return}w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${escV(r.number)}</title><style>body{font:12px Arial;margin:12mm;color:#17212c}table{width:100%;border-collapse:collapse;margin:12px 0}td,th{border:1px solid #aaa;padding:6px;text-align:left}.sign{display:flex;justify-content:space-between;margin-top:45px;gap:20px}@page{size:A4;margin:10mm}</style></head><body><h1>${tr('PROCES-VERBAL DE RECEPȚIE A LUCRĂRILOR','АКТ ВЫПОЛНЕННЫХ РАБОТ')}</h1><b>${escV(r.number)}</b> · ${escV(r.date)}<p>${tr('Deviz','Смета')}: ${escV(q.name||r.quoteId)}<br>${tr('Client','Клиент')}: ${escV(r.client||'')}<br>${tr('Prestator / executor','Исполнитель')}: ${escV(r.provider||settings.bizName||'')}</p><table><thead><tr><th>${tr('Lucrare','Работа')}</th><th>${tr('Executat','Выполнено')}</th><th>%</th><th>${tr('Preț unitar','Цена')}</th></tr></thead><tbody>${r.items.map(x=>`<tr><td>${escV(x.name)}</td><td>${escV(x.doneQty)} ${escV(x.unit)}</td><td>${escV(x.percent)}%${x.conflict?' ⚠':''}</td><td>${fmt(x.price)}</td></tr>`).join('')}</tbody></table><p>${escV(r.notes||'')}</p><div class="sign"><div>${tr('Prestator / executor','Исполнитель')}: __________________</div><div>${tr('Client','Клиент')}: __________________</div></div><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);w.document.close();}
+function toggleCalc(force){const p=$v('dpFloatCalc'),b=$v('dpCalcToggle');const open=force===undefined?!p.classList.contains('open'):force;p.classList.toggle('open',open);b.style.display=open?'none':'block';if(open)restoreCalcPosition();}
+function restoreCalcPosition(){const p=$v('dpFloatCalc'),pos=read('dp_calc_position',null);if(pos){p.style.left=pos.left+'px';p.style.top=pos.top+'px';p.style.right='auto';p.style.bottom='auto';}else{p.style.left='auto';p.style.top='auto';p.style.right='16px';p.style.bottom='calc(18px + env(safe-area-inset-bottom))';}}
+let calcExpr='0';function calcDisplay(){if($v('dpCalcDisplay'))$v('dpCalcDisplay').value=calcExpr;}
+function calcKey(k){if(k==='C'){calcExpr='0'}else if(k==='⌫'){calcExpr=calcExpr.length>1?calcExpr.slice(0,-1):'0'}else if(k==='='){try{const expr=calcExpr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');if(!/^[0-9+*/().\s-]+$/.test(expr))throw 0;const result=Function('"use strict";return ('+expr+')')();if(!Number.isFinite(result))throw 0;calcExpr=String(Math.round(result*1e8)/1e8)}catch{calcExpr='Eroare'}}else{if(calcExpr==='0'||calcExpr==='Eroare')calcExpr=k;else calcExpr+=k}calcDisplay();}
+function calcCompute(){const mode=$v('dpCalcMode').value;if(mode==='standard'){if(calcExpr==='Eroare')return;calcKey('=');return}const l=Number($v('dpCalcL').value)||0,w=Number($v('dpCalcW').value)||0,h=Number($v('dpCalcH').value)||0,res=Math.max(0,Number($v('dpCalcReserve').value)||0);let val=mode==='area'?l*w:mode==='volume'?l*w*h:l*w; if(mode==='materials')val=val*(1+res/100);calcExpr=String(Math.round(val*10000)/10000);calcDisplay();}
+function setCalcMode(){const m=$v('dpCalcMode').value;$v('dpCalcDims').style.display=m==='standard'?'none':'grid';$v('dpCalcHeightField').style.display=m==='volume'?'block':'none';$v('dpCalcButtons').style.display=m==='standard'?'grid':'none';$v('dpCalcCompute').style.display=m==='standard'?'none':'inline-flex';}
+function saveCalc(){const name=$v('dpCalcName').value.trim();if(!name){alert(tr('Scrie un nume pentru calcul.','Введите название расчёта.'));return}const m=$v('dpCalcMode').value;let value=Number(calcExpr)||0;if(m!=='standard')calcCompute(),value=Number(calcExpr)||0;dpCalcSaved.push({id:'CALC-'+Date.now(),name,mode:m,value,expr:calcExpr,dimensions:{l:$v('dpCalcL').value,w:$v('dpCalcW').value,h:$v('dpCalcH').value,reserve:$v('dpCalcReserve').value},date:new Date().toISOString()});localStorage.setItem('dp_calc_saved',JSON.stringify(dpCalcSaved));renderSavedCalcs();$v('dpCalcName').value='';}
+function renderSavedCalcs(){const el=$v('dpCalcSavedList');if(!el)return;el.innerHTML=dpCalcSaved.slice(-8).reverse().map(x=>`<div style="display:flex;justify-content:space-between;gap:6px;margin:4px 0"><span>${escV(x.name)}: ${escV(x.value)}</span><button class="secondary small" onclick="dpUseCalc('${escV(x.id)}')">${tr('Folosește','Использовать')}</button></div>`).join('');}
+function useCalc(id){const x=dpCalcSaved.find(c=>c.id===id);if(!x)return;calcExpr=String(x.value);calcDisplay();$v('dpCalcMode').value=x.mode;setCalcMode();Object.entries(x.dimensions||{}).forEach(([k,v])=>{const el=$v('dpCalc'+k[0].toUpperCase()+k.slice(1));if(el)el.value=v});}
+function dragCalc(){const h=$v('dpCalcDrag'),p=$v('dpFloatCalc');let start=null;const down=e=>{if(e.target.closest('button'))return;start={x:e.clientX,y:e.clientY,left:p.getBoundingClientRect().left,top:p.getBoundingClientRect().top};h.setPointerCapture?.(e.pointerId)};const move=e=>{if(!start)return;const left=Math.max(4,Math.min(window.innerWidth-p.offsetWidth-4,start.left+e.clientX-start.x)),top=Math.max(4,Math.min(window.innerHeight-p.offsetHeight-4,start.top+e.clientY-start.y));p.style.left=left+'px';p.style.top=top+'px';p.style.right='auto';p.style.bottom='auto'};const up=()=>{if(!start)return;const r=p.getBoundingClientRect();localStorage.setItem('dp_calc_position',JSON.stringify({left:r.left,top:r.top}));start=null};h.addEventListener('pointerdown',down);h.addEventListener('pointermove',move);h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up);}
+function bind(){ensureReceiptSettings();renderReceiptSettings();$v('dpSaveReceiptDefaults')?.addEventListener('click',saveReceiptDefaultsFromUI);$v('dpPaymentForm')?.addEventListener('submit',savePayment);$v('dpPaymentSearch')?.addEventListener('input',renderPayments);$v('dpExportPayments')?.addEventListener('click',exportPayments);$v('dpExportPaymentsXlsx')?.addEventListener('click',exportPaymentsXlsx);$v('dpPrintPaymentsReport')?.addEventListener('click',printPaymentsReport);['dpPaymentPeriod','dpPaymentMethodFilter','dpPaymentCurrencyFilter'].forEach(id=>$v(id)?.addEventListener('change',renderPayments));$v('dpPaymentQuote')?.addEventListener('change',()=>{const q=getQuote($v('dpPaymentQuote').value);if(q&&$v('dpPaymentCurrency').value===(settings.currency||'MDL'))$v('dpPaymentRate').value='1'});$v('dpPaymentCurrency')?.addEventListener('change',()=>{$v('dpPaymentRate').value=$v('dpPaymentCurrency').value===(settings.currency||'MDL')?'1':''});$v('dpWorkQuote')?.addEventListener('change',()=>{const q=getQuote($v('dpWorkQuote').value);$v('dpWorkClient').value=q?.client||'';renderWorkLines()});$v('dpWorkReportForm')?.addEventListener('submit',saveWorkReport);$v('dpSelectAllWorks')?.addEventListener('click',()=>{ $v('dpWorkLines').querySelectorAll('.dp-work-done').forEach(x=>x.checked=true);$v('dpWorkLines').querySelectorAll('.dp-work-qty').forEach((x,i)=>{const l=getQuote($v('dpWorkQuote').value)?.lines?.[i];if(l)x.value=l.qty??1});$v('dpWorkLines').querySelectorAll('.dp-work-pct').forEach(x=>x.value=100)});$v('dpClearWorks')?.addEventListener('click',()=>{$v('dpWorkLines').querySelectorAll('.dp-work-done').forEach(x=>x.checked=false)});$v('dpReceiptDialog')?.querySelector('#dpPrintReceipt')?.addEventListener('click',generateReceipt);$v('dpCalcToggle')?.addEventListener('click',()=>toggleCalc());$v('dpCalcMode')?.addEventListener('change',setCalcMode);$v('dpCalcButtons')?.addEventListener('click',e=>{const b=e.target.closest('[data-calc-key]');if(b)calcKey(b.dataset.calcKey)});$v('dpCalcCopy')?.addEventListener('click',()=>{const v=$v('dpCalcDisplay').value;if(navigator.clipboard?.writeText)navigator.clipboard.writeText(v).catch(()=>prompt(tr('Copiază rezultatul','Скопируйте результат'),v));else prompt(tr('Copiază rezultatul','Скопируйте результат'),v)});$v('dpCalcCompute')?.addEventListener('click',calcCompute);$v('dpCalcSave')?.addEventListener('click',saveCalc);dragCalc();setCalcMode();calcDisplay();renderSavedCalcs();$v('dpPaymentDate').value=new Date().toISOString().slice(0,10);$v('dpWorkDate').value=new Date().toISOString().slice(0,10);renderPayments();fillQuoteSelect('dpWorkQuote');renderWorkLines();renderWorkReports();$v('dpDefaultReceiptFields')&&renderReceiptSettings();document.querySelectorAll('#nav button').forEach(b=>{if(b.dataset.page==='payments'||b.dataset.page==='workreports')b.onclick=()=>showPage(b.dataset.page)});const originalShow=showPage;window.showPage=function(p,...args){originalShow(p,...args);if(p==='payments'){renderPayments();fillQuoteSelect('dpPaymentQuote')}if(p==='workreports'){fillQuoteSelect('dpWorkQuote');renderWorkLines();renderWorkReports()}};const originalLedger=renderLedger;window.renderLedger=function(){originalLedger();const list=$v('ledgerList');if(!list)return;list.querySelectorAll('.quote-card').forEach(card=>{if(card.dataset.dpCompactBound)return;card.dataset.dpCompactBound='1';card.classList.remove('dp-expanded');card.addEventListener('click',e=>{if(e.target.closest('button,select,input,a'))return;card.classList.toggle('dp-expanded')});const openBtn=card.querySelector('button[onclick^="loadQuote("]');const m=openBtn?.getAttribute('onclick')?.match(/loadQuote\('([^']+)'\)/);const row=card.querySelector('.row');if(m&&row&&!row.querySelector('.dp-supplement-action')){const sb=document.createElement('button');sb.type='button';sb.className='secondary small dp-supplement-action';sb.textContent=tr('Supliment','Дополнение');sb.title=tr('Creează supliment legat de acest deviz','Создать дополнение к этой смете');sb.onclick=e=>{e.stopPropagation();window.dpCreateSupplement(m[1])};row.appendChild(sb)}const first=card.querySelector('.between');if(first&&!first.querySelector('.dp-compact-hint')){const hint=document.createElement('div');hint.className='dp-compact-hint';hint.textContent=tr('Atinge pentru detalii','Нажмите для подробностей');first.appendChild(hint)}})};const originalPersist=persist;window.persist=function(){originalPersist();writeExtra()};const originalDpState=dpState;window.dpState=function(){return {...originalDpState(),dp_payments:dpPayments,dp_refunds:dpRefunds,dp_payment_events:dpPaymentEvents,dp_work_reports:dpWorkReports,dp_calc_saved:dpCalcSaved}};const originalBackupData=backupData;window.backupData=function(){const state=dpState();const data={catalog:state.catalog,categories:state.categories,quotes:state.quotes,quoteGroups:state.quoteGroups,settings:state.settings,priceHistory:state.priceHistory,dp_payments:dpPayments,dp_refunds:dpRefunds,dp_payment_events:dpPaymentEvents,dp_work_reports:dpWorkReports,dp_calc_saved:dpCalcSaved};downloadPackage({kind:'full',exportedAt:state.exportedAt,data},'DevizPRO-backup-complet.zip');saveLocalSnapshot('manual')};const originalApplyFullPackage=applyFullPackage;window.applyFullPackage=function(pkg){originalApplyFullPackage(pkg);const d=pkg.data||{};dpPayments=Array.isArray(d.dp_payments)?d.dp_payments:[];dpRefunds=Array.isArray(d.dp_refunds)?d.dp_refunds:[];dpPaymentEvents=Array.isArray(d.dp_payment_events)?d.dp_payment_events:[];dpWorkReports=Array.isArray(d.dp_work_reports)?d.dp_work_reports:[];dpCalcSaved=Array.isArray(d.dp_calc_saved)?d.dp_calc_saved:[];writeExtra();if(typeof saveLocalSnapshot==='function')saveLocalSnapshot('after-restore-with-financial-data')};const originalResetApp=resetApp;window.resetApp=function(){originalResetApp();if(!localStorage.getItem('dp_quotes')){['dp_payments','dp_refunds','dp_payment_events','dp_work_reports','dp_calc_saved','dp_calc_position'].forEach(k=>localStorage.removeItem(k))}};
+}
+window.dpOpenReceipt=openReceiptOptions;window.dpPrintReceiptCopy=printReceiptCopy;window.dpPrintRefund=printRefund;window.dpRefundPayment=refundPayment;window.dpCorrectPayment=correctPayment;window.dpPrintWorkReport=printWorkReport;window.dpUseCalc=useCalc;
+function bindDynamicEventsOnly(){ensureReceiptSettings();renderReceiptSettings();$v('dpSaveReceiptDefaults')?.addEventListener('click',saveReceiptDefaultsFromUI);$v('dpPaymentForm')?.addEventListener('submit',savePayment);$v('dpPaymentSearch')?.addEventListener('input',renderPayments);$v('dpExportPayments')?.addEventListener('click',exportPayments);$v('dpExportPaymentsXlsx')?.addEventListener('click',exportPaymentsXlsx);$v('dpPrintPaymentsReport')?.addEventListener('click',printPaymentsReport);['dpPaymentPeriod','dpPaymentMethodFilter','dpPaymentCurrencyFilter'].forEach(id=>$v(id)?.addEventListener('change',renderPayments));$v('dpWorkQuote')?.addEventListener('change',()=>{const q=getQuote($v('dpWorkQuote').value);$v('dpWorkClient').value=q?.client||'';renderWorkLines()});$v('dpWorkReportForm')?.addEventListener('submit',saveWorkReport);$v('dpSelectAllWorks')?.addEventListener('click',()=>{$v('dpWorkLines').querySelectorAll('.dp-work-done').forEach(x=>x.checked=true);$v('dpWorkLines').querySelectorAll('.dp-work-qty').forEach((x,i)=>{const l=getQuote($v('dpWorkQuote').value)?.lines?.[i];if(l)x.value=l.qty??1});$v('dpWorkLines').querySelectorAll('.dp-work-pct').forEach(x=>x.value=100)});$v('dpClearWorks')?.addEventListener('click',()=>$v('dpWorkLines').querySelectorAll('.dp-work-done').forEach(x=>x.checked=false));$v('dpReceiptClose')?.addEventListener('click',()=>$v('dpReceiptDialog').close());$v('dpPrintReceipt')?.addEventListener('click',generateReceipt);$v('dpCalcToggle')?.addEventListener('click',()=>toggleCalc());$v('dpCalcClose')?.addEventListener('click',()=>toggleCalc(false));$v('dpCalcMode')?.addEventListener('change',setCalcMode);$v('dpCalcButtons')?.addEventListener('click',e=>{const b=e.target.closest('[data-calc-key]');if(b)calcKey(b.dataset.calcKey)});$v('dpCalcCopy')?.addEventListener('click',()=>{const v=$v('dpCalcDisplay').value;if(navigator.clipboard?.writeText)navigator.clipboard.writeText(v).catch(()=>prompt(tr('Copiază rezultatul','Скопируйте результат'),v));else prompt(tr('Copiază rezultatul','Скопируйте результат'),v)});$v('dpCalcCompute')?.addEventListener('click',calcCompute);$v('dpCalcSave')?.addEventListener('click',saveCalc);dragCalc();setCalcMode();calcDisplay();renderSavedCalcs();$v('dpPaymentDate').value=new Date().toISOString().slice(0,10);$v('dpWorkDate').value=new Date().toISOString().slice(0,10);fillQuoteSelect('dpPaymentQuote');fillQuoteSelect('dpWorkQuote');renderPayments();renderWorkLines();renderWorkReports();}
+function initV28(){injectUI();bind();const origSetLang=setLang;window.setLang=function(l){const active=document.querySelector('.page.active')?.id||'home';origSetLang(l);['payments','workreports','dpReceiptSettings','dpFloatCalc','dpCalcToggle','dpReceiptDialog'].forEach(id=>$v(id)?.remove());injectUI();bindDynamicEventsOnly();if($v(active))showPage(active);renderReceiptSettings();renderPayments();renderWorkReports();};const origRefresh=refreshAll;window.refreshAll=function(){origRefresh();renderPayments();renderWorkReports()};}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initV28);else initV28();
 })();
 </script>
 
