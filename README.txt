@@ -1,12 +1,12 @@
-DevizPRO v17 PRO — BACKUP, TRANSFER ȘI REDUCERI CU CONTROL MANUAL
+DevizPRO v18 PRO — BACKUP, TRANSFER ȘI REDUCERI CU CONTROL MANUAL
 
 PORNIRE
 - Deschide index.html sau publică întregul conținut al acestui folder în GitHub Pages.
 - Păstrează index.html, service-worker.js, manifest.webmanifest și ambele iconuri împreună în aceeași locație.
-- Folderul corect este DevizPRO_iPad_v17_PRO (nu v10/v17).
+- Folosește folderul DevizPRO_iPad_v18_PRO_MAX din această arhivă; nu amesteca fișiere din versiuni vechi.
 
 FUNCȚII PĂSTRATE ȘI NOI
-- Devize bilingve RO/RU, catalog, categorii, grupe/subgrupe, totaluri și reordonare manuală din v17.
+- Devize bilingve RO/RU, catalog, categorii, grupe/subgrupe, totaluri și reordonare manuală din v18.
 - Reducerile sunt oprite implicit la crearea unui deviz nou. Activează butonul doar când dorești să aplici reduceri.
 - Backup complet în ZIP fără compresie (format ZIP standard), cu manifest și date JSON pe secțiuni.
 - Restaurare completă din ZIP-ul DevizPRO sau din backup JSON mai vechi compatibil.
@@ -18,9 +18,9 @@ FUNCȚII PĂSTRATE ȘI NOI
 
 PUBLICARE GITHUB PAGES
 1. Deschide DevizPRO existent și descarcă backupul complet înainte de înlocuirea fișierelor.
-2. Descarcă și extrage DevizPRO_iPad_v17_PRO.zip.
+2. Descarcă și extrage DevizPRO_v18_PRO_MAX.zip.
 3. În repo-ul public devizpro, branch main, root (/), încarcă ÎNTREGUL conținut al folderului extras și confirmă înlocuirea fișierelor cu același nume. Nu șterge repo-ul și nu schimba setarea GitHub Pages.
-4. După publicare, închide complet aplicația instalată pe ecranul principal și redeschide-o. Dacă Safari păstrează versiunea veche, reîncarcă pagina; service worker-ul v17 elimină cache-urile DevizPRO vechi.
+4. După publicare, închide complet aplicația instalată pe ecranul principal și redeschide-o. Dacă Safari păstrează versiunea veche, reîncarcă pagina; service worker-ul v18 elimină cache-urile DevizPRO vechi.
 5. Înainte de utilizarea de zi cu zi, testează backup ZIP, restaurare pe un dispozitiv de test și transfer selectiv.
 
 COMPATIBILITATE ȘI LIMITE
@@ -31,10 +31,10 @@ COMPATIBILITATE ȘI LIMITE
 - Testele automate de sintaxă și integritate trebuie completate cu teste reale în Safari, Android și Windows înainte de a considera versiunea verificată pe toate dispozitivele.
 
 
-TRANSFER ZIP v17: DevizPRO can import ZIP archives created by DevizPRO even when the archive uses standard DEFLATE compression or has a top-level folder. On the receiving device, open Settings > Backup and restore > Transfer between devices, tap the ZIP/JSON import control, and select the single ZIP file received through Telegram/Files. Choose full restore (replace) or merge (add/update without deleting records absent from the archive).
+TRANSFER ZIP v18: DevizPRO can import ZIP archives created by DevizPRO even when the archive uses standard DEFLATE compression or has a top-level folder. On the receiving device, open Settings > Backup and restore > Transfer between devices, tap the ZIP/JSON import control, and select the single ZIP file received through Telegram/Files. Choose full restore (replace) or merge (add/update without deleting records absent from the archive).
 
 
-SALVARE RAPIDĂ ȘI PREȚURI INTELIGENTE (v17 actualizat)
+SALVARE RAPIDĂ ȘI PREȚURI INTELIGENTE (v18 actualizat)
 - La salvarea unui deviz nou, acesta se păstrează în evidență, formularul „Deviz nou” se golește automat, iar fereastra de finalizare oferă export Excel/Numbers sau PDF/imprimare. Fereastra poate fi închisă cu X sau „Gata”.
 - La salvarea modificărilor unui deviz deja existent, rămâne fluxul actual de editare; nu se deschide fereastra de finalizare pentru devize noi.
 - PDF/imprimarea din fereastra de finalizare este bilingvă indiferent de limba interfeței. Excel/Numbers include denumirile lucrărilor și antetele în română și rusă.
@@ -43,5 +43,18 @@ SALVARE RAPIDĂ ȘI PREȚURI INTELIGENTE (v17 actualizat)
 - În catalog și în lista de adăugare a lucrărilor, sortarea implicită este „Cele mai des folosite”, calculată după numărul de devize salvate în care apare fiecare lucrare, nu după cât de recent a fost folosită. Se poate schimba în „Număr de ordine”, „După categorii” sau „După nume”.
 - Interfața pentru noile controale și fereastra de finalizare respectă limba selectată RO/RU.
 
-ACTUALIZARE v17 — BUTOANE RAPIDE DE PREȚ
+FUNCȚII PĂSTRATE v18 — BUTOANE RAPIDE DE PREȚ
 În „Lucrări selectate” din „Deviz nou” există patru butoane: MINIM, MEDIU, MAXIM și DES FOLOSIT. Fiecare aplică imediat modul de preț tuturor lucrărilor selectate. DES FOLOSIT folosește istoricul învățat; lucrările fără istoric folosesc media minim–maxim. Butonul ales devine și modul implicit pentru lucrările adăugate ulterior.
+
+
+ACTUALIZARE v18 — ORDINE MENIU
+- Panou principal, Deviz nou, Evidență, Grupe, Catalog lucrări, Categorii, Setări.
+- Modificarea de meniu nu schimbă logica devizelor, a grupelor, a catalogului sau a exporturilor.
+
+
+VERSIUNEA 19 — EASY MODE
+- Navigare doar cu iconuri, fără etichete text permanente.
+- Secțiunea activă este accentuată prin mărire ușoară și umbră.
+- Navigare între pagini prin swipe orizontal pe ecran, în afara câmpurilor și controalelor interactive.
+- La adăugarea unei lucrări, cardul are o animație scurtă, contorul pulsează și apare o confirmare vizibilă.
+- Animațiile respectă setarea de accesibilitate „Reduce Motion”.

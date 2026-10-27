@@ -1,11 +1,11 @@
 {
-  "name": "DevizPRO v17 PRO MAX — Devize construcții",
-  "short_name": "DevizPRO v17 MAX",
+  "name": "DevizPRO v19 PRO MAX — Easy Mode",
+  "short_name": "DevizPRO v19",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#f3f6f9",
   "theme_color": "#167347",
-  "description": "Devize RO/RU offline, grupe și subgrupe, salvare cu export rapid, prețuri inteligente, backup ZIP și transfer total, pe grupe și selectiv manual."
+  "description": "Devize RO/RU offline, navigare cu iconuri și swipe, animații rapide la adăugarea lucrărilor, grupe, prețuri inteligente și backup ZIP."
 }
