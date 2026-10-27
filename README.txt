@@ -20,11 +20,14 @@ Notă de testare
 - Nu s-a pretins testare completă pe un iPad fizic; verifică interacțiunile în aplicația ta după import și păstrează backupul V30.
 
 
-Actualizare corectivă V31 Fix 1
-- Reparată integrarea codului de interfață fără a întrerupe scriptul principal.
-- Bonuri și Plăți și Procese-verbale se reconstruiesc la schimbarea limbii RO/RU.
-- Adăugat mesaj vizibil la apăsarea pictogramelor din meniul superior.
-- Bifa pentru emiterea bonului este compactă și verde când este selectată.
-- Eliminată pictograma redundantă de editare a bonului; acțiunea Corectare rămâne, iar ștergerea este la capăt și roșie.
-- Pictograme SVG clare pentru acțiunile proceselor-verbale și stiluri consistente pentru acțiunile din Evidență.
-- Cache-ul offline a fost versionat separat pentru a evita încărcarea fișierelor vechi.
+Modificări de remediere V32 (27.10.2026)
+1. Titlul secțiunii Bonuri este acum „Bonuri și Plăți” / „Квитанции и платежи”.
+2. La schimbarea limbii, secțiunile Bonuri și Plăți și Procese-verbale sunt reconstruite în limba selectată, fără a modifica datele salvate.
+3. Bifa pentru emiterea bonului este compactă, pătrată și verde când este selectată.
+4. În istoricul plăților a fost eliminată pictograma redundantă de editare; „Corectare” rămâne, iar ștergerea este ultima acțiune, în dreapta, evidențiată cu roșu.
+5. Butoanele de acțiune din istoricul plăților și procesele-verbale folosesc pictograme SVG cu dimensiuni și contrast explicite.
+6. Pictogramele de acțiune din Evidență au stiluri forțate pentru a evita afișarea ca cercuri goale.
+7. La apăsarea unei pictograme din meniul superior se afișează denumirea localizată a secțiunii.
+8. Cache-ul service worker a fost incrementat la v32 pentru a preveni încărcarea versiunii anterioare.
+
+Verificare tehnică: toate blocurile JavaScript din index.html trec verificarea sintaxei Node.js. Interacțiunile trebuie verificate în browserul țintă după instalare.
