@@ -1,5 +1,4 @@
-DevizPRO v21 MULTIPLATFORM
+DevizPRO v22 MULTIPLATFORM — FĂRĂ POP-UP INFERIOR
 
-Scop: clarificarea pachetului și întărirea aranjării responsive, păstrând funcțiile existente și cheile locale de date.
-
-Păstrează backup ZIP extern înainte de actualizare. Aplicația nu sincronizează automat datele între dispozitive.
+Eliminat: butonul plutitor ChatGPT și fereastra pop-up din partea de jos a aplicației.
+Păstrate: căutarea globală și celelalte funcții existente.

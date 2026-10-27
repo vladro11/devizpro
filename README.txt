@@ -40,3 +40,9 @@ LIMITĂRI ȘI VERIFICARE
 - Testele efectuate la livrare: verificarea integrității ZIP, verificarea sintaxei JavaScript inline și verificarea fișierelor de configurare.
 - Nu pretindem testare completă pe dispozitive fizice. Înainte de folosirea zilnică, verifică pe dispozitivul tău: creare/salvare deviz, schimbare RO/RU, export PDF/imprimare, backup ZIP și restaurare pe o copie de test.
 - Dacă datele vechi nu apar după publicare, nu reseta aplicația. Deschide versiunea veche și exportă backupul; apoi folosește funcția de restaurare/transfer.
+
+
+VERSIUNEA 22 — FĂRĂ POP-UP INFERIOR
+- Eliminat butonul plutitor ChatGPT și fereastra pop-up din partea de jos a aplicației.
+- Căutarea globală și celelalte funcții DevizPRO sunt păstrate.
+- După actualizare, închide complet aplicația instalată și redeschide-o pentru a încărca noua versiune.
