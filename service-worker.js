@@ -1,4 +1,4 @@
-const CACHE='devizpro-static-cache-v32';
+const CACHE='devizpro-static-cache-v32-i18n-ui-20261027';
 const ASSETS=['./','./index.html','./service-worker.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('devizpro-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
