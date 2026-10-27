@@ -1,18 +1,20 @@
-DevizPRO V30 — optimizări incrementale peste V29
+DevizPRO V31 — remedieri incrementale peste V30
 
 IMPORTANT
-- Păstrează o copie a versiunii V29 și exportă backupul datelor înainte de actualizare.
-- Aplicația rămâne offline-first și folosește stocarea locală existentă.
-- Nu s-a făcut reconstrucție de la zero.
+- Păstrează o copie a versiunii V30 și exportă backupul complet înainte de actualizare.
+- Aplicația rămâne offline-first și păstrează cheile și structura principală de stocare existente.
+- Nu s-a reconstruit aplicația de la zero.
 
-Modificări V30
-1. Pictograme SVG cu contrast clar pentru acțiunile de copiere, export, imprimare/PDF, editare, ștergere și deschidere. Pictogramele au titluri/etichete accesibile și dimensiuni consecvente.
-2. Procesul-verbal individual și raportul cu procese-verbale se deschid fără lansarea automată a dialogului de imprimare. În document există acțiuni vizibile „Imprimă / PDF” și „Închide”, iar bara nu se imprimă.
-3. Fereastra de bonuri este mult mai compactă: text și controale mai mici, bife verzi, spațiere redusă, pictogramă creion SVG și buton de închidere.
-4. Îmbunătățiri responsive pentru telefon, tabletă, orientare portret/peisaj și ecrane mici.
-5. Butonul Supliment din evidența devizelor pregătește acum un deviz suplimentar nou, legat de devizul de bază; utilizatorul adaugă lucrările suplimentare și salvează documentul.
-6. Service worker cache version incrementat pentru a evita servirea versiunii vechi.
+Modificări V31
+1. Corectată ordinea identificării pictogramelor: ștergerea unui proces-verbal folosește pictograma de ștergere, nu pe cea de imprimare/descărcare. Butoanele cu text explicativ din Setări nu mai sunt înlocuite accidental cu pictograme.
+2. Pictograma de căutare globală din dreapta jos este acum o lupă SVG clară.
+3. Eliminat exportul Excel/Numbers din devizul curent, lista devizelor și fereastra de export a devizului salvat. Eliminat exportul CSV/Excel din partea de bonuri și exportul CSV din partea de procese-verbale; rapoartele respective se deschid pentru imprimare/Salvare ca PDF.
+4. Ștergerea definitivă a unui bon șterge și istoricul corectărilor/anulărilor/rambursărilor legat de acel bon, inclusiv înregistrările de audit asociate. Acțiunea cere confirmare.
+5. Secțiunile din meniu și titlurile pentru Bonuri și Procese-verbale au denumiri română/rusă; ferestrele dinamice se reconstruiesc în limba aleasă.
+6. Bonurile, rapoartele de plăți, procesele-verbale și documentele de rambursare au etichete și titluri bilingve în PDF, indiferent de limba interfeței. Procesele-verbale noi păstrează denumirile lucrărilor în ambele limbi.
+7. Aliniate mai uniform controalele și butoanele din Setări; păstrat textul integral pentru „Șterge semnătura” și „Exportă pachet de transfer”.
+8. Actualizată versiunea cache offline la V31.
 
 Notă de testare
-- Verificată sintaxa scriptului de optimizare V30 și a scriptului de funcții V28/V29.
-- Arhiva ZIP trebuie testată și în browserul/dispozitivul utilizatorului. Nu se pretinde testare completă pe iPad fizic.
+- Arhiva și sintaxa JavaScript sunt verificate automat.
+- Nu s-a pretins testare completă pe un iPad fizic; verifică interacțiunile în aplicația ta după import și păstrează backupul V30.
