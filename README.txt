@@ -1,60 +1,42 @@
-DevizPRO v18 PRO — BACKUP, TRANSFER ȘI REDUCERI CU CONTROL MANUAL
+DEVIZPRO v21 MULTIPLATFORM — EASY MODE
+Versiune web/PWA adaptivă pentru telefon, tabletă și PC
 
-PORNIRE
-- Deschide index.html sau publică întregul conținut al acestui folder în GitHub Pages.
-- Păstrează index.html, service-worker.js, manifest.webmanifest și ambele iconuri împreună în aceeași locație.
-- Folosește folderul DevizPRO_iPad_v18_PRO_MAX din această arhivă; nu amesteca fișiere din versiuni vechi.
+CE ESTE ACEASTĂ VERSIUNE
+- Păstrează aplicația DevizPRO existentă și funcțiile sale; nu este o rescriere de la zero.
+- Adaugă/reglează comportamentul vizual pentru ecrane înguste, tablete și ecrane desktop.
+- Include căutarea globală din versiunea anterioară, interfața RO/RU și sistemele existente de catalog, devize, evidență, backup/restore și export.
+- Folderul acestei arhive se numește explicit DevizPRO_v21_MULTIPLATFORM, pentru a nu-l confunda cu folderul vechi v19.
 
-FUNCȚII PĂSTRATE ȘI NOI
-- Devize bilingve RO/RU, catalog, categorii, grupe/subgrupe, totaluri și reordonare manuală din v18.
-- Reducerile sunt oprite implicit la crearea unui deviz nou. Activează butonul doar când dorești să aplici reduceri.
-- Backup complet în ZIP fără compresie (format ZIP standard), cu manifest și date JSON pe secțiuni.
-- Restaurare completă din ZIP-ul DevizPRO sau din backup JSON mai vechi compatibil.
-- Transfer total ori selectiv: toate datele, toate devizele, un grup/subgrup, un deviz, catalog/categorii sau setări.
-- Importul selectiv combină datele; nu șterge înregistrările neincluse în pachet. Pentru ID-uri care se ciocnesc, aplicația cere confirmare și păstrează versiunea cu actualizare mai nouă.
-- Copii locale în IndexedDB (până la 20), plus oglindire compatibilă a datelor existente din localStorage. Datele vechi nu sunt șterse în timpul migrării.
-- Backup automat local la intervalul ales cât timp aplicația este deschisă; browserul poate suspenda activitatea în fundal. Descarcă periodic și păstrează un ZIP extern.
-- Se solicită stocare persistentă browserului atunci când funcția este disponibilă.
+FIȘIERE
+- index.html — aplicația propriu-zisă.
+- manifest.webmanifest — numele și setările PWA.
+- service-worker.js — cache pentru încărcare offline după prima încărcare pe HTTPS/localhost.
+- icon-192.png și icon-512.png — iconurile aplicației.
 
-PUBLICARE GITHUB PAGES
-1. Deschide DevizPRO existent și descarcă backupul complet înainte de înlocuirea fișierelor.
-2. Descarcă și extrage DevizPRO_v18_PRO_MAX.zip.
-3. În repo-ul public devizpro, branch main, root (/), încarcă ÎNTREGUL conținut al folderului extras și confirmă înlocuirea fișierelor cu același nume. Nu șterge repo-ul și nu schimba setarea GitHub Pages.
-4. După publicare, închide complet aplicația instalată pe ecranul principal și redeschide-o. Dacă Safari păstrează versiunea veche, reîncarcă pagina; service worker-ul v18 elimină cache-urile DevizPRO vechi.
-5. Înainte de utilizarea de zi cu zi, testează backup ZIP, restaurare pe un dispozitiv de test și transfer selectiv.
+CUM O DESCHIZI
+1. Extrage arhiva ZIP completă.
+2. Pentru o verificare simplă, deschide index.html într-un browser modern. Unele funcții PWA/offline pot să nu fie disponibile prin deschiderea directă a fișierului.
+3. Pentru instalare ca aplicație și cache offline, publică ÎNTREGUL conținut al folderului pe o adresă HTTPS (de exemplu, proiectul GitHub Pages existent), fără să amesteci fișiere din arhive diferite.
+4. Pe iPhone/iPad deschide pagina în Safari; pe Android în Chrome; pe Windows într-un browser modern. Opțiunea de instalare diferă în funcție de browser și sistem.
+5. După actualizarea unei versiuni publicate, închide complet aplicația instalată și redeschide-o. Service worker-ul v21 folosește o cheie de cache nouă și curăță cache-urile DevizPRO mai vechi.
 
-COMPATIBILITATE ȘI LIMITE
-- Aplicația rămâne o aplicație web/PWA, nu o aplicație nativă. Este proiectată pentru Safari pe iPad/iPhone, Chrome pe Android și browsere moderne pe Windows.
-- Transferul între dispozitive se face prin fișier (Files/AirDrop/cablu/aplicația preferată); nu este necesar server propriu. Bluetooth direct universal nu este promis.
-- Datele aplicației sunt locale fiecărui browser/dispozitiv. GitHub Pages publică doar codul aplicației, nu sincronizează automat devizele utilizatorului.
-- Backupurile locale IndexedDB pot fi eliminate de browser/sistem; copia ZIP externă este cea mai sigură.
-- Testele automate de sintaxă și integritate trebuie completate cu teste reale în Safari, Android și Windows înainte de a considera versiunea verificată pe toate dispozitivele.
+IMPORTANT — DATELE ȘI BACKUPUL
+- Înainte de a înlocui o versiune pe care o folosești deja, deschide acea versiune și exportă un backup complet ZIP. Păstrează copia în Files/iCloud Drive sau în alt loc separat.
+- Datele existente sunt păstrate de browser în stocarea locală (localStorage/IndexedDB). Nu șterge datele site-ului și nu dezinstala versiunea veche înainte de a avea backup.
+- Aplicația nu sincronizează automat datele între iPad, telefon și PC. Pentru mutarea datelor folosește funcția de transfer/backup din aplicație.
+- GitHub Pages găzduiește codul aplicației, nu datele personale ale devizelor.
+- O copie ZIP externă este mai sigură decât să te bazezi numai pe stocarea locală a browserului.
 
+CE S-A SCHIMBAT ÎN V21
+- Numele folderului și metadatele aplicației au fost aliniate la v21 MULTIPLATFORM.
+- Regulile responsive sunt organizate explicit pentru telefoane compacte (până la 380 px), telefoane (381–650 px), tablete (651–1100 px) și desktop (peste 1100 px).
+- Pe ecrane mici, câmpurile și rândurile de lucrări se rearanjează în coloane mai înguste; tabelele și previzualizările pot derula orizontal în loc să împingă întreaga pagină în afara ecranului.
+- Sunt respectate zonele sigure ale ecranelor iPhone/iPad și setarea de accesibilitate pentru reducerea animațiilor.
+- Cache-ul PWA a fost actualizat pentru a solicita noua versiune a fișierelor.
+- Cheile locale de stocare ale datelor utilizatorului au fost păstrate pentru a evita schimbarea inutilă a spațiului de date.
 
-TRANSFER ZIP v18: DevizPRO can import ZIP archives created by DevizPRO even when the archive uses standard DEFLATE compression or has a top-level folder. On the receiving device, open Settings > Backup and restore > Transfer between devices, tap the ZIP/JSON import control, and select the single ZIP file received through Telegram/Files. Choose full restore (replace) or merge (add/update without deleting records absent from the archive).
-
-
-SALVARE RAPIDĂ ȘI PREȚURI INTELIGENTE (v18 actualizat)
-- La salvarea unui deviz nou, acesta se păstrează în evidență, formularul „Deviz nou” se golește automat, iar fereastra de finalizare oferă export Excel/Numbers sau PDF/imprimare. Fereastra poate fi închisă cu X sau „Gata”.
-- La salvarea modificărilor unui deviz deja existent, rămâne fluxul actual de editare; nu se deschide fereastra de finalizare pentru devize noi.
-- PDF/imprimarea din fereastra de finalizare este bilingvă indiferent de limba interfeței. Excel/Numbers include denumirile lucrărilor și antetele în română și rusă.
-- Modul implicit folosește prețul introdus manual cel mai des în devizele anterioare; dacă nu există istoric pentru o lucrare, propune media dintre minim și maxim.
-- „Resetare prețuri minime”, „Resetare prețuri medii” și „Resetare prețuri maxime” forțează modul ales. „Folosește prețurile des folosite” revine la prețurile învățate din istoric și NU șterge istoricul.
-- În catalog și în lista de adăugare a lucrărilor, sortarea implicită este „Cele mai des folosite”, calculată după numărul de devize salvate în care apare fiecare lucrare, nu după cât de recent a fost folosită. Se poate schimba în „Număr de ordine”, „După categorii” sau „După nume”.
-- Interfața pentru noile controale și fereastra de finalizare respectă limba selectată RO/RU.
-
-FUNCȚII PĂSTRATE v18 — BUTOANE RAPIDE DE PREȚ
-În „Lucrări selectate” din „Deviz nou” există patru butoane: MINIM, MEDIU, MAXIM și DES FOLOSIT. Fiecare aplică imediat modul de preț tuturor lucrărilor selectate. DES FOLOSIT folosește istoricul învățat; lucrările fără istoric folosesc media minim–maxim. Butonul ales devine și modul implicit pentru lucrările adăugate ulterior.
-
-
-ACTUALIZARE v18 — ORDINE MENIU
-- Panou principal, Deviz nou, Evidență, Grupe, Catalog lucrări, Categorii, Setări.
-- Modificarea de meniu nu schimbă logica devizelor, a grupelor, a catalogului sau a exporturilor.
-
-
-VERSIUNEA 19 — EASY MODE
-- Navigare doar cu iconuri, fără etichete text permanente.
-- Secțiunea activă este accentuată prin mărire ușoară și umbră.
-- Navigare între pagini prin swipe orizontal pe ecran, în afara câmpurilor și controalelor interactive.
-- La adăugarea unei lucrări, cardul are o animație scurtă, contorul pulsează și apare o confirmare vizibilă.
-- Animațiile respectă setarea de accesibilitate „Reduce Motion”.
+LIMITĂRI ȘI VERIFICARE
+- Aceasta rămâne o aplicație web/PWA, nu o aplicație nativă separată pentru fiecare sistem.
+- Testele efectuate la livrare: verificarea integrității ZIP, verificarea sintaxei JavaScript inline și verificarea fișierelor de configurare.
+- Nu pretindem testare completă pe dispozitive fizice. Înainte de folosirea zilnică, verifică pe dispozitivul tău: creare/salvare deviz, schimbare RO/RU, export PDF/imprimare, backup ZIP și restaurare pe o copie de test.
+- Dacă datele vechi nu apar după publicare, nu reseta aplicația. Deschide versiunea veche și exportă backupul; apoi folosește funcția de restaurare/transfer.

@@ -1,0 +1,5 @@
+DevizPRO v21 MULTIPLATFORM
+
+Scop: clarificarea pachetului și întărirea aranjării responsive, păstrând funcțiile existente și cheile locale de date.
+
+Păstrează backup ZIP extern înainte de actualizare. Aplicația nu sincronizează automat datele între dispozitive.

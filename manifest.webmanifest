@@ -1,11 +1,11 @@
 {
-  "name": "DevizPRO v19 PRO MAX — Easy Mode",
-  "short_name": "DevizPRO v19",
+  "name": "DevizPRO v21 Multiplatform",
+  "short_name": "DevizPRO",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#f3f6f9",
   "theme_color": "#167347",
-  "description": "Devize RO/RU offline, navigare cu iconuri și swipe, animații rapide la adăugarea lucrărilor, grupe, prețuri inteligente și backup ZIP."
+  "description": "Devize de construcții RO/RU, aplicație web adaptivă pentru telefoane, tablete și PC, cu funcționare offline și transfer prin backup."
 }
