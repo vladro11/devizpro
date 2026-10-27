@@ -1,48 +1,27 @@
-DEVIZPRO v21 MULTIPLATFORM — EASY MODE
-Versiune web/PWA adaptivă pentru telefon, tabletă și PC
+DEVIZPRO V23
+Aplicație web/PWA adaptivă pentru telefon, tabletă și PC. Numele afișat în aplicație și la instalare este simplu: DevizPRO.
 
-CE ESTE ACEASTĂ VERSIUNE
-- Păstrează aplicația DevizPRO existentă și funcțiile sale; nu este o rescriere de la zero.
-- Adaugă/reglează comportamentul vizual pentru ecrane înguste, tablete și ecrane desktop.
-- Include căutarea globală din versiunea anterioară, interfața RO/RU și sistemele existente de catalog, devize, evidență, backup/restore și export.
-- Folderul acestei arhive se numește explicit DevizPRO_v21_MULTIPLATFORM, pentru a nu-l confunda cu folderul vechi v19.
+CE S-A SCHIMBAT
+- Pornită din versiunea V21 MULTIPLATFORM pentru a păstra structura și funcțiile existente.
+- Eliminat butonul plutitor și fereastra pop-up ChatGPT; eliminat și cardul Asistent ChatGPT din Setări.
+- Adăugată în Setări o bară de căutare lată, fixată sus, care filtrează cardurile de setări.
+- Iconurile de navigare sunt minimaliste, monocrome și centrate.
+- Actualizat numele aplicației/manifestului la DevizPRO și cache-ul PWA la V23.
 
 FIȘIERE
-- index.html — aplicația propriu-zisă.
-- manifest.webmanifest — numele și setările PWA.
-- service-worker.js — cache pentru încărcare offline după prima încărcare pe HTTPS/localhost.
+- index.html — aplicația.
+- manifest.webmanifest — numele și setările instalării.
+- service-worker.js — cache offline după prima încărcare pe HTTPS/localhost.
 - icon-192.png și icon-512.png — iconurile aplicației.
 
-CUM O DESCHIZI
-1. Extrage arhiva ZIP completă.
-2. Pentru o verificare simplă, deschide index.html într-un browser modern. Unele funcții PWA/offline pot să nu fie disponibile prin deschiderea directă a fișierului.
-3. Pentru instalare ca aplicație și cache offline, publică ÎNTREGUL conținut al folderului pe o adresă HTTPS (de exemplu, proiectul GitHub Pages existent), fără să amesteci fișiere din arhive diferite.
-4. Pe iPhone/iPad deschide pagina în Safari; pe Android în Chrome; pe Windows într-un browser modern. Opțiunea de instalare diferă în funcție de browser și sistem.
-5. După actualizarea unei versiuni publicate, închide complet aplicația instalată și redeschide-o. Service worker-ul v21 folosește o cheie de cache nouă și curăță cache-urile DevizPRO mai vechi.
+INSTALARE
+1. Extrage arhiva completă.
+2. Deschide index.html pentru o verificare simplă; unele funcții PWA/offline cer HTTPS sau localhost.
+3. Pentru instalare și cache offline, publică toate fișierele împreună pe HTTPS.
+4. Pe iPhone/iPad folosește Safari, pe Android Chrome, iar pe Windows un browser modern.
+5. După actualizarea unei instalări existente, închide complet aplicația și redeschide-o. Cache-ul nou se numește devizpro-v23-cache1.
 
-IMPORTANT — DATELE ȘI BACKUPUL
-- Înainte de a înlocui o versiune pe care o folosești deja, deschide acea versiune și exportă un backup complet ZIP. Păstrează copia în Files/iCloud Drive sau în alt loc separat.
-- Datele existente sunt păstrate de browser în stocarea locală (localStorage/IndexedDB). Nu șterge datele site-ului și nu dezinstala versiunea veche înainte de a avea backup.
-- Aplicația nu sincronizează automat datele între iPad, telefon și PC. Pentru mutarea datelor folosește funcția de transfer/backup din aplicație.
-- GitHub Pages găzduiește codul aplicației, nu datele personale ale devizelor.
-- O copie ZIP externă este mai sigură decât să te bazezi numai pe stocarea locală a browserului.
-
-CE S-A SCHIMBAT ÎN V21
-- Numele folderului și metadatele aplicației au fost aliniate la v21 MULTIPLATFORM.
-- Regulile responsive sunt organizate explicit pentru telefoane compacte (până la 380 px), telefoane (381–650 px), tablete (651–1100 px) și desktop (peste 1100 px).
-- Pe ecrane mici, câmpurile și rândurile de lucrări se rearanjează în coloane mai înguste; tabelele și previzualizările pot derula orizontal în loc să împingă întreaga pagină în afara ecranului.
-- Sunt respectate zonele sigure ale ecranelor iPhone/iPad și setarea de accesibilitate pentru reducerea animațiilor.
-- Cache-ul PWA a fost actualizat pentru a solicita noua versiune a fișierelor.
-- Cheile locale de stocare ale datelor utilizatorului au fost păstrate pentru a evita schimbarea inutilă a spațiului de date.
-
-LIMITĂRI ȘI VERIFICARE
-- Aceasta rămâne o aplicație web/PWA, nu o aplicație nativă separată pentru fiecare sistem.
-- Testele efectuate la livrare: verificarea integrității ZIP, verificarea sintaxei JavaScript inline și verificarea fișierelor de configurare.
-- Nu pretindem testare completă pe dispozitive fizice. Înainte de folosirea zilnică, verifică pe dispozitivul tău: creare/salvare deviz, schimbare RO/RU, export PDF/imprimare, backup ZIP și restaurare pe o copie de test.
-- Dacă datele vechi nu apar după publicare, nu reseta aplicația. Deschide versiunea veche și exportă backupul; apoi folosește funcția de restaurare/transfer.
-
-
-VERSIUNEA 22 — FĂRĂ POP-UP INFERIOR
-- Eliminat butonul plutitor ChatGPT și fereastra pop-up din partea de jos a aplicației.
-- Căutarea globală și celelalte funcții DevizPRO sunt păstrate.
-- După actualizare, închide complet aplicația instalată și redeschide-o pentru a încărca noua versiune.
+DATE ȘI BACKUP
+- Înainte de înlocuire, exportă un backup complet din aplicația veche și păstrează-l separat.
+- Datele sunt păstrate local în browser; instalarea pe alt dispozitiv nu le sincronizează automat.
+- Nu șterge datele site-ului și nu dezinstala versiunea veche până nu verifici backupul.

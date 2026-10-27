@@ -1,4 +1,6 @@
-DevizPRO v22 MULTIPLATFORM — FĂRĂ POP-UP INFERIOR
+DevizPRO V23
 
-Eliminat: butonul plutitor ChatGPT și fereastra pop-up din partea de jos a aplicației.
-Păstrate: căutarea globală și celelalte funcții existente.
+Bază: DevizPRO V21 MULTIPLATFORM.
+Modificări V23: eliminat popup-ul ChatGPT și cardul Asistent ChatGPT din Setări; adăugată căutare fixă, lată în Setări; iconuri de navigare minimaliste monocrome; numele afișat în aplicație este doar DevizPRO.
+
+Păstrează backup extern înainte de înlocuire. Datele nu se sincronizează automat între dispozitive.

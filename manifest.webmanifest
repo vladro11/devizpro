@@ -1,5 +1,5 @@
 {
-  "name": "DevizPRO v22 Multiplatform",
+  "name": "DevizPRO",
   "short_name": "DevizPRO",
   "start_url": "./index.html",
   "scope": "./",
@@ -7,5 +7,5 @@
   "orientation": "any",
   "background_color": "#f3f6f9",
   "theme_color": "#167347",
-  "description": "Devize de construcții RO/RU, aplicație web adaptivă pentru telefoane, tablete și PC, cu funcționare offline și transfer prin backup."
+  "description": "Devize de construcții în română și rusă, cu funcționare offline."
 }
