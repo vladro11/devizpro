@@ -18,3 +18,13 @@ Modificări V31
 Notă de testare
 - Arhiva și sintaxa JavaScript sunt verificate automat.
 - Nu s-a pretins testare completă pe un iPad fizic; verifică interacțiunile în aplicația ta după import și păstrează backupul V30.
+
+
+Actualizare corectivă V31 Fix 1
+- Reparată integrarea codului de interfață fără a întrerupe scriptul principal.
+- Bonuri și Plăți și Procese-verbale se reconstruiesc la schimbarea limbii RO/RU.
+- Adăugat mesaj vizibil la apăsarea pictogramelor din meniul superior.
+- Bifa pentru emiterea bonului este compactă și verde când este selectată.
+- Eliminată pictograma redundantă de editare a bonului; acțiunea Corectare rămâne, iar ștergerea este la capăt și roșie.
+- Pictograme SVG clare pentru acțiunile proceselor-verbale și stiluri consistente pentru acțiunile din Evidență.
+- Cache-ul offline a fost versionat separat pentru a evita încărcarea fișierelor vechi.
