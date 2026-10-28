@@ -40,3 +40,12 @@ VERSIUNEA V33 — 28.10.2026
 - Ștergere locație separat sau împreună cu lucrările ei.
 - Fereastra de după salvare simplificată pentru export PDF/imprimare și închidere reparată.
 - Numele aplicației rămâne DevizPRO.
+
+
+VERSIUNEA V34 — 28.10.2026
+- Reparat calculul vizibil pe fiecare lucrare: totalul net, baza fără reducere și economia se actualizează din valorile recalculate, nu din câmpuri vechi/nepopulate ale liniei.
+- La schimbarea prețului unitar, cantității sau reducerii, totalurile liniei, rezumatul devizului și previzualizarea PDF folosesc același calcul.
+- Subtotalurile locațiilor respectă aceeași limită de reducere de maximum 100% ca totalul devizului.
+- Incrementată versiunea cache-ului offline la V34.
+
+Verificare tehnică V34: sintaxa JavaScript verificată cu Node.js. Nu s-a pretins testare completă pe iPad fizic.
