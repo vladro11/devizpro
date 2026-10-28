@@ -31,3 +31,12 @@ Modificări de remediere V32 (27.10.2026)
 8. Cache-ul service worker a fost incrementat la v32 pentru a preveni încărcarea versiunii anterioare.
 
 Verificare tehnică: toate blocurile JavaScript din index.html trec verificarea sintaxei Node.js. Interacțiunile trebuie verificate în browserul țintă după instalare.
+
+
+VERSIUNEA V33 — 28.10.2026
+- Locații/grupări în deviz, cu denumire editabilă și subtotal separat la export.
+- Reordonarea lucrărilor și locațiilor prin tragere sau săgeți sus/jos.
+- Ascundere/reactivare lucrări și locații; elementele ascunse nu intră în total sau PDF/imprimare.
+- Ștergere locație separat sau împreună cu lucrările ei.
+- Fereastra de după salvare simplificată pentru export PDF/imprimare și închidere reparată.
+- Numele aplicației rămâne DevizPRO.
