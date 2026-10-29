@@ -49,3 +49,14 @@ VERSIUNEA V34 — 28.10.2026
 - Incrementată versiunea cache-ului offline la V34.
 
 Verificare tehnică V34: sintaxa JavaScript verificată cu Node.js. Nu s-a pretins testare completă pe iPad fizic.
+
+
+DEVIZPRO V35 - module incrementale
+- Remediere vizibilitate buton Gata/Inchide din fereastra de confirmare a devizului.
+- Meniu Clienți: registru local, fișă client, devize și plăți asociate după nume/telefon.
+- Calendar: programări, remindere configurabile, amânare/reprogramare cu istoric și listă fără dată.
+- Finanțe: cheltuieli locale și estimare orientativă; nu înlocuiește contabilitatea.
+- Materiale: listă locală cu cantitate, preț și rezervă ajustabilă.
+- Datele noi sunt stocate în localStorage sub dp_clients, dp_appointments, dp_expenses și dp_materials; datele vechi de deviz nu sunt rescrise.
+- Notificările browserului depind de suport și permisiuni; verifică pe iPad, notificările în fundal nu sunt garantate.
+- Înainte de actualizare, exportă un backup JSON/ZIP și testează restaurarea.
