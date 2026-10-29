@@ -60,3 +60,8 @@ DEVIZPRO V35 - module incrementale
 - Datele noi sunt stocate în localStorage sub dp_clients, dp_appointments, dp_expenses și dp_materials; datele vechi de deviz nu sunt rescrise.
 - Notificările browserului depind de suport și permisiuni; verifică pe iPad, notificările în fundal nu sunt garantate.
 - Înainte de actualizare, exportă un backup JSON/ZIP și testează restaurarea.
+
+
+PATCH V35.1 (29.10.2026)
+- Corectată identificarea cache-ului offline: V35 folosește acum un nume nou de cache, astfel încât service worker-ul să poată încărca index.html actualizat.
+- Înainte de import, păstrează un backup al datelor locale. După import, închide complet aplicația și redeschide-o.
