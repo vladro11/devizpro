@@ -1,3 +1,15 @@
+DevizPRO V36 — navigare compactă și releveu incremental peste V35.1
+
+Modificări V36 (build de test)
+1. Bara principală are doar patru destinații: Principală, Măsurători, Deviz Nou și Mai multe.
+2. Modulele existente sunt accesibile din Mai multe, grupate pe categorii extensibile, cu căutare RO/RU și ultimele trei accesări. Modulele și datele existente au fost păstrate.
+3. Adăugat modul Măsurători / Releveu: fișe locale cu client, adresă, denumire, încăperi și elemente (podea, perete, tavan, volum), salvare/deschidere/ștergere.
+4. Modulul afișează suprafața exactă și suprafața de lucru rotunjită individual per element: fracția sub 0,4 în jos, de la 0,4 în sus. Totalul de lucru însumează valorile individual rotunjite.
+5. Releveele sunt incluse în backupul complet și în restaurare.
+6. Actualizat cache-ul offline pentru încărcarea versiunii V36.
+
+Limitări ale acestui build de test: nu include încă scăderea individuală a ușilor/ferestrelor, atașamente foto, grupuri reutilizabile legate de mai multe lucrări sau transferul automat al cantităților în Deviz Nou. Acestea rămân pentru următoarea etapă. Nu s-a pretins testare pe un iPad fizic.
+
 DevizPRO V31 — remedieri incrementale peste V30
 
 IMPORTANT
