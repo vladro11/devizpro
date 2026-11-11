@@ -553,6 +553,14 @@ function printLedgerQuote(id){const q=quotes.find(x=>x.id===id);if(!q){alert(t('
 
 
 
+
+
+</body></html>`);w.document.close()}
+function downloadBlob(data,name,type){const b=new Blob([data],{type}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},2500)}
+function printQuote(){const oldPrintLanguage=settings.printLanguage,oldTitle=document.title;settings.printLanguage='both';const quoteName=String($('quoteName')?.value||$('client')?.value||'DevizPRO').trim().replace(/[\\/:*?"<>|]+/g,'-');document.title=quoteName||'DevizPRO';renderPreview();const restore=()=>{document.title=oldTitle;settings.printLanguage=oldPrintLanguage;renderPreview();window.removeEventListener('afterprint',restore)};window.addEventListener('afterprint',restore);window.print();setTimeout(()=>{if(document.title!=='DevizPRO')restore()},1200)}
+init();
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
+</script>
 <style id="dpV38Styles">
 #nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;justify-content:stretch;padding:7px 2px 9px}
 #nav button{max-width:none!important;min-width:0!important;height:64px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:5px 3px!important;border-radius:13px}
@@ -767,13 +775,7 @@ function setupSettingsButtons(){const editor=$('dpMeasureTypeEditor');if(editor&
 const mo=new MutationObserver(setupSettingsButtons);mo.observe($('dpMeasureSettingsLayer'),{childList:true,subtree:true});
 })();
 </script>
-
-</body></html>`);w.document.close()}
-function downloadBlob(data,name,type){const b=new Blob([data],{type}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},2500)}
-function printQuote(){const oldPrintLanguage=settings.printLanguage,oldTitle=document.title;settings.printLanguage='both';const quoteName=String($('quoteName')?.value||$('client')?.value||'DevizPRO').trim().replace(/[\\/:*?"<>|]+/g,'-');document.title=quoteName||'DevizPRO';renderPreview();const restore=()=>{document.title=oldTitle;settings.printLanguage=oldPrintLanguage;renderPreview();window.removeEventListener('afterprint',restore)};window.addEventListener('afterprint',restore);window.print();setTimeout(()=>{if(document.title!=='DevizPRO')restore()},1200)}
-init();
-if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
-</script><style>
+<style>
 #dpGlobalSearchFab{position:fixed;right:16px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:9998;width:54px;height:54px;border-radius:50%;box-shadow:0 5px 18px #10283a35;font-size:22px;display:flex;align-items:center;justify-content:center}
 #dpSearchLayer{position:fixed;inset:0;z-index:9999;background:#0f172a66;display:none;align-items:flex-start;justify-content:center;padding:calc(14px + env(safe-area-inset-top)) 12px 16px}
 #dpSearchLayer.open{display:flex}

@@ -1,20 +1,27 @@
-DEVIZPRO V38 — build incremental peste V35.1
+DEVIZPRO V39 — V38 RUNTIME FIX
 
-Baza: DevizPRO V35.1 Cache Fix. V36 si V37 nu sunt folosite ca baza deoarece modificarile lor nu au fost validate ca build stabil.
+Baza: arhiva DevizPRO V38 furnizată pentru reparație.
 
-Modificari V38:
-1. Bara principala cu patru destinatii si pictograme SVG profesionale, plus etichete vizibile: Principala, Deviz Nou, Masuratori, Mai multe.
-2. Meniul Mai multe reorganizat in categorii functionale cu acces direct printr-o singura apasare: Documente si evidenta; Clienti si programari; Lucrari si materiale; Finante; Instrumente si administrare.
-3. Evidenta pe zone: Ciocana, Buiucani, Botanica, Riscani, Centru, Telecentru, Codru, Durlești, Sîngera, Stăuceni, Cricova, Trușeni si zone personalizate. Detectarea dupa adresa este orientativa; zona poate fi modificata manual in fisa masuratorii.
-4. Modul Masuratori: relevee locale, incaperi, obiecte, tipuri standard si personalizate, configurarea campurilor dimensionale, calcul automat m.l./m2/m3, unitate manuala, selectare pentru transfer si transfer in Deviz Nou cu cantitatea calculata.
-5. Setari Masuratori: editare tipuri standard si personalizate, creare tip permanent sau temporar pentru releveul curent, campuri dimensionale selectabile, unitate, pictograma si stergere tip personalizat.
-6. Selector offline cu 1364 combinatii de pictograme tematice pentru constructii, instalatii, mobilier si obiecte casnice. Acestea sunt combinatii generate din simboluri tematice si variante vizuale, nu desene individuale unice.
-7. Suport pentru marcarea elementelor deductibile; totalurile pe unitati tin cont de elementele marcate ca scaderi.
-8. Datele masuratorilor, tipurilor si zonelor personalizate incluse in backupul complet si restaurare.
-9. Paginile existente V35.1 raman disponibile din Mai multe: clienti, calendar, finante, materiale, catalog, bonuri/plati, procese-verbale, setari, grupe si evidenta.
+REMEDIERE CRITICĂ V39
+- Corectată poziționarea modulului V38: stilurile și logica pentru navigație, meniul „Mai multe”, evidența pe zone și măsurători erau introduse accidental în șablonul HTML al ferestrei de imprimare a unui deviz, nu în documentul aplicației.
+- Din cauza acestei inserări, scriptul principal devenea invalid și funcțiile noi nu se executau. Modulul a fost mutat în documentul principal, în afara șablonului de imprimare.
+- Verificate sintactic toate cele 8 blocuri JavaScript extrase din documentul HTML cu Node.js.
+- Actualizat cache-ul service worker la V39 pentru a evita reutilizarea fișierelor V38 defecte.
 
-IMPORTANT:
-- Exporta un backup complet inainte de actualizare si pastreaza separat arhiva V35.1.
-- V38 este build de dezvoltare. Sintaxa scriptului nou si integritatea ZIP au fost verificate; nu a fost testata pe dispozitive fizice iPad/Android/Windows/macOS.
-- Nu sterge datele browserului si nu dezinstala aplicatia inainte de backup.
-- Dupa import, inchide complet aplicatia si redeschide-o pentru actualizarea cache-ului offline.
+FUNCȚII PĂSTRATE DIN V38
+1. Bară principală cu patru destinații: Principala, Deviz Nou, Măsurători și Mai multe, cu pictograme SVG și etichete.
+2. Meniul Mai multe reorganizat în categorii: Documente și evidență; Clienți și programări; Lucrări și materiale; Finanțe; Instrumente și administrare.
+3. Evidență pe zone: Ciocana, Buiucani, Botanica, Rîșcani, Centru, Telecentru, Codru, Durlești, Sîngera, Stăuceni, Cricova, Trușeni și zone personalizate; zona poate fi corectată manual.
+4. Modul Măsurători: relevee, încăperi, elemente/obiecte, tipuri standard și personalizate, câmpuri dimensionale configurabile, calcul automat m.l./m²/m³, unitate manuală și selectare pentru transfer în Deviz Nou.
+5. Setări Măsurători: creare și editare tipuri, tipuri permanente sau temporare, configurarea câmpurilor, unități și pictograme.
+6. Selector offline cu combinații tematice de pictograme pentru construcții, instalații, mobilier și obiecte casnice.
+7. Marcarea elementelor deductibile și scăderea lor din totalurile calculate pe unități.
+8. Backup/restaurare extinsă pentru măsurători, tipuri de măsurători și zone personalizate.
+9. Modulele moștenite din baza V35.1/V38 rămân incluse: clienți, calendar, finanțe, materiale, catalog, bonuri/plăți, procese-verbale, setări, grupe și evidență.
+
+VERIFICĂRI ȘI LIMITĂRI
+- Integritatea arhivei ZIP: verificată.
+- Sintaxa tuturor blocurilor JavaScript inline: verificată.
+- Nu a fost posibilă certificarea tuturor fluxurilor pe iPad fizic și nu se poate promite funcționare 100% fără testare pe dispozitiv și cu datele reale.
+- Înainte de instalare, exportă backupul complet din versiunea care conține datele tale și păstrează V38 separat. Nu șterge datele site-ului/browserului.
+- După înlocuire, închide complet aplicația și redeschide-o. Dacă versiunea veche rămâne în cache, reîncarcă aplicația după ce ai confirmat backupul.
