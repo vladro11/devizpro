@@ -1,31 +1,40 @@
-DEVIZPRO V40 — MENIU DIRECT ȘI INTERFAȚĂ COMPACTĂ
+DEVIZPRO V41 — ACTUALIZARE FUNCȚIONALĂ PE BAZA V40
 
-BAZĂ
-DevizPRO V39 Fix. Structura offline și modulele existente au fost păstrate.
+BAZĂ ȘI PĂSTRAREA DATELOR
+- V41 pornește din arhiva V40 primită; aplicația nu a fost reconstruită de la zero.
+- Cheile de stocare locală existente sunt păstrate. Nu există o comandă de ștergere a datelor locale.
+- Service Worker folosește un cache nou V41. La activare, cache-urile vechi DevizPRO sunt înlocuite; datele din localStorage/IndexedDB nu sunt șterse de această operație.
+- Păstrează separat arhiva V40 și exportă un backup local din fiecare dispozitiv înainte de publicare.
 
-MODIFICĂRI IMPLEMENTATE ÎN ACEST PACHET
-1. Bara principală are exact patru destinații: Principală, Deviz nou, Măsurători și Mai multe.
-2. Bonurile și procesele-verbale nu mai sunt injectate în bara principală; se deschid direct din Mai multe.
-3. Mai multe afișează 12 intrări directe, grupate numai prin subtitluri descriptive. Fiecare modul se deschide printr-o singură apăsare.
-4. Pictograme vectoriale dedicate și carduri mai mari; grilă adaptivă pentru telefon, tabletă și desktop.
-5. „Releveu nou” a devenit „Măsurătoare nouă”.
-6. A fost eliminată injectarea duplicată a butonului „Tip nou”.
-7. Ștergerea tipurilor de măsurătoare este disponibilă inclusiv pentru tipurile standard; datele măsurătorilor deja salvate nu sunt șterse.
-8. Controalele de selectare și deducere din lista măsurătorilor au fost compactate vizual.
-9. Cache-ul service worker a fost incrementat la V40.
+MODIFICĂRI V41 IMPLEMENTATE
+1. În Măsurători, transferul direct în deviz a fost înlocuit cu „Deviz nou cu această măsurătoare”.
+2. În Deviz nou există selectorul de măsurătoare, implicit „Nici-o măsurătoare”, cu cele mai recente primele. Asocierea se salvează în deviz, dar nu este inclusă în PDF/export.
+3. Lângă cantitatea fiecărei lucrări există rigla. Lista este organizată pe încăperi: grupurile MERGE apar primele, apoi componentele individuale și obiectele independente. Obiectele aflate în Clipping nu apar separat.
+4. MERGE permite unirea a cel puțin două obiecte compatibile ca unitate. Grupul afișează denumirea, numărul componentelor și totalul; componentele rămân vizibile, editabile și selectabile separat în rigla Devizului.
+5. MINUS / Clipping atașează obiectul dedus la obiectul principal. Obiectul dedus nu este oferit separat în rigla Devizului; cât timp este în Clipping, are numai modificarea dimensiunilor prin creion și revenirea din MINUS. La mutare, obiectul dedus rămâne atașat de obiectul principal.
+6. Deducerea verifică unitatea calculată după numărul de dimensiuni: o dimensiune = m.l.; două = m²; trei sau mai multe = m³. Unitățile incompatibile sunt respinse cu mesaj localizat RO/RU. Deducerile nu pot depăși suprafața rămasă a obiectului principal.
+7. Pentru încăperi, obiecte și grupuri de măsurători există mutare prin apăsare lungă și tragere; componentele Clipping nu se pot muta independent.
+8. Pentru încăperi și obiecte/tipuri există acțiuni Cameră și Galerie; fotografiile sunt redimensionate/comprimate și stocate în înregistrarea măsurătorii.
+9. Pictograma Obiect/Tip deschide direct selectorul de pictograme, iar butonul separat de pictogramă este eliminat din interfața măsurătorilor.
+10. Evidența pe zone include redenumire, sortare alfabetică/după numărul de devize, ștergere cu transfer obligatoriu al conținutului și transfer multiplu de devize.
+11. Controalele checkbox sunt compacte; Reminderele sunt afișate ca opțiuni compacte.
+12. Drag & Drop prin apăsare lungă este disponibil pentru rândurile de lucrări, grupele/subgrupele și devizele din grupe, precum și pentru zone.
+13. Textele și mesajele noi sunt localizate în română/rusă prin mecanismul de limbă existent. A fost corectată și referința lipsă la elementul `subtitle` care bloca schimbarea limbii în V40.
 
-MODULE PĂSTRATE DIN V39
-Devize, catalog, categorii, grupe, clienți, calendar, finanțe, materiale, bonuri/plăți, procese-verbale, evidență, zone, măsurători, setări și backup/restaurare existente.
+VERIFICĂRI EFECTUATE ÎN MEDIUL DE CONSTRUIRE
+- Sintaxa tuturor blocurilor JavaScript inline și a service-worker.js a fost verificată cu Node.js.
+- Structura HTML a fost parsată; nu au fost găsite ID-uri duplicate în document.
+- Test UI Chromium/Playwright cu un adaptor de stocare temporar în memorie: aplicația se încarcă; navigarea funcționează; schimbarea limbii RO/RU funcționează; selectorul de măsurători se populează; se pot crea încăperi și obiecte; MERGE a calculat 20,00 m² pentru 4 pereți; Clipping a atașat o componentă și a recalculat grupul la 14,00 m²; rigla a afișat grupul și componentele; lista zonelor s-a randat; importul unei imagini de test a produs o miniatură fără erori JavaScript.
+- Aceste teste cu stocare temporară nu certifică limitele reale de localStorage ale fiecărui browser și nu înlocuiesc testarea cu datele reale ale utilizatorului.
 
-IMPORTANT — SPECIFICAȚIA COMPLETĂ V40 NU ESTE ÎNCĂ INTEGRAL IMPLEMENTATĂ
-Acest pachet este o etapă de lucru V40, nu o certificare finală a tuturor cerințelor aprobate. Funcțiile care necesită implementare separată includ: grupuri de măsurători și clipping cu alegerea suprafeței țintă; selector de măsurători în câmpul cantitate al devizului; fluxul „Salvează și creează nou / Creează fără salvare / Anulează”; editarea și mutarea înregistrărilor între zone; atașamente foto multiple la finanțe și materiale; administrarea și îmbinarea grupurilor de materiale; căutarea rapidă a devizului în selectorul materialelor; redesign complet al tuturor checkbox-urilor și localizare rusă exhaustivă. Acestea nu sunt declarate finalizate în acest pachet.
+LIMITĂRI / TESTARE PE DISPOZITIVE
+- Nu a fost posibilă testarea fizică pe Android, iPhone, iPad sau Windows în această sesiune.
+- Camera, galeria, permisiunile browserului, persistența fotografiilor, stocarea locală și gesturile de tragere trebuie probate pe dispozitive reale. Comportamentul camerei depinde de browser și de permisiunile acordate.
+- Prin urmare, arhiva este o versiune V41 de testare, nu o certificare că totul este „perfect” pe toate dispozitivele.
 
-VERIFICĂRI EFECTUATE
-- Integritatea ZIP verificată.
-- Sintaxa tuturor celor 8 blocuri JavaScript inline verificată cu Node.js.
-- Test browser automat: bara de navigare are exact 4 destinații; „Mai multe” afișează 12 module; modulul Finanțe se deschide direct; navigarea rămâne la 4 destinații.
-- Testul browser fără origine HTTP locală raportează erori de acces localStorage din cauza documentului sandbox; acestea nu sunt folosite ca dovadă de defect al aplicației și nu permit certificarea completă a persistenței.
-- Nu a fost testată interacțiunea pe iPad fizic și cu date reale.
-
-SIGURANȚA DATELOR
-Înainte de instalare, exportă și păstrează un backup complet din versiunea care conține datele reale. Nu șterge datele site-ului/browserului. Păstrează separat V39.
+INSTALARE
+1. Exportă backup din V40 pe fiecare dispozitiv și păstrează ZIP-ul V40.
+2. Înlocuiește fișierele din repository cu conținutul arhivei V41; nu șterge datele site-ului/browserului.
+3. Deschide aplicația cu internet o singură dată pentru a descărca noul cache V41, apoi verifică funcționarea offline.
+4. Dacă dispozitivul păstrează temporar interfața veche, închide complet aplicația/browserul și redeschide site-ul; nu șterge stocarea locală.
+5. Testează întâi pe o copie a datelor. Păstrează backup-ul V40 până când confirmi că V41 funcționează corect pe fiecare dispozitiv.
