@@ -1,0 +1,45 @@
+{
+  "project": "DevizPRO",
+  "release_version": "45",
+  "release_date": "2026-11-12",
+  "release_status": "documentation-only-bilingual-update; application remains V45",
+  "base_archive": "DevizPRO_V44_PRO.zip",
+  "base_code_lineage": "V44 restored from V42; V45 preserves V44 application code except public version labels and service-worker cache identifier",
+  "user_confirmed_stable_version": null,
+  "application_version_label": 45,
+  "service_worker_cache": "devizpro-static-cache-v45-release-20261112",
+  "measurements_status": "inherited from V42/V44; not physically tested by assistant on device in this release",
+  "compact_measurement_cards": "NOT IMPLEMENTED",
+  "cross_device_move_redesign": "NOT IMPLEMENTED",
+  "advanced_photo_editor": "NOT IMPLEMENTED",
+  "minus_clipping_dialog_redesign": "NOT IMPLEMENTED",
+  "new_object_grouping_flow": "NOT IMPLEMENTED",
+  "duplicate_inactive_minus_icon": "V44 documents CSS removal; verify visually on device",
+  "documentation_system": "IMPLEMENTED IN ARCHIVE",
+  "chat_log_scope": "current accessible conversation and previously documented project context; not a complete export of inaccessible chats",
+  "automated_checks": {
+    "inline_javascript_syntax": "PASS — 10/10 inline script blocks passed node --check",
+    "html_parse": "NOT RUN as browser runtime test; source markup inspected",
+    "duplicate_ids": "PASS for static DOM; six IDs occur in dynamic templates that render the type editor one at a time",
+    "service_worker_assets": "PASS — all listed static assets exist",
+    "version_consistency": "PASS — meta/title/header/README/cache set to V45",
+    "zip_integrity": "PASS — verified with unzip -t"
+  },
+  "device_tests": {
+    "ipad": "NOT TESTED",
+    "iphone_android_phone": "NOT TESTED",
+    "windows_desktop": "NOT TESTED"
+  },
+  "next_priority": [
+    "User installs V45 and confirms application opens and Measurements module works",
+    "Test V44/V45 inherited Measurements flows before UI redesign",
+    "Implement compact object cards and cross-device MOVE",
+    "Implement photo viewer/editor and safe copy workflow",
+    "Implement MINUS/clipping editing and restoration UX",
+    "Implement named object grouping and Deviz integration"
+  ],
+  "documentation_language": "Romanian and English / Română și engleză",
+  "documentation_update": "V45 bilingual documentation update / Actualizare bilingvă documentație V45",
+  "word_reference": "DevizPRO_AI_CORE_BILINGUAL.docx",
+  "application_code_changed_by_bilingual_update": false
+}
