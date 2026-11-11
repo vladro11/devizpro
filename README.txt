@@ -1,3 +1,14 @@
+DEVIZPRO V43 PRO
+
+Modul Măsurători – actualizare V43:
+- carduri de obiect compacte și responsive pentru telefon/tabletă/desktop;
+- activare drag-and-drop pe obiecte după 320 ms, cu gesturi touch;
+- editor foto pe tot ecranul: desen, marker, text, culori, grosime, undo/redo, navigare prin swipe, descărcare și salvare copie în obiect;
+- dialog dedicat pentru editarea dimensiunilor obiectelor scăzute prin MINUS;
+- fluxul existent de grupare a obiectelor este etichetat mai clar și păstrat compatibil cu lista de măsurători din Deviz nou.
+
+Compatibilitatea cu structura de date V42 este păstrată. Recomandat: exportă un backup înainte de prima utilizare a V43.
+
 DEVIZPRO V42 — CORECȚIE DE INTEGRARE PE BAZA V41 / V40
 
 BAZĂ ȘI PĂSTRAREA DATELOR
