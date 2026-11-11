@@ -1,79 +1,28 @@
-DevizPRO V36 — navigare compactă și releveu incremental peste V35.1
+DEVIZPRO V37 — actualizare incrementală peste V36 (cu V35.1 păstrată ca referință)
 
-Modificări V36 (build de test)
-1. Bara principală are doar patru destinații: Principală, Măsurători, Deviz Nou și Mai multe.
-2. Modulele existente sunt accesibile din Mai multe, grupate pe categorii extensibile, cu căutare RO/RU și ultimele trei accesări. Modulele și datele existente au fost păstrate.
-3. Adăugat modul Măsurători / Releveu: fișe locale cu client, adresă, denumire, încăperi și elemente (podea, perete, tavan, volum), salvare/deschidere/ștergere.
-4. Modulul afișează suprafața exactă și suprafața de lucru rotunjită individual per element: fracția sub 0,4 în jos, de la 0,4 în sus. Totalul de lucru însumează valorile individual rotunjite.
-5. Releveele sunt incluse în backupul complet și în restaurare.
-6. Actualizat cache-ul offline pentru încărcarea versiunii V36.
+BAZĂ ȘI SIGURANȚĂ
+- V37 pornește de la V36, care include incremental modulele din V35.1 și modulul Măsurători. V35.1 originală rămâne arhivă de referință separată.
+- Nu s-a reconstruit aplicația de la zero. Cheile localStorage existente sunt păstrate.
+- Înainte de instalare: exportă un backup complet ZIP/JSON din aplicația curentă. Păstrează separat arhivele V35.1 și V36.
+- Actualizarea nu șterge intenționat datele locale. Testează restaurarea backupului înainte de a folosi aplicația pentru date noi.
 
-Limitări ale acestui build de test: nu include încă scăderea individuală a ușilor/ferestrelor, atașamente foto, grupuri reutilizabile legate de mai multe lucrări sau transferul automat al cantităților în Deviz Nou. Acestea rămân pentru următoarea etapă. Nu s-a pretins testare pe un iPad fizic.
+MODIFICĂRI V37
+1. Navigarea principală are pictograme SVG redesenate, mai clare, și etichete vizibile: Principală, Deviz Nou, Măsurători, Mai multe. Pictograma Deviz Nou folosește document cu plus.
+2. Meniul Mai multe folosește pictograme SVG coerente pentru categorii și module.
+3. Denumirea modulului este simplificată la „Măsurători” / „Замеры”; nu se folosește termenul Revenue în etichetele vizibile.
+4. Previzualizarea A4 din Deviz Nou se scalează automat ca foaia completă să încapă pe lățimea disponibilă, în portret și landscape. Conținutul lung rămâne derulabil vertical. Actualizarea previzualizării existente rămâne automată.
+5. Modulul Măsurători permite scăderea individuală a golurilor de tip ușă, fereastră sau alt gol pentru elementele de tip perete. Suprafața brută, golurile scăzute, suprafața netă și cantitatea de lucru sunt afișate separat. Regula de rotunjire 0,40 este păstrată.
+6. Releveele salvate au acțiuni „Creează deviz” și „Importă în deviz”. Cantitățile pozitive sunt transferate în poziții editabile, grupate pe încăperi/locații. Prețul este inițial 0 și trebuie completat în deviz. Sursa și valorile de măsurare sunt păstrate ca metadate în linia importată.
+7. Interfața a primit reguli responsive suplimentare pentru telefoane, tablete și ecrane mari, inclusiv zone tactile și scalare A4.
+8. Cache-ul service worker este incrementat pentru V37.
 
-DevizPRO V31 — remedieri incrementale peste V30
+LIMITĂRI / VERIFICARE NECESARĂ
+- Compatibilitatea este optimizată la nivel de layout web responsive, dar nu poate fi certificată pentru fiecare model de iPad, Android, Windows sau macOS fără testare fizică pe acele dispozitive și browsere.
+- Previzualizarea arată foaia completă scalată; paginarea finală pe mai multe foi este realizată la imprimare/Salvare ca PDF de motorul browserului. Nu este încă un motor de paginare PDF cu foi A4 separate desenate individual în editor.
+- Transferul din releveu creează poziții de lucrări generice, cu preț 0, pentru a nu inventa corespondențe sau prețuri din catalog. Verifică și completează denumirile/prețurile înainte de salvare.
+- Scăderea golurilor este implementată pentru pereți. Deducerile duplicate trebuie evitate manual; fiecare gol adăugat este o intrare separată.
+- Nu s-a pretins testare completă pe iPad fizic, Android sau desktop.
 
-IMPORTANT
-- Păstrează o copie a versiunii V30 și exportă backupul complet înainte de actualizare.
-- Aplicația rămâne offline-first și păstrează cheile și structura principală de stocare existente.
-- Nu s-a reconstruit aplicația de la zero.
-
-Modificări V31
-1. Corectată ordinea identificării pictogramelor: ștergerea unui proces-verbal folosește pictograma de ștergere, nu pe cea de imprimare/descărcare. Butoanele cu text explicativ din Setări nu mai sunt înlocuite accidental cu pictograme.
-2. Pictograma de căutare globală din dreapta jos este acum o lupă SVG clară.
-3. Eliminat exportul Excel/Numbers din devizul curent, lista devizelor și fereastra de export a devizului salvat. Eliminat exportul CSV/Excel din partea de bonuri și exportul CSV din partea de procese-verbale; rapoartele respective se deschid pentru imprimare/Salvare ca PDF.
-4. Ștergerea definitivă a unui bon șterge și istoricul corectărilor/anulărilor/rambursărilor legat de acel bon, inclusiv înregistrările de audit asociate. Acțiunea cere confirmare.
-5. Secțiunile din meniu și titlurile pentru Bonuri și Procese-verbale au denumiri română/rusă; ferestrele dinamice se reconstruiesc în limba aleasă.
-6. Bonurile, rapoartele de plăți, procesele-verbale și documentele de rambursare au etichete și titluri bilingve în PDF, indiferent de limba interfeței. Procesele-verbale noi păstrează denumirile lucrărilor în ambele limbi.
-7. Aliniate mai uniform controalele și butoanele din Setări; păstrat textul integral pentru „Șterge semnătura” și „Exportă pachet de transfer”.
-8. Actualizată versiunea cache offline la V31.
-
-Notă de testare
-- Arhiva și sintaxa JavaScript sunt verificate automat.
-- Nu s-a pretins testare completă pe un iPad fizic; verifică interacțiunile în aplicația ta după import și păstrează backupul V30.
-
-
-Modificări de remediere V32 (27.10.2026)
-1. Titlul secțiunii Bonuri este acum „Bonuri și Plăți” / „Квитанции и платежи”.
-2. La schimbarea limbii, secțiunile Bonuri și Plăți și Procese-verbale sunt reconstruite în limba selectată, fără a modifica datele salvate.
-3. Bifa pentru emiterea bonului este compactă, pătrată și verde când este selectată.
-4. În istoricul plăților a fost eliminată pictograma redundantă de editare; „Corectare” rămâne, iar ștergerea este ultima acțiune, în dreapta, evidențiată cu roșu.
-5. Butoanele de acțiune din istoricul plăților și procesele-verbale folosesc pictograme SVG cu dimensiuni și contrast explicite.
-6. Pictogramele de acțiune din Evidență au stiluri forțate pentru a evita afișarea ca cercuri goale.
-7. La apăsarea unei pictograme din meniul superior se afișează denumirea localizată a secțiunii.
-8. Cache-ul service worker a fost incrementat la v32 pentru a preveni încărcarea versiunii anterioare.
-
-Verificare tehnică: toate blocurile JavaScript din index.html trec verificarea sintaxei Node.js. Interacțiunile trebuie verificate în browserul țintă după instalare.
-
-
-VERSIUNEA V33 — 28.10.2026
-- Locații/grupări în deviz, cu denumire editabilă și subtotal separat la export.
-- Reordonarea lucrărilor și locațiilor prin tragere sau săgeți sus/jos.
-- Ascundere/reactivare lucrări și locații; elementele ascunse nu intră în total sau PDF/imprimare.
-- Ștergere locație separat sau împreună cu lucrările ei.
-- Fereastra de după salvare simplificată pentru export PDF/imprimare și închidere reparată.
-- Numele aplicației rămâne DevizPRO.
-
-
-VERSIUNEA V34 — 28.10.2026
-- Reparat calculul vizibil pe fiecare lucrare: totalul net, baza fără reducere și economia se actualizează din valorile recalculate, nu din câmpuri vechi/nepopulate ale liniei.
-- La schimbarea prețului unitar, cantității sau reducerii, totalurile liniei, rezumatul devizului și previzualizarea PDF folosesc același calcul.
-- Subtotalurile locațiilor respectă aceeași limită de reducere de maximum 100% ca totalul devizului.
-- Incrementată versiunea cache-ului offline la V34.
-
-Verificare tehnică V34: sintaxa JavaScript verificată cu Node.js. Nu s-a pretins testare completă pe iPad fizic.
-
-
-DEVIZPRO V35 - module incrementale
-- Remediere vizibilitate buton Gata/Inchide din fereastra de confirmare a devizului.
-- Meniu Clienți: registru local, fișă client, devize și plăți asociate după nume/telefon.
-- Calendar: programări, remindere configurabile, amânare/reprogramare cu istoric și listă fără dată.
-- Finanțe: cheltuieli locale și estimare orientativă; nu înlocuiește contabilitatea.
-- Materiale: listă locală cu cantitate, preț și rezervă ajustabilă.
-- Datele noi sunt stocate în localStorage sub dp_clients, dp_appointments, dp_expenses și dp_materials; datele vechi de deviz nu sunt rescrise.
-- Notificările browserului depind de suport și permisiuni; verifică pe iPad, notificările în fundal nu sunt garantate.
-- Înainte de actualizare, exportă un backup JSON/ZIP și testează restaurarea.
-
-
-PATCH V35.1 (29.10.2026)
-- Corectată identificarea cache-ului offline: V35 folosește acum un nume nou de cache, astfel încât service worker-ul să poată încărca index.html actualizat.
-- Înainte de import, păstrează un backup al datelor locale. După import, închide complet aplicația și redeschide-o.
+TESTARE TEHNICĂ
+- Se verifică sintaxa tuturor blocurilor JavaScript cu Node.js.
+- După instalare, verifică: deschiderea paginilor, navigarea, adăugarea și salvarea măsurătorilor, scăderea golurilor, transferul în deviz, actualizarea previzualizării, schimbarea orientării, exportul PDF și backup/restaurare.
