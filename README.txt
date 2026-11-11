@@ -1,27 +1,31 @@
-DEVIZPRO V39 — V38 RUNTIME FIX
+DEVIZPRO V40 — MENIU DIRECT ȘI INTERFAȚĂ COMPACTĂ
 
-Baza: arhiva DevizPRO V38 furnizată pentru reparație.
+BAZĂ
+DevizPRO V39 Fix. Structura offline și modulele existente au fost păstrate.
 
-REMEDIERE CRITICĂ V39
-- Corectată poziționarea modulului V38: stilurile și logica pentru navigație, meniul „Mai multe”, evidența pe zone și măsurători erau introduse accidental în șablonul HTML al ferestrei de imprimare a unui deviz, nu în documentul aplicației.
-- Din cauza acestei inserări, scriptul principal devenea invalid și funcțiile noi nu se executau. Modulul a fost mutat în documentul principal, în afara șablonului de imprimare.
-- Verificate sintactic toate cele 8 blocuri JavaScript extrase din documentul HTML cu Node.js.
-- Actualizat cache-ul service worker la V39 pentru a evita reutilizarea fișierelor V38 defecte.
+MODIFICĂRI IMPLEMENTATE ÎN ACEST PACHET
+1. Bara principală are exact patru destinații: Principală, Deviz nou, Măsurători și Mai multe.
+2. Bonurile și procesele-verbale nu mai sunt injectate în bara principală; se deschid direct din Mai multe.
+3. Mai multe afișează 12 intrări directe, grupate numai prin subtitluri descriptive. Fiecare modul se deschide printr-o singură apăsare.
+4. Pictograme vectoriale dedicate și carduri mai mari; grilă adaptivă pentru telefon, tabletă și desktop.
+5. „Releveu nou” a devenit „Măsurătoare nouă”.
+6. A fost eliminată injectarea duplicată a butonului „Tip nou”.
+7. Ștergerea tipurilor de măsurătoare este disponibilă inclusiv pentru tipurile standard; datele măsurătorilor deja salvate nu sunt șterse.
+8. Controalele de selectare și deducere din lista măsurătorilor au fost compactate vizual.
+9. Cache-ul service worker a fost incrementat la V40.
 
-FUNCȚII PĂSTRATE DIN V38
-1. Bară principală cu patru destinații: Principala, Deviz Nou, Măsurători și Mai multe, cu pictograme SVG și etichete.
-2. Meniul Mai multe reorganizat în categorii: Documente și evidență; Clienți și programări; Lucrări și materiale; Finanțe; Instrumente și administrare.
-3. Evidență pe zone: Ciocana, Buiucani, Botanica, Rîșcani, Centru, Telecentru, Codru, Durlești, Sîngera, Stăuceni, Cricova, Trușeni și zone personalizate; zona poate fi corectată manual.
-4. Modul Măsurători: relevee, încăperi, elemente/obiecte, tipuri standard și personalizate, câmpuri dimensionale configurabile, calcul automat m.l./m²/m³, unitate manuală și selectare pentru transfer în Deviz Nou.
-5. Setări Măsurători: creare și editare tipuri, tipuri permanente sau temporare, configurarea câmpurilor, unități și pictograme.
-6. Selector offline cu combinații tematice de pictograme pentru construcții, instalații, mobilier și obiecte casnice.
-7. Marcarea elementelor deductibile și scăderea lor din totalurile calculate pe unități.
-8. Backup/restaurare extinsă pentru măsurători, tipuri de măsurători și zone personalizate.
-9. Modulele moștenite din baza V35.1/V38 rămân incluse: clienți, calendar, finanțe, materiale, catalog, bonuri/plăți, procese-verbale, setări, grupe și evidență.
+MODULE PĂSTRATE DIN V39
+Devize, catalog, categorii, grupe, clienți, calendar, finanțe, materiale, bonuri/plăți, procese-verbale, evidență, zone, măsurători, setări și backup/restaurare existente.
 
-VERIFICĂRI ȘI LIMITĂRI
-- Integritatea arhivei ZIP: verificată.
-- Sintaxa tuturor blocurilor JavaScript inline: verificată.
-- Nu a fost posibilă certificarea tuturor fluxurilor pe iPad fizic și nu se poate promite funcționare 100% fără testare pe dispozitiv și cu datele reale.
-- Înainte de instalare, exportă backupul complet din versiunea care conține datele tale și păstrează V38 separat. Nu șterge datele site-ului/browserului.
-- După înlocuire, închide complet aplicația și redeschide-o. Dacă versiunea veche rămâne în cache, reîncarcă aplicația după ce ai confirmat backupul.
+IMPORTANT — SPECIFICAȚIA COMPLETĂ V40 NU ESTE ÎNCĂ INTEGRAL IMPLEMENTATĂ
+Acest pachet este o etapă de lucru V40, nu o certificare finală a tuturor cerințelor aprobate. Funcțiile care necesită implementare separată includ: grupuri de măsurători și clipping cu alegerea suprafeței țintă; selector de măsurători în câmpul cantitate al devizului; fluxul „Salvează și creează nou / Creează fără salvare / Anulează”; editarea și mutarea înregistrărilor între zone; atașamente foto multiple la finanțe și materiale; administrarea și îmbinarea grupurilor de materiale; căutarea rapidă a devizului în selectorul materialelor; redesign complet al tuturor checkbox-urilor și localizare rusă exhaustivă. Acestea nu sunt declarate finalizate în acest pachet.
+
+VERIFICĂRI EFECTUATE
+- Integritatea ZIP verificată.
+- Sintaxa tuturor celor 8 blocuri JavaScript inline verificată cu Node.js.
+- Test browser automat: bara de navigare are exact 4 destinații; „Mai multe” afișează 12 module; modulul Finanțe se deschide direct; navigarea rămâne la 4 destinații.
+- Testul browser fără origine HTTP locală raportează erori de acces localStorage din cauza documentului sandbox; acestea nu sunt folosite ca dovadă de defect al aplicației și nu permit certificarea completă a persistenței.
+- Nu a fost testată interacțiunea pe iPad fizic și cu date reale.
+
+SIGURANȚA DATELOR
+Înainte de instalare, exportă și păstrează un backup complet din versiunea care conține datele reale. Nu șterge datele site-ului/browserului. Păstrează separat V39.
