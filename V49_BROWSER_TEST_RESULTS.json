@@ -1,0 +1,158 @@
+{
+  "startup": {
+    "title": "DevizPRO",
+    "navButtons": 14,
+    "pages": 16,
+    "errors": []
+  },
+  "dashboardQuickActions": 4,
+  "quickActionOpensQuote": true,
+  "navigation": {
+    "visited": 14,
+    "activeAfter": "settings"
+  },
+  "moreHub": {
+    "cards": 12,
+    "text": "Mai multe\nAcces direct la toate modulele – intri cu o singură apăsare.\nAcces direct – o singură apăsare.\nDocumente și evidență\nEvidență\nEvidență pe zone\nBonuri și plăți\nProcese-ver"
+  },
+  "languageRU": {
+    "htmlLang": "ru",
+    "homeLabel": "Главная"
+  },
+  "measurementUnits": {
+    "linearVisible": true,
+    "areaVisible": true,
+    "volumeVisible": true
+  },
+  "photoLibrary": {
+    "photoCards": 3,
+    "allLoaded": true
+  },
+  "photoSrcs": [
+    {
+      "src": "data:image/webp;base64,UklGRpw8AABXRUJQVlA4IJA8AADQHgGdASrgAfAAPj0cjEQiIaGTucUsI",
+      "complete": true,
+      "width": 480
+    },
+    {
+      "src": "data:image/webp;base64,UklGRqZlAABXRUJQVlA4IJplAAAQSAGdASrgAfAAPj0YikMiIaEYelaEI",
+      "complete": true,
+      "width": 480
+    },
+    {
+      "src": "data:image/webp;base64,UklGRsw3AABXRUJQVlA4IMA3AADwCAGdASrgAfAAPj0YikMiIaUWCf78U",
+      "complete": true,
+      "width": 480
+    }
+  ],
+  "photoViewer": true,
+  "photoEditorSaveCopy": {
+    "photoCount": 2,
+    "originalPreserved": true,
+    "copyIsNew": true
+  },
+  "measureSave": {
+    "count": "1",
+    "stored": true,
+    "saved": 1
+  },
+  "customUnitRuler": {
+    "lineCount": "1 lucrări",
+    "qty": 7,
+    "unit": "unitate-personalizata"
+  },
+  "groupNameDialog": true,
+  "groupCreate": {
+    "groups": 1,
+    "name": "Pereți și goluri",
+    "memberCount": 2,
+    "groupCards": 1,
+    "unGroupedObjects": 0
+  },
+  "ungroupPreservesObjects": {
+    "groups": 0,
+    "objects": 2,
+    "ids": [
+      "a",
+      "b"
+    ]
+  },
+  "movePointer": [
+    "second",
+    "first"
+  ],
+  "groupMenu": true,
+  "groupEditMembers": {
+    "members": 3,
+    "objects": 3
+  },
+  "groupRename": "Grup redenumit",
+  "groupDeleteKeepsAll": {
+    "groups": 0,
+    "objects": 3
+  },
+  "mixedUnitBlock": {
+    "groups": 0,
+    "alert": "Gruparea nu este posibilă: ai selectat obiecte cu unități de măsură diferite.",
+    "nameDialog": false
+  },
+  "minusRejectsDifferentUnit": {
+    "modal": false,
+    "alert": "Nu există alte obiecte negrupate cu aceeași unitate de măsură în această încăpere."
+  },
+  "minusRejectsOversize": {
+    "clipped": false,
+    "alert": "Obiectul ales este mai mare decât cantitatea rămasă. Alege alt obiect."
+  },
+  "minusDialog": true,
+  "minusApply": {
+    "clippedTo": "p",
+    "net": 13,
+    "topLevelCards": 1,
+    "nestedClip": true
+  },
+  "measurementUiCleanup": {
+    "mergeVisible": false,
+    "oldIconButtons": 0,
+    "minusButtons": 1,
+    "groupButtonCount": 1
+  },
+  "mobile": {
+    "overflow": 0,
+    "navButtons": 14,
+    "navDisplay": "row"
+  },
+  "ipadViewport": {
+    "overflow": 0,
+    "navDisplay": "row"
+  },
+  "androidViewport": {
+    "overflow": 0,
+    "navDisplay": "row"
+  },
+  "runtimeErrors": [],
+  "consoleErrors": [],
+  "htmlAudit": {
+    "parse": "PASS",
+    "staticIdCount": 220,
+    "uniqueIdCount": 220,
+    "duplicateIds": {},
+    "staticPageSections": 14,
+    "runtimePageSections": 16,
+    "inlineScriptBlocks": 11
+  },
+  "syntaxAudit": {
+    "inlineJavaScript": "PASS — 11/11 node --check",
+    "serviceWorker": "PASS — node --check"
+  },
+  "pwaAssets": {
+    "manifestName": "DevizPRO",
+    "icon192Exists": true,
+    "icon512Exists": true,
+    "serviceWorkerCache": "devizpro-static-cache-v49-20261112",
+    "serviceWorkerCoreFiles": 18,
+    "missingCoreAssets": [],
+    "offlineObjectImageCount": 10
+  },
+  "testEnvironmentNote": "Chromium/Playwright headless simulation using set_content; localStorage replaced with Map-backed shim and local image paths inlined as data URLs. This validates UI/runtime flows but not the production GitHub Pages origin, Service Worker activation, persistent browser storage, or physical hardware."
+}

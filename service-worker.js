@@ -1,5 +1,5 @@
-const CACHE='devizpro-static-cache-v48-release-20261112';
-const ASSETS=['./','./index.html','./service-worker.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('devizpro-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));}return response;}).catch(()=>caches.match('./index.html'))));});
+const CACHE='devizpro-static-cache-v49-20261112';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/css/devizpro-shell.css','./Logo/devizpro-mark-transparent.png','./Logo/devizpro-mark.svg','./assets/objects/wall.webp','./assets/objects/plaster.webp','./assets/objects/window.webp','./assets/objects/door.webp','./assets/objects/floor.webp','./assets/objects/ceiling.webp','./assets/objects/room.webp','./assets/objects/pipes.webp','./assets/objects/roof.webp','./assets/objects/house.webp'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('devizpro-static-cache-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET'||new URL(req.url).origin!==self.location.origin)return;event.respondWith(caches.match(req).then(hit=>hit||fetch(req).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(cache=>cache.put(req,copy));}return res;}).catch(()=>caches.match('./index.html'))));});
