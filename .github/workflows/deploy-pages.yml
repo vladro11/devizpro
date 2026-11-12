@@ -1,8 +1,10 @@
-name: Deploy DevizPRO to GitHub Pages
+
+name: Deploy DevizPRO V2 to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -20,15 +22,47 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Configure Pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        uses: actions/configure-pages@v5
+
+      - name: Extract DevizPRO V2 archive
+        run: |
+          set -e
+          mkdir extracted
+          mkdir _site
+
+          zip_file=$(find . -maxdepth 1 -type f -iname '*.zip' -print -quit)
+
+          if [ -z "$zip_file" ]; then
+            echo "Nu a fost găsită arhiva ZIP."
+            exit 1
+          fi
+
+          unzip -q "$zip_file" -d extracted
+
+          if [ -f extracted/devizpro_v2_build/index.html ]; then
+            cp -a extracted/devizpro_v2_build/. _site/
+          elif [ -f extracted/index.html ]; then
+            cp -a extracted/. _site/
+          else
+            echo "Nu am găsit index.html în arhivă."
+            find extracted -name index.html
+            exit 1
+          fi
+
+          touch _site/.nojekyll
+          test -f _site/index.html
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+        uses: actions/deploy-pages@v4
