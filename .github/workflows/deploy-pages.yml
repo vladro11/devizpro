@@ -1,4 +1,3 @@
-
 name: Deploy DevizPRO V2 to GitHub Pages
 
 on:
@@ -30,33 +29,29 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Extract DevizPRO V2 archive
+      - name: Extract verified site archive
         run: |
-          set -e
-          mkdir extracted
-          mkdir _site
-
-          zip_file=$(find . -maxdepth 1 -type f -iname '*.zip' -print -quit)
-
-          if [ -z "$zip_file" ]; then
-            echo "Nu a fost găsită arhiva ZIP."
-            exit 1
-          fi
-
-          unzip -q "$zip_file" -d extracted
-
-          if [ -f extracted/devizpro_v2_build/index.html ]; then
-            cp -a extracted/devizpro_v2_build/. _site/
-          elif [ -f extracted/index.html ]; then
+          set -euo pipefail
+          archive="DevizPRO_v2_site_upload.zip"
+          test -f "$archive"
+          rm -rf _site extracted
+          mkdir -p _site extracted
+          unzip -q "$archive" -d extracted
+          if [ -f extracted/index.html ]; then
             cp -a extracted/. _site/
+          elif [ -f extracted/devizpro_v2_build/index.html ]; then
+            cp -a extracted/devizpro_v2_build/. _site/
           else
-            echo "Nu am găsit index.html în arhivă."
-            find extracted -name index.html
+            echo "Archive does not contain a deployable index.html"
             exit 1
           fi
-
           touch _site/.nojekyll
-          test -f _site/index.html
+          test -s _site/index.html
+          test -s _site/manifest.webmanifest
+          test -s _site/service-worker.js
+          test -s _site/assets/js/devizpro-shell.js
+          echo "Verified site files:"
+          find _site -type f | sort
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
