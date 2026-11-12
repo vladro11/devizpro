@@ -229,3 +229,25 @@ V47 este o etapă de corectare și redesign global, nu o versiune finală a prod
 
 ### Continuity rule
 V47 is a correction and global redesign stage, not a final product release. The next numeric release is V48. Before adding more features, test grouping, MINUS, all-module layouts, and data preservation on a device. Previous history remains intact; this addendum is appended chronologically.
+
+
+## V48 audit and implementation note / Notă audit și implementare V48 — 2026-11-12
+
+RO — Audit GitHub: ramura publică main a fost inspectată prin pagina repository și fișierul raw index.html. În index erau încă stilurile inițiale: antet verde simplu, navigare orizontală și carduri de bază; stratul V47 `dpV47MeasurementsRedesign` afecta în principal Măsurători, nu toate modulele. Pictograma `icon-512.png` din V47 era un D alb pe fundal verde, ceea ce explică de ce utilizatorul a perceput-o ca un pătrat verde. V48 adaugă un strat CSS global pentru pagini, formulare, butoane, carduri, navigare, ferestre și măsurători; pe ecrane ≥900 px navigarea devine bară laterală, iar pe ecrane mai mici rămâne orizontală. Au fost redesenate iconițele PWA 192/512 și declarate în manifest. Titlul rămâne DevizPRO fără versiune.
+
+EN — GitHub audit: the public main branch was inspected through the repository page and raw index.html. The index still contained the original styling: a plain green header, horizontal navigation and basic cards; the V47 `dpV47MeasurementsRedesign` layer mainly affected Measurements, not all modules. The V47 `icon-512.png` was a white D on a green background, explaining why the user perceived it as a plain green square. V48 adds a global CSS layer for pages, forms, buttons, cards, navigation, dialogs and measurements; at widths ≥900 px navigation becomes a side rail, while smaller screens retain horizontal navigation. PWA icons 192/512 were redrawn and declared in the manifest. The title remains DevizPRO without a version number.
+
+RO — Limitări oneste V48: biblioteca de mii de fotografii nu este încă integrată în selectorul de obiecte; editorul foto avansat și reproiectarea completă MOVE nu sunt implementate în acest build. Logica existentă V47 de grupare și clipping a fost păstrată. Nu s-a putut obține o captură de browser headless: Chromium a depășit limita de timp în mediul curent. `node --check` pentru scripturile inline a trecut; ZIP-ul a trecut `unzip -t`. Testele pe dispozitive reale nu au fost efectuate. Nu se declară V48 completă pentru cerințele totale.
+
+EN — Honest V48 limitations: a library of thousands of photos is not yet integrated into the object picker; the advanced photo editor and full MOVE redesign are not implemented in this build. Existing V47 grouping and clipping logic was retained. A headless browser screenshot could not be obtained: Chromium exceeded the execution time limit in the current environment. `node --check` for inline scripts passed; the ZIP passed `unzip -t`. Real-device tests were not performed. V48 is not declared complete against the full requirements.
+
+
+## 2026-11-12 — User report after V47 and V48 work / Raport utilizator și lucrul V48
+
+**User (RO):** „Am verificat nu merge nimic, adică e totul la fel... aștept ca să refaci totul discutat bine...”. A cerut comparație directă cu GitHub, verificare repetată, soluții de rezervă documentate și implementarea completă a esteticii și funcționalităților discutate.
+
+**User (EN translation):** “I checked and nothing works; everything is the same... I expect you to properly rebuild everything discussed...”. The user requested direct comparison with GitHub, repeated verification, documented fallback solutions, and full implementation of the discussed visual design and functionality.
+
+**Assistant audit (RO):** În V47, stratul de design nou era în principal limitat la Măsurători; restul paginilor păstrau CSS-ul vechi. Iconița era un D alb pe verde. V48 adaugă un strat vizual global și iconițe PWA noi, dar nu finalizează încă biblioteca fotografică de mii de imagini, editorul foto avansat sau redesignul MOVE.
+
+**Assistant audit (EN):** In V47, the new design layer was mainly limited to Measurements; the rest of the pages retained the old CSS. The icon was a white D on green. V48 adds a global visual layer and new PWA icons, but does not yet complete the thousands-image photo library, advanced photo editor or MOVE redesign.
