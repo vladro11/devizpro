@@ -1,5 +1,0 @@
-
-function downloadBlob(data,name,type){const b=new Blob([data],{type}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(u)},2500)}
-function printQuote(){const oldPrintLanguage=settings.printLanguage,oldTitle=document.title;settings.printLanguage='both';const quoteName=String($('quoteName')?.value||$('client')?.value||'DevizPRO').trim().replace(/[\\/:*?"<>|]+/g,'-');document.title=quoteName||'DevizPRO';renderPreview();const restore=()=>{document.title=oldTitle;settings.printLanguage=oldPrintLanguage;renderPreview();window.removeEventListener('afterprint',restore)};window.addEventListener('afterprint',restore);window.print();setTimeout(()=>{if(document.title!=='DevizPRO')restore()},1200)}
-init();
-if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
