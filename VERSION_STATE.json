@@ -1,0 +1,70 @@
+{
+  "project": "DevizPRO",
+  "release_version": "2-E2",
+  "release_display": "V2 E2",
+  "release_date": "2026-11-21",
+  "release_status": "upgrade-build; automated static checks passed; interactive/device confirmation pending",
+  "versioning_rule": "V2 E1, V2 E2, V2 E3...; increment only E for subsequent editions",
+  "base_archive": "DevizPRO_V2_E1_PRO.zip",
+  "base_code_lineage": "Built from user-supplied V2 E1; inherited storage keys and data structures retained",
+  "application_version_label": "hidden-from-app-interface",
+  "browser_title": "DevizPRO V2 E2",
+  "service_worker_cache": "devizpro-v2-e2-release-20261121",
+  "pwa_display_name": "DevizPRO",
+  "data_migration": "none",
+  "local_storage_indexeddb_keys_changed": false,
+  "implemented_in_e1": [
+    "new V2 E-series numbering",
+    "removed visible V45 label from app header",
+    "updated browser tab title and application-version metadata",
+    "updated Service Worker cache identifier",
+    "updated release documentation and approved implementation backlog"
+  ],
+  "not_yet_implemented": [
+    "custom pictograms with add/edit/delete and recent section",
+    "eye-based object visibility separate from estimate selection",
+    "room gallery aggregation of object photos",
+    "unified replacement of drag-and-drop across all modules",
+    "fully adaptive phone/tablet/desktop navigation and subpage back navigation",
+    "expanded Home dashboard with real data and configurable cards",
+    "complete Settings redesign"
+  ],
+  "preserved_features": [
+    "existing MINUS/Clipping behavior",
+    "existing MERGE behavior",
+    "existing measurements and room data structures",
+    "existing offline/PWA architecture",
+    "existing RO/RU language support",
+    "existing clients, estimates, payments, documents, and settings logic"
+  ],
+  "automated_checks": {
+    "inline_javascript_syntax": "PASS 11/11",
+    "html_parse": "PASS",
+    "duplicate_static_ids": "0",
+    "service_worker_assets": "PASS",
+    "zip_integrity": "PASS"
+  },
+  "device_tests": {
+    "browser_interactive": "NOT CONFIRMED",
+    "ipad": "NOT TESTED",
+    "phone": "NOT TESTED",
+    "desktop": "NOT TESTED"
+  },
+  "next_release_priority": [
+    "audit actual measurement/photo/MINUS functions and persistence",
+    "compact Measurements card and plus dialog",
+    "photo aggregation by room",
+    "reliable touch/mouse reordering",
+    "responsive navigation",
+    "Home and Settings redesign"
+  ],
+  "implemented_in_e2": [
+    "compact Measurements object card layout",
+    "icon-left Object/Type selector with plus-right",
+    "compact responsive dimension inputs",
+    "icon-only Camera and Gallery controls",
+    "new type dialog with temporary Add and permanent Save to settings",
+    "up/down reorder controls for rooms and objects",
+    "browser title/meta and Service Worker cache updated to V2 E2"
+  ]
+}
